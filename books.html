@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books - Salatiso Lonwabo Mdeni</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Glider(document.querySelector('.glider'), {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                draggable: true,
+                rewind: true,
+                dots: '.dots',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -18,40 +45,49 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="books-bg">
         <section class="books">
             <h2>My Books</h2>
-            <div class="book">
-                <img src="img/goliath.jpg" alt="Goliath’s Reckoning Cover" class="book-cover">
-                <h3>Goliath’s Reckoning</h3>
-                <p>Exposing court biases against dads—a core fight for <a href="https://flamea.org">flamea.org</a>.</p>
-                <a href="https://books.google.com" class="book-link">Get it on Google Books</a>
+            <div class="glider-cont">
+                <div class="glider">
+                    <div class="book-slide">
+                        <img src="img/goliath.jpg" alt="Goliath’s Reckoning Cover" class="book-cover">
+                        <h3>Goliath’s Reckoning</h3>
+                        <p>Exposing court biases against dads—a core fight for <a href="https://flamea.org">flamea.org</a>.</p>
+                        <a href="https://books.google.com" class="book-link">Get it on Google Books</a>
+                    </div>
+                    <div class="book-slide">
+                        <img src="img/redress.jpg" alt="Beyond Redress Cover" class="book-cover">
+                        <h3>Beyond Redress</h3>
+                        <p>Putting kids first over race policies, part of <a href="https://flamea.org">flamea.org</a>’s mission.</p>
+                    </div>
+                    <div class="book-slide">
+                        <img src="img/homeschool.jpg" alt="Homeschooling Father Cover" class="book-cover">
+                        <h3>The Homeschooling Father</h3>
+                        <p>Guiding dads to own their kids’ education, tied to <a href="https://flamea.org">flamea.org</a>.</p>
+                    </div>
+                    <div class="book-slide">
+                        <img src="img/modern.jpg" alt="Modern, Broke, and Confused Cover" class="book-cover">
+                        <h3>Modern, Broke, and Confused</h3>
+                        <p>A snarky take on surviving today’s mess with a smile.</p>
+                    </div>
+                    <div class="book-slide">
+                        <img src="img/cage.jpg" alt="The Perfect Cage Cover" class="book-cover">
+                        <h3>The Perfect Cage</h3>
+                        <p>A dystopian thriller about fighting digital control.</p>
+                    </div>
+                </div>
+                <div class="dots"></div>
             </div>
-            <div class="book">
-                <img src="img/redress.jpg" alt="Beyond Redress Cover" class="book-cover">
-                <h3>Beyond Redress</h3>
-                <p>Putting kids first over race policies, part of <a href="https://flamea.org">flamea.org</a>’s mission.</p>
-            </div>
-            <div class="book">
-                <img src="img/homeschool.jpg" alt="Homeschooling Father Cover" class="book-cover">
-                <h3>The Homeschooling Father</h3>
-                <p>Guiding dads to own their kids’ education, tied to <a href="https://flamea.org">flamea.org</a>.</p>
-            </div>
-            <div class="book">
-                <img src="img/modern.jpg" alt="Modern, Broke, and Confused Cover" class="book-cover">
-                <h3>Modern, Broke, and Confused</h3>
-                <p>A snarky take on surviving today’s mess with a smile.</p>
-            </div>
-            <div class="book">
-                <img src="img/cage.jpg" alt="The Perfect Cage Cover" class="book-cover">
-                <h3>The Perfect Cage</h3>
-                <p>A dystopian thriller about fighting digital control.</p>
-            </div>
-            <div class="book">
-                <img src="img/iqhina.jpg" alt="Iqhina Cover" class="book-cover">
-                <h3>Coming Soon: Iqhina</h3>
-                <p>A gritty thriller dropping in 2025—stay tuned!</p>
-            </div>
+            <h3>Upcoming Books</h3>
+            <ul class="upcoming-books">
+                <li><em>Iqhina (2025)</em> - A gritty thriller in the works.</li>
+                <li><em>The Isivumo Legacy: Judgment of the Ancients</em> - A sci-fi epic blending Xhosa mythology.</li>
+                <li><em>The Isivumo Legacy: The Last Cycle</em> - The next chapter in the sci-fi saga.</li>
+                <li><em>Qhawe’s Book</em> - Exploring a military past and fatherhood.</li>
+                <li><em>Modern, Broke, and Confused – Sequel</em> - More satirical takes on modern life.</li>
+                <li><em>Safety First</em> - A guide to OHS compliance in South Africa.</li>
+            </ul>
         </section>
     </main>
     <footer>
