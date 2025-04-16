@@ -39,11 +39,33 @@ nav ul li a {
 nav ul li a:hover {
     color: #e63946;
 }
+main {
+    position: relative;
+    z-index: 1;
+}
+.index-bg {
+    background: url('../img/Sazi_Driving.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.about-bg {
+    background: url('../img/Sazi_Grandma.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.books-bg {
+    background: url('../img/Sazi_Reading.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.contact-bg {
+    background: url('../img/Sazi_Shouts.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
 .hero, .intro, .about, .books, .contact {
     max-width: 1000px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 2rem;
     text-align: center;
+    background: rgba(245, 233, 226, 0.9); /* Semi-transparent overlay */
+    border-radius: 8px;
 }
 .hero-img {
     max-width: 100%;
