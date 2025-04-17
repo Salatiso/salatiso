@@ -6,6 +6,7 @@
     <title>About - Salatiso Lonwabo Mdeni</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
     <style>
         .video-section iframe {
@@ -44,6 +45,35 @@
             margin-bottom: 1rem;
             color: #1a1a1a;
         }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+        .skill-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .skill-item i {
+            font-size: 2rem;
+            color: #e63946;
+            margin-bottom: 0.5rem;
+        }
+        .skill-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #2a2a2a;
+        }
         .section ul {
             list-style: none;
             padding: 0;
@@ -55,12 +85,12 @@
             margin: 0.5rem 0;
             font-size: 1.1rem;
         }
-        .resume-link {
+        .resume-link, .contact-link {
             color: #e63946;
             text-decoration: none;
             font-weight: bold;
         }
-        .resume-link:hover {
+        .resume-link:hover, .contact-link:hover {
             color: #b32d38;
         }
     </style>
@@ -105,25 +135,70 @@
 
             <div class="section">
                 <h2>Professional Career</h2>
-                <p>With over 20 years of experience, I specialize in risk management, compliance, business continuity, occupational health and safety (OHS), and auditing. My career spans roles at Gyro Group, Barclays Africa, Liberty Group, and more, where I’ve developed and implemented EHS programs, conducted audits, and earned certifications from Coursera (e.g., Cybersecurity, AI & Law) and institutions like Pretoria Technikon, UNISA, TUT, GIBS and more.</p>
+                <p>With over 20 years of experience, I specialize in risk management, compliance, business continuity, occupational health and safety (OHS), and auditing. My career spans roles at Gyro Group, Barclays Africa, Liberty Group, and more, where I’ve developed and implemented EHS programs, conducted audits, and earned certifications from Coursera (e.g., Cybersecurity, AI & Law) and institutions like Pretoria Technikon, UNISA, TUT, GIBS, and more. My resume is available upon request—reach out via the <a href="contact.html" class="resume-link">Contact page</a>.</p>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Risk Management (Operational & Enterprise)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Compliance Management (Regulatory, POPI, Anti-Corruption)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Emergency Response Management (ERP Development, Implementation, Testing)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Business Continuity Management (BCP Development, Implementation, Testing)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-search"></i>
+                        <p>Auditing (Planning, Coordination, Reporting)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-hard-hat"></i>
+                        <p>EHS/Asbestos/Construction Management (Design, Execution, Programs)</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-leaf"></i>
+                        <p>Occupational Hygiene and Environmental Management</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users"></i>
+                        <p>Project and Stakeholder Management</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-certificate"></i>
+                        <p>Recent Certifications: Cybersecurity, AI & Law (2023-2024)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Website Development</h2>
+                <p>I’m also a skilled website developer, creating platforms that blend functionality with purpose. Here are some of my projects:</p>
                 <ul>
-                    <li>Risk Management (Operational & Enterprise)</li>
-                    <li>Compliance Management (Regulatory, POPI, Anti-Corruption)</li>
-                    <li>Emergency Response Management (ERP Development, Implementation, Testing)</li>
-                    <li>Business Continuity Management (BCP Development, Implementation, Testing)</li>
-                    <li>Auditing (Planning, Coordination, Reporting)</li>
-                    <li>EHS/ Asbestos/ Construction Management (Design, Execution, Programs)</li>
-                    <li>Occupational Hygiene and Environmental Management</li>
-                    <li>Project and Stakeholder Management</li>
-                    <li>Recent Certifications: Cybersecurity, AI & Law (2023-2024)</li>
+                    <li><strong>Completed Projects:</strong>
+                        <ul>
+                            <li><a href="https://flamea.org" class="contact-link">flamea.org</a> - A platform advocating for fathers’ rights and family equality.</li>
+                            <li><a href="https://salatiso.com" class="contact-link">salatiso.com</a> - My personal portfolio showcasing my books, advocacy, and passions.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Upcoming Projects:</strong>
+                        <ul>
+                            <li><a href="https://salatiso.github.io/safety-plans/" class="contact-link">Safety First Tools Website</a> - An evolving platform centralizing OHS expertise with automated tools and a Health and Safety Expert Chatbot.</li>
+                            <li><a href="https://salatiso.github.io/sazi-isixhosa/" class="contact-link">Sazi isiXhosa</a> - A site dedicated to preserving and sharing Xhosa language and culture.</li>
+                        </ul>
+                    </li>
                 </ul>
+                <p>Looking for website development services? Contact me via the <a href="contact.html" class="contact-link">Contact page</a> to discuss your project!</p>
             </div>
 
             <div class="section">
                 <h2>Authorship</h2>
                 <p>I’m the author of impactful works like *Goliath’s Reckoning*, which fights for fathers’ rights, and *The Perfect Cage*, a dystopian thriller series. These books, along with others, reflect my passion for storytelling and advocacy. Explore my full collection on the <a href="books.html">Books page</a>.</p>
-                
-            </ul>
             </div>
 
             <div class="section">
