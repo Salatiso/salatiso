@@ -100,6 +100,61 @@ main {
 .collapsible-content a:hover {
     color: #b32d38;
 }
+.video-section iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+    border-radius: 8px;
+}
+.video-switch {
+    margin-top: 1rem;
+    text-align: center;
+}
+.video-switch button {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: background 0.3s;
+}
+.video-switch button:hover {
+    background: #b32d38;
+}
+.section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(245, 233, 226, 0.9);
+    border-radius: 8px;
+    text-align: center;
+}
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+.section ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 1rem auto;
+    max-width: 600px;
+}
+.section li {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+.resume-link {
+    color: #e63946;
+    text-decoration: none;
+    font-weight: bold;
+}
+.resume-link:hover {
+    color: #b32d38;
+}
 .glider-cont {
     position: relative;
     margin: 0 auto;
