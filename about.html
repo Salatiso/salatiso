@@ -5,6 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Salatiso Lonwabo Mdeni</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
+    <style>
+        .video-section iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 8px;
+        }
+        .video-switch {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .video-switch button {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background 0.3s;
+        }
+        .video-switch button:hover {
+            background: #b32d38;
+        }
+        .section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(245, 233, 226, 0.9);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+        .section li {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        .resume-link {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .resume-link:hover {
+            color: #b32d38;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoButtons = document.querySelectorAll('.video-switch button');
+            let currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Example: Replace with latest @salatiso video ID
+            const videoFrame = document.querySelector('.video-section iframe');
+
+            videoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.dataset.channel === 'salatiso') {
+                        currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with latest @salatiso video ID
+                    } else if (this.dataset.channel === 'audiobooks') {
+                        currentVideo = 'https://www.youtube.com/embed/anotherVideoID'; // Replace with latest @SalatisoAudioBooks video ID
+                    }
+                    videoFrame.src = currentVideo;
+                });
+            });
+
+            // Note: Video IDs need manual updates based on latest uploads
+            console.log('Video switch initialized');
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -20,11 +100,46 @@
     </header>
     <main class="about-bg">
         <section class="about">
-            <h2>Who I Am</h2>
-            <p>I’m Salatiso Lonwabo Mdeni, a South African author, risk pro, and founder of <a href="https://flamea.org">flamea.org</a>. I’ve spent 20+ years tackling challenges, but my real passion is writing—calling out injustices, empowering dads, and dreaming up bold futures.</p>
-            <p><strong>My Mission</strong>: To fight for fairness and family, from courtrooms to classrooms, through <a href="https://flamea.org">flamea.org</a> and my books.</p>
-            <p><strong>My Roots</strong>: I earned a degree in Environmental Health and nearly finished an LLB, dropping out with just three modules left out of principle—I couldn’t join a system I see as flawed.</p>
-            <p><strong>My Life</strong>: Homeschooling my kids, diving into AI, and chatting in English, Nguni, and Sotho. I’m a father to my son, with all else a means to this end.</p>
+            <h2>About Me</h2>
+            <p>I’m Salatiso Lonwabo Mdeni, a South African with a rich tapestry of experiences—risk and compliance expert, author, father, and DIY enthusiast. This page reflects my journey, blending professional expertise with personal passions, shaped by my family and heritage. From managing complex risks to writing transformative stories, and nurturing my kids through homeschooling, I strive to inspire and connect with both my professional network and personal circle.</p>
+
+            <div class="section">
+                <h2>Professional Career</h2>
+                <p>With over 20 years of experience, I specialize in risk management, compliance, business continuity, occupational health and safety (OHS), and auditing. My career spans roles at Gyro Group, Barclays Africa, Liberty Group, and more, where I’ve developed and implemented EHS programs, conducted audits, and earned certifications from Coursera (e.g., Cybersecurity, AI & Law) and institutions like GIBS and NOSA. <a href="/research/Detailed_Resume.docx" class="resume-link" download>Download my resume</a> for a full view of my skills.</p>
+                <ul>
+                    <li>Risk Management (Operational, Enterprise, Market, Credit)</li>
+                    <li>Compliance Management (Regulatory, POPI, Anti-Corruption)</li>
+                    <li>Business Continuity Management (BCP Development, Testing)</li>
+                    <li>Auditing (Planning, Coordination, Reporting)</li>
+                    <li>EHS Management (Design, Execution, Programs)</li>
+                    <li>Occupational Hygiene and Environmental Management</li>
+                    <li>Project and Stakeholder Management</li>
+                    <li>Recent Certifications: Cybersecurity, AI & Law (2023-2024)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Authorship</h2>
+                <p>I’m the author of impactful works like *Goliath’s Reckoning*, which fights for fathers’ rights, and *The Perfect Cage*, a dystopian thriller series. These books, along with others, reflect my passion for storytelling and advocacy. Explore my full collection on the <a href="books.html">Books page</a>.</p>
+                <ul>
+                    <li>*Goliath’s Reckoning* - Advocacy for legal equality</li>
+                    <li>*The Perfect Cage* - Dystopian narrative and resilience</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Personal Life</h2>
+                <p>Beyond my career and writing, I cherish homeschooling my kids, teaching them through hands-on learning and DIY projects that foster self-sufficiency. Watch my journey on YouTube, where I share DIY tips, homeschooling insights, and more.</p>
+                <div class="video-section">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe> <!-- Replace with latest @salatiso video ID -->
+                </div>
+                <div class="video-switch">
+                    <button data-channel="salatiso">Switch to @salatiso</button>
+                    <button data-channel="audiobooks">Switch to @SalatisoAudioBooks</button>
+                    <p><em>Note: Video IDs need manual updates based on latest uploads. Contact me at the site to refresh.</em></p>
+                </div>
+                <p>I also explore music and storytelling through my Spotify channel (link to be added), blending my personal passions with my creative output.</p>
+            </div>
         </section>
     </main>
     <footer>
