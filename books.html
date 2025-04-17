@@ -7,80 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
-    <style>
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            max-width: 500px;
-            text-align: center;
-        }
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-        .popup h3 {
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-        .popup p {
-            margin-bottom: 1rem;
-        }
-        .popup ul {
-            text-align: left;
-            margin-bottom: 1rem;
-        }
-        .popup a {
-            color: #e63946;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .popup a:hover {
-            color: #b32d38;
-        }
-        .popup .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-        .book-slide {
-            cursor: pointer;
-        }
-        .category {
-            font-size: 0.9rem;
-            color: #e63946;
-            margin-bottom: 0.5rem;
-        }
-        .stores, .youtube-links, .vouchers {
-            margin: 2rem 0;
-            text-align: center;
-        }
-        .stores ul, .youtube-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-        .stores li, .youtube-links li {
-            margin: 0.5rem 0;
-        }
-    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Glider.js carousel
             new Glider(document.querySelector('.glider'), {
                 slidesToShow: 3,
                 slidesToScroll: 1,
@@ -93,6 +22,7 @@
                 ]
             });
 
+            // Popup functionality for book slides
             const slides = document.querySelectorAll('.book-slide');
             const overlay = document.querySelector('.popup-overlay');
             const popup = document.querySelector('.popup');
@@ -130,6 +60,17 @@
                 overlay.style.display = 'none';
                 popup.style.display = 'none';
             });
+
+            // Collapsible functionality for "Why I Write"
+            const coll = document.querySelector('.collapsible');
+            coll.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
         });
     </script>
 </head>
@@ -148,7 +89,12 @@
     <main class="books-bg">
         <section class="books">
             <h2>My Books</h2>
-            <p>My books are a labor of love, born from a deep desire to spark change, share knowledge, and connect with readers. As a father, advocate, and storyteller, I write to challenge broken systems, celebrate family, and explore bold futures—whether it’s fighting for fathers’ rights, unraveling Xhosa heritage, or diving into dystopian struggles. Each story or guide is crafted to inspire, educate, and empower, and I’m passionate about making them accessible to everyone, from casual readers to those using them for education or research.</p>
+            <p>My books are a labor of love, born from my role as a father and advocate, sharing wisdom to challenge systems, celebrate family, and explore new horizons. Each story or guide—whether on fathers’ rights, Xhosa heritage, or dystopian futures—is crafted to inspire and empower, open to all who seek knowledge. <span class="collapsible">[Click to learn <em>Why I Write</em>]</span></p>
+            <div class="collapsible-content">
+                <h3>Why I Write</h3>
+                <p>Writing is my heartbeat, a way to pass down the wisdom I’ve gathered from my life’s journey—first for my son, whose every step drives me, and for my nephews, nieces, and the incredible woman who shaped us all: my mother. After my father’s death in 1993, she raised me and my three sisters with no formal job, no qualifications, yet her uncodified wisdom turned us into proof of her strength. I’ve surpassed my father’s material achievements as his successor, a testament to their shared, unspoken lessons—lessons they couldn’t publish, but I can, for our descendants.</p>
+                <p>South Africa, despite its educated masses since 1994, struggles with crime, broken families, and moral decline, proving formal education alone isn’t the answer. I believe in reviving the informal, cultural wisdom lost when extended families scattered due to modern work demands. Moving from Transkei to Johannesburg kept my son close to his grandmother, aunts, and cousins, giving him context about his roots—something I had growing up within 30 kilometers of both families. But it’s not the same as the rural wealth of wisdom I knew. So, I write to codify that heritage, not to formalize it, but to help my son contextualize his culture, avoid my pitfalls, and follow my footsteps where they lead. If something happened to me today, I want him to know this was for him—and for anyone else hungry for this knowledge. Contact me at <a href="mailto:salatiso@salatiso.com">salatiso@salatiso.com</a> to explore how we can share it further.</p>
+            </div>
             <div class="glider-cont">
                 <div class="glider">
                     <div class="book-slide" data-title="Goliath’s Reckoning" data-summary="Exposes gender bias in South Africa’s Children’s Courts, revealing systemic discrimination against fathers seeking custody, advocating for legal equality." data-themes="Equality before the law, Legal battles, Parental rights, Gender bias in courts" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
@@ -260,7 +206,7 @@
         </section>
         <div class="popup-overlay"></div>
         <div class="popup">
-            <span class="close">&times;</span>
+            <span class="close">×</span>
             <h3></h3>
             <p class="summary"></p>
             <h4>Key Themes:</h4>
