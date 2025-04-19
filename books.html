@@ -4,227 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books - Salatiso Lonwabo Mdeni</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Glider.js carousel
-            const glider = new Glider(document.querySelector('.glider'), {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                draggable: true,
-                rewind: true,
-                dots: '.dots',
-                arrows: {
-                    prev: '.glider-prev',
-                    next: '.glider-next'
-                },
-                responsive: [
-                    { breakpoint: 768, settings: { slidesToShow: 2 } },
-                    { breakpoint: 480, settings: { slidesToShow: 1 } }
-                ]
-            });
-
-            // Log to confirm Glider.js initialization
-            console.log('Glider.js initialized:', glider);
-
-            // Popup functionality for book slides
-            const slides = document.querySelectorAll('.book-slide');
-            const overlay = document.querySelector('.popup-overlay');
-            const popup = document.querySelector('.popup');
-            const closeBtn = document.querySelector('.popup .close');
-
-            slides.forEach(slide => {
-                slide.addEventListener('click', function() {
-                    const title = this.dataset.title;
-                    const summary = this.dataset.summary;
-                    const themes = this.dataset.themes.split(',').map(theme => theme.trim());
-                    const link = this.dataset.link;
-
-                    popup.querySelector('h3').textContent = title;
-                    popup.querySelector('.summary').textContent = summary;
-                    const themesList = popup.querySelector('.themes');
-                    themesList.innerHTML = '';
-                    themes.forEach(theme => {
-                        const li = document.createElement('li');
-                        li.textContent = theme;
-                        themesList.appendChild(li);
-                    });
-                    popup.querySelector('.buy-link').href = link;
-
-                    overlay.style.display = 'block';
-                    popup.style.display = 'block';
-                });
-            });
-
-            closeBtn.addEventListener('click', function() {
-                overlay.style.display = 'none';
-                popup.style.display = 'none';
-            });
-
-            overlay.addEventListener('click', function() {
-                overlay.style.display = 'none';
-                popup.style.display = 'none';
-            });
-
-            // Collapsible functionality for "Why I Write"
-            const coll = document.querySelector('.collapsible');
-            coll.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                if (content.style.display === 'block') {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
-                }
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>Salatiso Lonwabo Mdeni</h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="books-bg">
-        <section class="books">
-            <h2>My Books</h2>
-            <p>My books are a labor of love, born from my role as a father and advocate, sharing wisdom to challenge systems, celebrate family, and explore new horizons. Each story or guide—whether on fathers’ rights, Xhosa heritage, or dystopian futures—is crafted to inspire and empower, open to all who seek knowledge. <span class="collapsible">[Click to learn <em>Why I Write</em>]</span></p>
-            <div class="collapsible-content">
-                <h3>Why I Write</h3>
-                <p>Writing is my heartbeat, a way to pass down the wisdom I’ve gathered from my life’s journey—first for my son, whose every step drives me, and for my nephews, nieces, and the incredible woman who shaped us all: my mother. After my father’s death in 1993, she raised me and my three sisters with no formal job, no qualifications, yet her uncodified wisdom turned us into proof of her strength. I’ve surpassed my father’s material achievements as his successor, a testament to their shared, unspoken lessons—lessons they couldn’t publish, but I can, for our descendants.</p>
-                <p>South Africa, despite its educated masses since 1994, struggles with crime, broken families, and moral decline, proving formal education alone isn’t the answer. I believe in reviving the informal, cultural wisdom lost when extended families scattered due to modern work demands. Moving from Transkei to Johannesburg kept my son close to his grandmother, aunts, and cousins, giving him context about his roots—something I had growing up within 30 kilometers of both families. But it’s not the same as the rural wealth of wisdom I knew. So, I write to codify that heritage, not to formalize it, but to help my son contextualize his culture, avoid my pitfalls, and follow my footsteps where they lead. If something happened to me today, I want him to know this was for him—and for anyone else hungry for this knowledge. Contact me at <a href="mailto:salatiso@salatiso.com">salatiso@salatiso.com</a> to explore how we can share it further.</p>
-            </div>
-            <div class="glider-cont">
-                <button class="glider-prev">&lt;</button>
-                <div class="glider">
-                    <div class="book-slide" data-title="Goliath’s Reckoning" data-summary="Exposes gender bias in South Africa’s Children’s Courts, revealing systemic discrimination against fathers seeking custody, advocating for legal equality." data-themes="Equality before the law, Legal battles, Parental rights, Gender bias in courts" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Advocacy</div>
-                        <img src="img/goliath.jpg" alt="Goliath’s Reckoning Cover" class="book-cover">
-                        <h3>Goliath’s Reckoning</h3>
-                    </div>
-                    <div class="book-slide" data-title="Beyond Redress" data-summary="Critiques race-based policies like Affirmative Action, arguing the “best interests of the child” should guide constitutional law over redress." data-themes="Constitutional law, Children’s rights, Equality, Policy critique" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Advocacy</div>
-                        <img src="img/Beyond_Redress.jpg" alt="Beyond Redress Cover" class="book-cover">
-                        <h3>Beyond Redress</h3>
-                    </div>
-                    <div class="book-slide" data-title="The Homeschooling Father" data-summary="Guides fathers navigating homeschooling, emphasizing their role as educators and protectors, rooted in personal experience and advocacy." data-themes="Family autonomy, Parental responsibility, Education, Father’s role" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Family Guide</div>
-                        <img src="img/homeschool.jpg" alt="The Homeschooling Father Cover" class="book-cover">
-                        <h3>The Homeschooling Father</h3>
-                    </div>
-                    <div class="book-slide" data-title="Die Tuisonderrig Vader" data-summary="Afrikaans guide for fathers on homeschooling (Die Tuisonderrig Vader: Hoekom en hoe ek begin het), offering practical advice and personal insights." data-themes="Family autonomy, Parental responsibility, Education, Cultural perspective" data-link="https://play.google.com/store/books/details/Salatiso_Die_Tuisonderrig_Vader_Hoekom_en_hoe_ek_b?id=CsoJEQAAQBAJ">
-                        <div class="category">Family Guide</div>
-                        <img src="img/Die_Tuisonderrig_Vader.jpg" alt="Die Tuisonderrig Vader Cover" class="book-cover">
-                        <h3>Die Tuisonderrig Vader</h3>
-                    </div>
-                    <div class="book-slide" data-title="Ntate ea rutang bana ba hae hae, hobaneng le hore na ke qalile joang" data-summary="Sesotho guide for fathers on homeschooling, exploring why and how to start, reflecting personal and cultural insights." data-themes="Family autonomy, Parental responsibility, Education, Cultural context" data-link="https://play.google.com/store/books/details/Salatiso_Ntate_ea_rutang_bana_ba_hae_hae_hobaneng?id=MsoJEQAAQBAJ">
-                        <div class="category">Family Guide</div>
-                        <img src="img/Ntate.jpg" alt="Ntate ea rutang bana ba hae hae Cover" class="book-cover">
-                        <h3>Ntate ea rutang bana ba hae hae</h3>
-                    </div>
-                    <div class="book-slide" data-title="Modern, Broke, and Confused" data-summary="A satirical exploration of modern socio-economic struggles, personal finance, and societal confusion, offering a humorous guide to progress." data-themes="Financial insecurity, Societal pressure, Modern disillusionment, Self-improvement" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Satire</div>
-                        <img src="img/Modern_Broke.jpg" alt="Modern, Broke, and Confused Cover" class="book-cover">
-                        <h3>Modern, Broke, and Confused</h3>
-                    </div>
-                    <div class="book-slide" data-title="Getting to Know Yourself as a South African: Unravelling Xhosa History" data-summary="Explores personal identity through the lens of Xhosa history, offering insights into cultural heritage and self-discovery." data-themes="Cultural identity, Xhosa heritage, Self-awareness, South African history, Connection to ancestry/tradition, Bridging past and present" data-link="https://play.google.com/store/books/details/Salatiso_Getting_to_know_yourself_as_a_South_Afric?id=VU__EAAAQBAJ">
-                        <div class="category">Cultural Heritage</div>
-                        <img src="img/homeschool.jpg" alt="Getting to Know Yourself Cover" class="book-cover">
-                        <h3>Getting to Know Yourself as a South African</h3>
-                    </div>
-                    <div class="book-slide" data-title="Beyond the Grave: A Son’s Journey Through Xhosa Tradition, Spirituality, and Freedom" data-summary="Chronicles a son’s spiritual journey through Xhosa traditions, exploring ancestry, spirituality, and liberation." data-themes="Xhosa tradition, Spirituality, Freedom, Cultural heritage" data-link="https://play.google.com/store/books/details/Salatiso_Beyond_the_Grave_A_Son_s_Journey_Through?id=JQAUEQAAQBAJ">
-                        <div class="category">Cultural Heritage</div>
-                        <img src="img/Beyond_the_Grave.jpg" alt="Beyond the Grave Cover" class="book-cover">
-                        <h3>Beyond the Grave</h3>
-                    </div>
-                    <div class="book-slide" data-title="Safety First: Essentials for Your OHS Career Journey" data-summary="A practical guide simplifying Occupational Health and Safety (OHS) compliance in South Africa for career professionals." data-themes="Occupational health, Safety compliance, Career guidance, Professional development" data-link="https://play.google.com/store/books/details/Salatiso_Safety_First_Essentials_for_Your_OHS_Care?id=vscJEQAAQBAJ">
-                        <div class="category">Practical Guide</div>
-                        <img src="img/SF_Career.jpg" alt="Safety First Essentials Cover" class="book-cover">
-                        <h3>Safety First: OHS Career Journey</h3>
-                    </div>
-                    <div class="book-slide" data-title="Safety First: The Essentials of OHS Plans" data-summary="Provides essential strategies and plans for implementing Occupational Health and Safety (OHS) standards in workplaces." data-themes="Occupational health, Safety planning, Workplace safety, Compliance" data-link="https://play.google.com/store/books/details/Salatiso_Safety_First_The_Essentials_of_OHS_Plans?id=psgJEQAAQBAJ">
-                        <div class="category">Practical Guide</div>
-                        <img src="img/homeschool.jpg" alt="Safety First Plans Cover" class="book-cover">
-                        <h3>Safety First: OHS Plans</h3>
-                    </div>
-                    <div class="book-slide" data-title="The Perfect Cage: Isivumo Legacy – The Rise of Q" data-summary="A dystopian thriller segment exploring the rise of Q, blending surveillance themes with the Isivumo Legacy narrative." data-themes="Dystopian fiction, Surveillance society, Personal freedom, Social control" data-link="https://play.google.com/store/books/details/Salatiso_The_Perfect_Cage_Isivumo_Legacy_The_Rise?id=s51DEQAAQBAJ">
-                        <div class="category">Thriller</div>
-                        <img src="img/Rise_of_Q.jpg" alt="The Perfect Cage: Rise of Q Cover" class="book-cover">
-                        <h3>The Perfect Cage: The Rise of Q</h3>
-                    </div>
-                    <div class="book-slide" data-title="The Perfect Cage: A Dystopian Struggle for Legacy and Survival" data-summary="In a dystopian city controlled by an AI, Q awakens to a world where humanity has lost its identity to technology, embarking on a perilous journey to reclaim his father’s legacy and fight for freedom." data-themes="Dystopian society, Artificial intelligence control, Loss of identity, Legacy, Survival, Fight for freedom" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Thriller</div>
-                        <img src="img/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Struggle Cover" class="book-cover">
-                        <h3>The Perfect Cage: Legacy and Survival</h3>
-                    </div>
-                    <div class="book-slide" data-title="The Perfect Cage: Secrets of the Inner Earth" data-summary="The resistance continues its fight against a controlling AI, facing betrayals and gang warfare while uncovering secrets of an inner-earth civilization and realizing the AI was a tool of a larger alien threat." data-themes="Dystopian resistance, Inner-earth secrets, Betrayal, Unity, Alien threat, Resilience" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Thriller</div>
-                        <img src="img/The_Perfect_Cage2.jpg" alt="The Perfect Cage: Secrets Cover" class="book-cover">
-                        <h3>The Perfect Cage: Inner Earth</h3>
-                    </div>
-                    <div class="book-slide" data-title="The Perfect Cage: Journey Beyond the Horizon" data-summary="One year after a dystopian regime’s fall, the resistance journeys to an alien planet to confront invaders and stop a solar system-destroying superweapon, utilizing ancient secrets and advanced technology." data-themes="Intergalactic conflict, Ancient mysteries, Technological advancement, Hope, Unity, Resilience" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Thriller</div>
-                        <img src="img/The_Perfect_Cage3.jpg" alt="The Perfect Cage: Journey Cover" class="book-cover">
-                        <h3>The Perfect Cage: Beyond the Horizon</h3>
-                    </div>
-                    <div class="book-slide" data-title="Zazi Mzantsi Afrika, Yazi inombo yomXhosa" data-summary="The author, a Xhosa man from Transkei, examines the origins of the Xhosa people, explaining that the nation wasn’t always unified and was formed by diverse tribes before being united under King Hintsa." data-themes="Xhosa history, Cultural origins, Tribal diversity, Pre-colonial history, Self-education, South African identity" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Cultural Heritage</div>
-                        <img src="img/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika Cover" class="book-cover">
-                        <h3>Zazi Mzantsi Afrika</h3>
-                    </div>
-                    <div class="book-slide" data-title="Utata ozifundiselayo ekhayeni, Kutheni, kwaye ndiqalise njani" data-summary="The author challenges South Africa’s formal education system, arguing it fails and neglects parental roles, advocating for homeschooling alternatives." data-themes="Homeschooling advocacy, Critique of formal education, Parental involvement, Educational alternatives, South African social issues, Family autonomy" data-link="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">
-                        <div class="category">Family Guide</div>
-                        <img src="img/Utata_ozifundiselayo.jpg" alt="Utata ozifundiselayo ekhayeni Cover" class="book-cover">
-                        <h3>Utata ozifundiselayo ekhayeni</h3>
-                    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Salatiso Lonwabo Mdeni</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Carousel Section -->
+    <section class="book-carousel">
+        <h2>My Books</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE">
+                        <img src="/img/goliath.jpg" alt="Goliath's Reckoning">
+                        <p>Goliath's Reckoning</p>
+                    </a>
                 </div>
-                <button class="glider-next">&gt;</button>
-                <div class="dots"></div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&hl=en_IE">
+                        <img src="/img/Beyond_Redress.jpg" alt="Beyond Redress">
+                        <p>Beyond Redress</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en_IE">
+                        <img src="/img/Beyond_the_Grave.jpg" alt="Beyond the Grave">
+                        <p>Beyond the Grave</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE">
+                        <img src="/img/Unravelling_Xhosa_History.jpg" alt="Getting to Know Yourself as a South African">
+                        <p>Getting to Know Yourself...</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&pg=GBS.PP1&hl=en_GB">
+                        <img src="/img/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika">
+                        <p>Zazi Mzantsi Afrika</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE">
+                        <img src="/img/homeschooling_father.jpg" alt="The Homeschooling Father">
+                        <p>The Homeschooling Father</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=CsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB">
+                        <img src="/img/Die_Tuisonderrig_Vader.jpg" alt="Die Tuisonderrig Vader">
+                        <p>Die Tuisonderrig Vader</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=MsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB">
+                        <img src="/img/Ntate.jpg" alt="Ntate ea rutang bana ba hae hae">
+                        <p>Ntate ea rutang...</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en_GB">
+                        <img src="/img/Utata_Ozifundiselayo.jpg" alt="Utata ozifundiselayo ekhayeni">
+                        <p>Utata ozifundiselayo...</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE">
+                        <img src="/img/Modern_Broke.jpg" alt="Modern, Broke, and Confused">
+                        <p>Modern, Broke, and Confused</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE">
+                        <img src="/img/SF_Career.jpg" alt="Safety First: Essentials for Your OHS Career">
+                        <p>Safety First: OHS Career</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE">
+                        <img src="/img/SF_Plans.jpg" alt="Safety First: The Essentials of OHS Plans">
+                        <p>Safety First: OHS Plans</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=s51DEQAAQBAJ&pg=GBS.PA1&hl=en_IE">
+                        <img src="/img/Rise_of_Q.jpg" alt="The Perfect Cage: Isivumo Legacy">
+                        <p>The Perfect Cage: Isivumo</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=RdU8EQAAQBAJ&pg=GBS.PA1&hl=en_GB">
+                        <img src="/img/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Dystopian Struggle">
+                        <p>The Perfect Cage: Dystopian</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=GIQ9EQAAQBAJ&pg=GBS.PP1&hl=en_GB">
+                        <img src="/img/The_Perfect_Cage2.jpg" alt="The Perfect Cage: Secrets of the Inner Earth">
+                        <p>The Perfect Cage: Inner Earth</p>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://play.google.com/books/reader?id=7fE9EQAAQBAJ&pg=GBS.PP1&hl=en_GB">
+                        <img src="/img/The_Perfect_Cage3.jpg" alt="The Perfect Cage: Journey Beyond the Horizon">
+                        <p>The Perfect Cage: Horizon</p>
+                    </a>
+                </div>
             </div>
-            <h3>Where to Find My Books</h3>
-            <div class="stores">
-                <p>My books are available in various formats across multiple platforms:</p>
-                <ul>
-                    <li>Google Play: eBooks and Audiobooks - <a href="https://play.google.com/store/search?q=salatiso&c=books&hl=en_ZA">Visit Store</a></li>
-                    <li>Apple Books: eBooks and Audiobooks - <a href="https://books.apple.com/us/author/salatiso-mdeni/id1745396063">Visit Store</a></li>
-                    <li>Fable: eBooks and Audiobooks - <a href="https://fable.co/author/salatiso-mdeni">Visit Store</a></li>
-                    <li>Smashwords: eBooks - <a href="https://www.smashwords.com/profile/view/Salatiso_Mdeni/highlyrated">Visit Store</a></li>
-                    <li>Amazon: Paperbacks - <a href="https://www.amazon.co.uk/s?i=stripbooks&rh=p_27%3ASalatiso%2BMdeni&s=relevancerank&text=Salatiso+Mdeni&ref=dp_byline_sr_book_1">Visit Store</a></li>
-                    <li>eBay: Paperbacks (Second-hand) - <a href="https://www.ebay.com/sch/i.html?_nkw=salatiso&_sacat=0&_from=R40&_trksid=p2332490.m570.l1313">Visit Store</a></li>
-                    <li>Takealot: Paperbacks - <a href="https://www.takealot.com/all?filter=Author:Salatiso+Mdeni">Visit Store</a></li>
-                </ul>
-            </div>
-            <div class="youtube-links">
-                <p>Listen to my audiobooks for free on my YouTube channels:</p>
-                <ul>
-                    <li>Primary Channel: <a href="https://www.youtube.com/@salatiso">@salatiso</a></li>
-                    <li>Salatiso AudioBooks: <a href="https://www.youtube.com/@SalatisoAudioBooks">@SalatisoAudioBooks</a></li>
-                </ul>
-            </div>
-            <div class="vouchers">
-                <p>Be on the lookout for discount book vouchers to make my works even more accessible! If you’re interested in bulk purchases, licensing for print editions, or redistribution, I’d love to collaborate—let’s work together to share these stories far and wide. For those needing my books for educational or research purposes, I’m happy to provide free vouchers or special discounts. Contact me at <a href="mailto:salatiso@salatiso.com">salatiso@salatiso.com</a> to discuss how I can support your journey. I’m here to share knowledge and inspire, not just to profit—let’s make learning and growth accessible for all!</p>
-            </div>
-        </section>
-        <div class="popup-overlay"></div>
-        <div class="popup">
-            <span class="close">×</span>
-            <h3></h3>
-            <p class="summary"></p>
-            <h4>Key Themes:</h4>
-            <ul class="themes"></ul>
-            <a href="#" class="buy-link">Buy on Google Play</a>
+            <button class="carousel-button prev" onclick="moveCarousel(-1)">❮</button>
+            <button class="carousel-button next" onclick="moveCarousel(1)">❯</button>
         </div>
-    </main>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Salatiso. All rights reserved.</p>
+        <p>&copy; 2025 Salatiso Lonwabo Mdeni. All rights reserved.</p>
     </footer>
+
+    <script src="carousel.js"></script>
 </body>
 </html>
