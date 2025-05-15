@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salatiso Lonwabo Mdeni</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glider.js/1.7.8/glider.min.css">
 </head>
 <body class="about-bg">
     <header>
@@ -56,22 +57,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Glider.js/1.7.8/glider.min.js"></script>
     <script>
-        new Glider(document.querySelector('.glider'), {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            draggable: true,
-            arrows: {
-                prev: '.glider-prev',
-                next: '.glider-next'
-            },
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2
+        document.addEventListener('DOMContentLoaded', () => {
+            new Glider(document.querySelector('.glider'), {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: true,
+                arrows: {
+                    prev: '.glider-prev',
+                    next: '.glider-next'
+                },
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2
+                        }
                     }
-                }
-            ]
+                ]
+            });
         });
     </script>
 </body>
