@@ -3,330 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salatiso Mdeni - OHS Expert & Entrepreneur</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        :root {
-            --primary: #007bff;
-            --secondary: #28a745;
-            --background: #f0f4f8;
-            --text: #333;
-            --white: #fff;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 10px 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        nav li {
-            margin: 5px 10px;
-        }
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
-        nav a.active {
-            background-color: var(--secondary);
-        }
-        main {
-            flex: 1;
-            padding: 15px;
-            overflow: hidden;
-        }
-        .tab-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-        }
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .card {
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 10px;
-            text-align: center;
-            flex: 1 1 180px;
-            max-width: 200px;
-            cursor: pointer;
-            font-size: 0.85em;
-        }
-        .skill {
-            flex: 1 1 90px;
-            max-width: 100px;
-        }
-        .skill i {
-            font-size: 1.5em;
-            color: var(--primary);
-        }
-        .venture a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        .modal-content {
-            background-color: var(--white);
-            padding: 15px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            font-size: 0.9em;
-        }
-        .close {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-        }
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 0.85em;
-        }
-        footer a {
-            color: var(--white);
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card, .skill, .venture {
-                max-width: 100%;
-            }
-        }
-    </style>
+    <title>Salatiso Lonwabo Mdeni</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="about-bg">
     <header>
-        <h1>Salatiso Mdeni</h1>
         <nav>
+            <h1>Salatiso Lonwabo Mdeni</h1>
             <ul>
-                <li><a href="#overview" class="tab-link active" data-tab="overview">Overview</a></li>
-                <li><a href="#timeline" class="tab-link" data-tab="timeline">Timeline</a></li>
-                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
-                <li><a href="#ventures" class="tab-link" data-tab="ventures">Ventures</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <section id="overview" class="tab-content active">
-            <p>Salatiso Mdeni brings over 20 years of expertise in Occupational Health and Safety (OHS), risk management, and compliance. A published author and visionary entrepreneur, he founded <a href="https://safetyfirst.help" target="_blank">SafetyHelp</a>, launching June 1, 2025, to revolutionize OHS compliance, alongside <a href="https://www.sazi.life/sazi/" target="_blank">Sazi</a> and <a href="https://flamea.org/" target="_blank">Flamea</a>. "Everything I do is to be the best father for my son," he says, driving his mission to create impactful solutions.</p>
-        </section>
-        <section id="timeline" class="tab-content">
-            <div class="grid">
-                <div class="card" onclick="openModal('early')">
-                    <h3>Early Influences</h3>
-                    <p>High school excellence sparked an OHS interest.</p>
+        <section class="hero">
+            <h2>About Salatiso</h2>
+            <p>Risk expert, author, website developer, and father—blending professional excellence with storytelling and advocacy for family and culture.</p>
+            <a href="books.html" class="cta">Explore My Work</a>
+
+            <div class="glider-cont">
+                <div class="glider">
+                    <div class="book-slide">
+                        <h3>Professional Career</h3>
+                        <p>Over 20 years in risk management, compliance, and OHS, with roles at Barclays Africa, Liberty Group, and Gyro Group. I design EHS programs, conduct audits, and hold certifications in Cybersecurity and AI & Law (Coursera, 2023-2024). Founder of <a href="https://safetyfirst.help" class="resume-link">SafetyHelp</a>, delivering automated OHS solutions.</p>
+                    </div>
+                    <div class="book-slide">
+                        <h3>Website Development</h3>
+                        <p>I craft functional, purpose-driven websites. Notable projects include <a href="https://flamea.org" class="resume-link">flamea.org</a> for fathers’ rights and <a href="https://www.sazi.life" class="resume-link">sazi.life</a> for Xhosa culture preservation. Upcoming: Safety First Tools with a Health and Safety Chatbot.</p>
+                    </div>
+                    <div class="book-slide">
+                        <h3>Authorship</h3>
+                        <p>Author of <em>Goliath’s Reckoning</em> and <em>The Perfect Cage</em> series, I write to challenge biases and inspire change. My works, available on Google Play and Apple Books, blend advocacy and storytelling. Visit the Books page for more.</p>
+                    </div>
+                    <div class="book-slide">
+                        <h3>Personal Life</h3>
+                        <p>A dedicated father homeschooling my son, Sazi, through hands-on DIY projects. I share insights on YouTube (@salatiso) and advocate for fathers via <a href="https://flamea.org" class="resume-link">Flamea</a>. Also a property entrepreneur in Johannesburg South.</p>
+                    </div>
                 </div>
-                <div class="card" onclick="openModal('education')">
-                    <h3>Education & Early Career</h3>
-                    <p>Studied Environmental Health, began in mining.</p>
-                </div>
-                <div class="card" onclick="openModal('mid-career')">
-                    <h3>Mid-Career Growth</h3>
-                    <p>Led SHE programs across industries.</p>
-                </div>
-                <div class="card" onclick="openModal('ventures')">
-                    <h3>Entrepreneurial Path</h3>
-                    <p>Founded ventures in OHS and education.</p>
-                </div>
-            </div>
-        </section>
-        <section id="skills" class="tab-content">
-            <div class="grid">
-                <div class="skill" title="Managing OHS programs effectively.">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>OHS Management</p>
-                </div>
-                <div class="skill" title="Mitigating risks strategically.">
-                    <i class="fas fa-chart-line"></i>
-                    <p>Risk Management</p>
-                </div>
-                <div class="skill" title="Ensuring regulatory compliance.">
-                    <i class="fas fa-balance-scale"></i>
-                    <p>Compliance</p>
-                </div>
-                <div class="skill" title="Conducting thorough audits.">
-                    <i class="fas fa-search"></i>
-                    <p>Auditing</p>
-                </div>
-                <div class="skill" title="Planning for continuity.">
-                    <i class="fas fa-sync"></i>
-                    <p>Business Continuity</p>
-                </div>
-                <div class="skill" title="Crafting emergency responses.">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>Emergency Planning</p>
-                </div>
-                <div class="skill" title="Developing training programs.">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <p>Training</p>
-                </div>
-                <div class="skill" title="Creating e-learning content.">
-                    <i class="fas fa-laptop-code"></i>
-                    <p>E-learning</p>
-                </div>
-                <div class="skill" title="Authoring OHS publications.">
-                    <i class="fas fa-book"></i>
-                    <p>Writing</p>
-                </div>
-                <div class="skill" title="Enhancing workplace hygiene.">
-                    <i class="fas fa-flask"></i>
-                    <p>Hygiene</p>
-                </div>
-                <div class="skill" title="Engaging stakeholders.">
-                    <i class="fas fa-users"></i>
-                    <p>Engagement</p>
-                </div>
-            </div>
-        </section>
-        <section id="ventures" class="tab-content">
-            <div class="grid">
-                <div class="card">
-                    <h3>SafetyHelp</h3>
-                    <p>OHS platform launching June 2025</p>
-                    <a href="https://safetyfirst.help" target="_blank">Visit</a>
-                </div>
-                <div class="card">
-                    <h3>Sazi</h3>
-                    <p>Learning platform for education</p>
-                    <a href="https://www.sazi.life/sazi/" target="_blank">Visit</a>
-                </div>
-                <div class="card">
-                    <h3>Flamea</h3>
-                    <p>Advancing equality in education</p>
-                    <a href="https://flamea.org/" target="_blank">Visit</a>
-                </div>
+                <button class="glider-prev">❮</button>
+                <button class="glider-next">❯</button>
             </div>
         </section>
     </main>
+
     <footer>
-        <p>Contact: <a href="mailto:spiceinc@gmail.com">spiceinc@gmail.com</a></p>
-        <p>Johannesburg South, Gauteng, South Africa</p>
+        <p>© 2025 Salatiso. All rights reserved.</p>
     </footer>
 
-    <!-- Modals for Timeline -->
-    <div id="early-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('early-modal')">&times;</span>
-            <h2>Early Influences (1982-1999)</h2>
-            <p>Excelled at Kiriyatswane Secondary School, earning awards in poetry, physics, Xhosa, and biology. An early interest in health and safety emerged from observing industrial impacts near Mbalenhle township.</p>
-        </div>
-    </div>
-    <div id="education-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('education-modal')">&times;</span>
-            <h2>Education & Early Career (2000-2008)</h2>
-            <p>Earned N. Dip and B-Tech in Environmental Health at TUT, focusing on occupational hygiene. Worked as a Junior Environmental Health Practitioner and excelled as a Ventilation and Occupational Hygiene Trainee at Anglo Platinum, named best trainee.</p>
-        </div>
-    </div>
-    <div id="mid-career-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('mid-career-modal')">&times;</span>
-            <h2>Mid-Career Growth (2007-2016)</h2>
-            <p>Led SHE programs at SARCC Metrorail and Liberty Group Properties, revamping safety initiatives. As an EHS Consultant at Barclays Africa, developed a national asbestos program and coordinated evacuations.</p>
-        </div>
-    </div>
-    <div id="ventures-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('ventures-modal')">&times;</span>
-            <h2>Entrepreneurial Path (2010-Present)</h2>
-            <p>Founded 5G Property Consultants for EHS and property management consultancy. Launched SafetyHelp for OHS compliance, Sazi for education, and Flamea for equality, alongside authoring OHS books.</p>
-        </div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glider.js/1.7.8/glider.min.js"></script>
     <script>
-        document.querySelectorAll('.tab-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                    setTimeout(() => content.style.display = 'none', 300);
-                });
-                document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
-                const tabId = this.getAttribute('data-tab');
-                const tab = document.getElementById(tabId);
-                tab.style.display = 'block';
-                setTimeout(() => tab.classList.add('active'), 10);
-                this.classList.add('active');
-            });
-        });
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId + '-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        window.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('active');
-                setTimeout(() => e.target.style.display = 'none', 300);
-            }
+        new Glider(document.querySelector('.glider'), {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true,
+            arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            },
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }
+            ]
         });
     </script>
 </body>
