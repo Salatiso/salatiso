@@ -3,333 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Salatiso Lonwabo Mdeni</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@glider-js/glider/dist/glider.min.js"></script>
+    <title>Salatiso Mdeni - OHS Expert & Entrepreneur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        :root {
+            --primary: #007bff;
+            --secondary: #28a745;
+            --background: #f0f4f8;
+            --text: #333;
+            --white: #fff;
+        }
         body {
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
             margin: 0;
-            background-color: #f8f4f0;
-            color: #333;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
         header {
-            background-color: #e63946;
-            color: #fff;
-            padding: 1rem 0;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
             text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
         }
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 5px 10px;
         }
         nav a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
         }
-        nav a:hover {
-            color: #f4d0d0;
+        nav a.active {
+            background-color: var(--secondary);
         }
         main {
-            padding: 20px;
-            overflow: hidden; /* To contain Glider carousel */
+            flex: 1;
+            padding: 15px;
+            overflow: hidden;
         }
-        .carousel-container {
-            width: 100%;
-            margin: 20px auto;
-            position: relative;
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .glider {
-            padding: 0;
-            margin: 0;
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+        .grid {
             display: flex;
-            width: 100%;
-            scroll-snap-type: x mandatory;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
-        .carousel-item {
-            min-width: 100%;
-            padding: 20px;
-            background: rgba(245, 233, 226, 0.9);
+        .card {
+            background-color: var(--white);
             border-radius: 8px;
-            box-sizing: border-box;
-            scroll-snap-align: start;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 10px;
             text-align: center;
+            flex: 1 1 180px;
+            max-width: 200px;
+            cursor: pointer;
+            font-size: 0.85em;
         }
-        .carousel-item h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #1a1a1a;
+        .skill {
+            flex: 1 1 90px;
+            max-width: 100px;
         }
-        .carousel-item p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: #2a2a2a;
+        .skill i {
+            font-size: 1.5em;
+            color: var(--primary);
         }
-        .carousel-item ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            margin: 15px auto;
-            max-width: 600px;
+        .venture a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9em;
         }
-        .carousel-item li {
-            margin-bottom: 8px;
-            font-size: 16px;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .glider-dots {
-            text-align: center;
-            margin-top: 20px;
+        .modal.active {
+            display: flex;
+            opacity: 1;
         }
-        .glider-dots button {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ddd;
-            border: 0;
-            margin: 0 5px;
+        .modal-content {
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            font-size: 0.9em;
+        }
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 1.2em;
             cursor: pointer;
         }
-        .glider-dots button.active {
-            background: #e63946;
-        }
-        .career-timeline ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px auto;
-            max-width: 700px;
-            text-align: left;
-        }
-        .career-timeline li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        .career-timeline li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            background: #e63946;
-            border-radius: 50%;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .skill-item {
-            background: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .skill-item i {
-            font-size: 1.5rem;
-            color: #e63946;
-            margin-bottom: 5px;
-        }
-        .skill-item p {
-            margin: 0;
-            font-size: 14px;
-        }
-        .contact-link {
-            color: #e63946;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact-link:hover {
-            color: #b32d38;
-        }
-        .video-section iframe {
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
             text-align: center;
-            padding: 1rem 0;
-            position: relative; /* Ensure footer is below carousel */
+            font-size: 0.85em;
+        }
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card, .skill, .venture {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <h1>Salatiso Mdeni</h1>
         <nav>
-            <h1>Salatiso Lonwabo Mdeni</h1>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#overview" class="tab-link active" data-tab="overview">Overview</a></li>
+                <li><a href="#timeline" class="tab-link" data-tab="timeline">Timeline</a></li>
+                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
+                <li><a href="#ventures" class="tab-link" data-tab="ventures">Ventures</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="carousel-container">
-            <div class="glider">
-                <div class="carousel-item">
-                    <h2>About Me</h2>
-                    <p>I’m Salatiso Lonwabo Mdeni, a South African with a rich tapestry of experiences—risk and compliance expert, author, father, and DIY enthusiast. This page reflects my journey, blending professional expertise with personal passions, shaped by my family and heritage. From managing complex risks to writing transformative stories, and nurturing my kids through homeschooling, I strive to inspire and connect with both my professional network and personal circle.</p>
+        <section id="overview" class="tab-content active">
+            <p>Salatiso Mdeni brings over 20 years of expertise in Occupational Health and Safety (OHS), risk management, and compliance. A published author and visionary entrepreneur, he founded <a href="https://safetyfirst.help" target="_blank">SafetyHelp</a>, launching June 1, 2025, to revolutionize OHS compliance, alongside <a href="https://www.sazi.life/sazi/" target="_blank">Sazi</a> and <a href="https://flamea.org/" target="_blank">Flamea</a>. "Everything I do is to be the best father for my son," he says, driving his mission to create impactful solutions.</p>
+        </section>
+        <section id="timeline" class="tab-content">
+            <div class="grid">
+                <div class="card" onclick="openModal('early')">
+                    <h3>Early Influences</h3>
+                    <p>High school excellence sparked an OHS interest.</p>
                 </div>
-                <div class="carousel-item">
-                    <h2>Professional Career Timeline (Highlights)</h2>
-                    <div class="career-timeline">
-                        <ul>
-                            <li><strong>2003-2006:</strong> Early career in Public Health and Occupational Hygiene at the Department of Health and Anglo Platinum.</li>
-                            <li><strong>2007-2010:</strong> Progressed into management roles in Safety, Health & Environment at SARCC Metrorail and Liberty Group Properties.</li>
-                            <li><strong>2010-2016:</strong> Specialized in Risk, Compliance & Audit at Barclays Africa, also establishing 5G Property Consultants.</li>
-                            <li><strong>2016-2024:</strong> Further specialization in Risk, Audit, Business Continuity & Compliance at Gyro Group.</li>
-                            <li><strong>2023-Present:</strong> Dedicated to Authorship, Writing, Publishing, and Advisory roles in Risk, Compliance, Health and Safety.</li>
-                            <li><strong>Current Focus:</strong> Leveraging expertise at <a href="https://safetyhelp.co" class="contact-link">Safetyhelp.co</a> to provide OHS expertise and tools.</li>
-                        </ul>
-                    </div>
+                <div class="card" onclick="openModal('education')">
+                    <h3>Education & Early Career</h3>
+                    <p>Studied Environmental Health, began in mining.</p>
                 </div>
-                <div class="carousel-item">
-                    <h2>Professional Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <p>Risk Management (Operational & Enterprise)</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Compliance Management (Regulatory, POPI, Anti-Corruption)</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <p>Emergency Response Management</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-briefcase"></i>
-                            <p>Business Continuity Management</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-search"></i>
-                            <p>Auditing (Planning, Coordination, Reporting)</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-hard-hat"></i>
-                            <p>EHS/Asbestos/Construction Management</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-leaf"></i>
-                            <p>Occupational Hygiene and Environmental Management</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-users"></i>
-                            <p>Project and Stakeholder Management</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-certificate"></i>
-                            <p>Cybersecurity, AI & Law (2023-2024)</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <p>Website Development</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-book-open"></i>
-                            <p>Authorship</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-home"></i>
-                            <p>Property Rental Entrepreneur</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <p>Homeschooling</p>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wrench"></i>
-                            <p>DIY Enthusiast</p>
-                        </div>
-                    </div>
-                    <p>My resume is available upon request—reach out via the <a href="contact.html" class="contact-link">Contact page</a>.</p>
+                <div class="card" onclick="openModal('mid-career')">
+                    <h3>Mid-Career Growth</h3>
+                    <p>Led SHE programs across industries.</p>
                 </div>
-                <div class="carousel-item">
-                    <h2>Website Development</h2>
-                    <p>I’m also a skilled website developer, creating platforms that blend functionality with purpose. Here are some of my projects:</p>
-                    <ul>
-                        <li><strong>Completed Projects:</strong>
-                            <ul>
-                                <li><a href="https://flamea.org" class="contact-link">flamea.org</a> - Advocating for fathers’ rights and family equality.</li>
-                                <li><a href="https://salatiso.com" class="contact-link">salatiso.com</a> - My personal portfolio.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Upcoming Projects:</strong>
-                            <ul>
-                                <li><a href="https://safetyhelp.co" class="contact-link">Safetyhelp.co</a> - Centralizing OHS expertise with automated tools and an AI Chatbot.</li>
-                                <li><a href="https://salatiso.github.io/sazi-isixhosa/" class="contact-link">Sazi isiXhosa</a> - Preserving and sharing Xhosa language and culture.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p>Looking for website development services? Contact me via the <a href="contact.html" class="contact-link">Contact page</a> to discuss your project!</p>
-                </div>
-                <div class="carousel-item">
-                    <h2>Authorship</h2>
-                    <p>I’m the author of impactful works like *Goliath’s Reckoning*, which fights for fathers’ rights, and *The Perfect Cage*, a dystopian thriller series. Explore my full collection on the <a href="books.html">Books page</a>.</p>
-                </div>
-                <div class="carousel-item">
-                    <h2>Personal Life & Interests</h2>
-                    <p>Beyond my career and writing, I cherish homeschooling my kids, teaching them through hands-on learning and DIY projects. I’m also a property rental entrepreneur. Watch my journey on my <a href="https://www.youtube.com/@Salatiso" class="contact-link">YouTube Channel</a> and explore my latest podcast on my <a href="https://open.spotify.com/show/12WMTrtBmnytgMwMQeOhYI" class="contact-link">Spotify Channel</a>.</p>
-                    <div class="video-section">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe> </div>
-                    <div class="video-switch">
-                        <button data-channel="salatiso">Switch to @Salatiso/shorts</button>
-                        <button data-channel="audiobooks">Switch to @SalatisoAudioBooks</button>
-                        <p><em>Note: Video IDs need manual updates based on latest uploads.</em></p>
-                    </div>
+                <div class="card" onclick="openModal('ventures')">
+                    <h3>Entrepreneurial Path</h3>
+                    <p>Founded ventures in OHS and education.</p>
                 </div>
             </div>
-            <div class="glider-dots" role="tablist"></div>
-        </div>
+        </section>
+        <section id="skills" class="tab-content">
+            <div class="grid">
+                <div class="skill" title="Managing OHS programs effectively.">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>OHS Management</p>
+                </div>
+                <div class="skill" title="Mitigating risks strategically.">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Risk Management</p>
+                </div>
+                <div class="skill" title="Ensuring regulatory compliance.">
+                    <i class="fas fa-balance-scale"></i>
+                    <p>Compliance</p>
+                </div>
+                <div class="skill" title="Conducting thorough audits.">
+                    <i class="fas fa-search"></i>
+                    <p>Auditing</p>
+                </div>
+                <div class="skill" title="Planning for continuity.">
+                    <i class="fas fa-sync"></i>
+                    <p>Business Continuity</p>
+                </div>
+                <div class="skill" title="Crafting emergency responses.">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Emergency Planning</p>
+                </div>
+                <div class="skill" title="Developing training programs.">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <p>Training</p>
+                </div>
+                <div class="skill" title="Creating e-learning content.">
+                    <i class="fas fa-laptop-code"></i>
+                    <p>E-learning</p>
+                </div>
+                <div class="skill" title="Authoring OHS publications.">
+                    <i class="fas fa-book"></i>
+                    <p>Writing</p>
+                </div>
+                <div class="skill" title="Enhancing workplace hygiene.">
+                    <i class="fas fa-flask"></i>
+                    <p>Hygiene</p>
+                </div>
+                <div class="skill" title="Engaging stakeholders.">
+                    <i class="fas fa-users"></i>
+                    <p>Engagement</p>
+                </div>
+            </div>
+        </section>
+        <section id="ventures" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>SafetyHelp</h3>
+                    <p>OHS platform launching June 2025</p>
+                    <a href="https://safetyfirst.help" target="_blank">Visit</a>
+                </div>
+                <div class="card">
+                    <h3>Sazi</h3>
+                    <p>Learning platform for education</p>
+                    <a href="https://www.sazi.life/sazi/" target="_blank">Visit</a>
+                </div>
+                <div class="card">
+                    <h3>Flamea</h3>
+                    <p>Advancing equality in education</p>
+                    <a href="https://flamea.org/" target="_blank">Visit</a>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
-        <p>© 2025 Salatiso. All rights reserved.</p>
+        <p>Contact: <a href="mailto:spiceinc@gmail.com">spiceinc@gmail.com</a></p>
+        <p>Johannesburg South, Gauteng, South Africa</p>
     </footer>
+
+    <!-- Modals for Timeline -->
+    <div id="early-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('early-modal')">&times;</span>
+            <h2>Early Influences (1982-1999)</h2>
+            <p>Excelled at Kiriyatswane Secondary School, earning awards in poetry, physics, Xhosa, and biology. An early interest in health and safety emerged from observing industrial impacts near Mbalenhle township.</p>
+        </div>
+    </div>
+    <div id="education-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('education-modal')">&times;</span>
+            <h2>Education & Early Career (2000-2008)</h2>
+            <p>Earned N. Dip and B-Tech in Environmental Health at TUT, focusing on occupational hygiene. Worked as a Junior Environmental Health Practitioner and excelled as a Ventilation and Occupational Hygiene Trainee at Anglo Platinum, named best trainee.</p>
+        </div>
+    </div>
+    <div id="mid-career-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mid-career-modal')">&times;</span>
+            <h2>Mid-Career Growth (2007-2016)</h2>
+            <p>Led SHE programs at SARCC Metrorail and Liberty Group Properties, revamping safety initiatives. As an EHS Consultant at Barclays Africa, developed a national asbestos program and coordinated evacuations.</p>
+        </div>
+    </div>
+    <div id="ventures-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ventures-modal')">&times;</span>
+            <h2>Entrepreneurial Path (2010-Present)</h2>
+            <p>Founded 5G Property Consultants for EHS and property management consultancy. Launched SafetyHelp for OHS compliance, Sazi for education, and Flamea for equality, alongside authoring OHS books.</p>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            new Glider(document.querySelector('.glider'), {
-                slidesToShow: 1,
-                draggable: true,
-                dots: '.glider-dots',
-                scrollLock: true,
-                rewind: true,
-            });
-
-            const videoButtons = document.querySelectorAll('.video-switch button');
-            let currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with actual latest @Salatiso/shorts video ID
-            const videoFrame = document.querySelector('.video-section iframe');
-
-            videoButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    if (this.dataset.channel === 'salatiso') {
-                        currentVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with actual latest @Salatiso/shorts video ID
-                    } else if (this.dataset.channel === 'audiobooks') {
-                        currentVideo = 'https://www.youtube.com/embed/anotherVideoID'; // Replace with actual latest @SalatisoAudioBooks video ID
-                    }
-                    videoFrame.src = currentVideo;
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                    setTimeout(() => content.style.display = 'none', 300);
                 });
+                document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+                const tabId = this.getAttribute('data-tab');
+                const tab = document.getElementById(tabId);
+                tab.style.display = 'block';
+                setTimeout(() => tab.classList.add('active'), 10);
+                this.classList.add('active');
             });
+        });
 
-            console.log('Glider and Video switch initialized');
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId + '-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+                setTimeout(() => e.target.style.display = 'none', 300);
+            }
         });
     </script>
 </body>
