@@ -63,7 +63,7 @@ main {
 }
 
 .index-bg {
-    background: url('/img/Sazi_Driving.jpg') no-repeat center center fixed;
+    background: url('/salatiso/img/Sazi_Driving.jpg') no-repeat center center fixed;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -74,7 +74,7 @@ main {
 }
 
 .about-bg {
-    background: url('/img/Sazi_Grandma.jpg') no-repeat center center fixed;
+    background: url('/salatiso/img/Sazi_Grandma.jpg') no-repeat center center fixed;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -85,7 +85,7 @@ main {
 }
 
 .books-bg {
-    background: url('/img/Sazi_Reading.jpg') no-repeat center center fixed;
+    background: url('/salatiso/img/Sazi_Reading.jpg') no-repeat center center fixed;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -96,7 +96,7 @@ main {
 }
 
 .contact-bg {
-    background: url('/img/Sazi_Shouts.jpg') no-repeat center center fixed;
+    background: url('/salatiso/img/Sazi_Shouts.jpg') no-repeat center center fixed;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -119,7 +119,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 120px); /* Adjust for header/footer */
+    height: calc(100vh - 120px);
 }
 
 .hero h2 {
@@ -152,7 +152,7 @@ main {
 .glider-cont {
     width: 100%;
     max-width: 1000px;
-    height: 40vh; /* Fixed height for carousel */
+    height: 40vh;
     margin-top: 1rem;
     position: relative;
 }
@@ -228,7 +228,6 @@ footer {
     z-index: 100;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     nav h1 {
         font-size: 1.5rem;
