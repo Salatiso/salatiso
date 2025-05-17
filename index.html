@@ -62,7 +62,7 @@
             text-align: center; font-size: 1rem; 
             border-radius: 0.5rem; padding: 20px;
             display: flex; flex-direction: column; align-items: center; justify-content: space-between; 
-            min-height: 430px; /* Increased height for more content */
+            min-height: 430px; 
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
         }
         .swiper-slide:hover { transform: translateY(-6px); }
@@ -93,13 +93,18 @@
         .swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.1); }
         .swiper-button-next:after, .swiper-button-prev:after { font-size: var(--swiper-navigation-size) !important; }
         
-        #books .swiper-slide { min-height: 360px; justify-content: flex-start; } /* Adjusted height for books */
+        #books .swiper-slide { min-height: 360px; justify-content: flex-start; }
         #books .swiper-slide img.book-cover-image {
             max-width: 170px; height: 250px; object-fit: cover; 
             margin-bottom: 12px; 
         }
         #books .swiper-slide h3 { font-size: 1rem; margin-bottom: 6px; }
         #books .swiper-slide p { font-size: 0.8rem; margin-bottom: 12px; flex-grow: 0; }
+        .recommended-reads { margin-top: 2rem; padding-top: 1.5rem; }
+        .recommended-reads h3 { text-align: center; margin-bottom: 1rem; }
+        .recommended-reads ul { list-style: none; padding: 0; }
+        .recommended-reads li { margin-bottom: 0.5rem; text-align: center; font-size: 0.95rem;}
+
 
         .section-footer {
             position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
@@ -127,8 +132,9 @@
             font-family: "Font Awesome 5 Free"; font-weight: 900;
             margin-right: 0.6em;
         }
-        .content-section .publication-list li::before { content: "\f15c"; } /* file-alt icon */
-        .content-section ul:not(.publication-list) li::before { content: "\f105"; } /* chevron-right icon */
+        .content-section .publication-list li::before { content: "\f15c"; } 
+        .content-section ul:not(.publication-list):not(.recommended-reads-list) li::before { content: "\f105"; } 
+        .content-section .recommended-reads-list li::before { content: "\f02d"; /* book icon */ }
         
         .content-section a { text-decoration: none; transition: color 0.3s ease, border-bottom-color 0.3s ease; }
         .profile-quote {
@@ -156,91 +162,91 @@
         .timeline-item-content p, .timeline-item-content ul { font-size: 0.9rem; margin-bottom: 0.5rem; }
         .hero-roles { margin-top: 0.25rem; font-size: 1rem; }
 
-        /* COLOR SCHEME 1.1: Professional & Tech-Focused (Dark Blues & Grays) */
-        body { color: #E0E0E0; /* Light gray text for dark backgrounds */ }
-        #video-background { filter: brightness(0.35); }
+        /* COLOR SCHEME 1.2: Earthy & African Inspired (Warm Browns, Greens, Terracotta) */
+        body { color: #FAF3E0; /* Creamy off-white for text on dark earthy tones */ }
+        #video-background { filter: brightness(0.4) sepia(0.2); } /* Sepia tint for warmth */
         .content-section {
-            background-color: rgba(17, 24, 39, 0.92); /* Dark blue-gray (Tailwind gray-900 like) */
-            border: 1px solid rgba(55, 65, 81, 0.7); /* Medium gray border */
-            color: #D1D5DB; /* Light gray text (Tailwind gray-300) */
+            background-color: rgba(78, 52, 46, 0.92); /* Dark Brown (Material Brown 800) */
+            border: 1px solid rgba(121, 85, 72, 0.7); /* Medium Brown border (Material Brown 500) */
+            color: #D7CCC8; /* Light Brown-Gray text (Material Brown 100) */
         }
         nav {
-            background-color: rgba(17, 24, 39, 0.7); /* Darker nav */
-            backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(55, 65, 81, 0.6); 
+            background-color: rgba(62, 39, 35, 0.8); /* Darkest Brown (Material Brown 900) */
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(46, 30, 26, 0.6); 
         }
-        nav a.nav-brand { color: #FFFFFF; }
-        nav .nav-links button { color: #9CA3AF; /* Tailwind gray-400 */ }
+        nav a.nav-brand { color: #FFCCBC; /* Light Peach/Terracotta */ }
+        nav .nav-links button { color: #FFE0B2; /* Light Orange/Ochre */ }
         nav .nav-links button:hover, nav .nav-links button.active-nav {
-            color: #FFFFFF; text-shadow: 0 0 8px rgba(129, 140, 248, 0.7); /* Indigo shadow */
+            color: #FFFFFF; text-shadow: 0 0 8px rgba(255, 171, 64, 0.8); /* Amber shadow */
         }
-        .content-section::-webkit-scrollbar-track { background: rgba(31, 41, 55, 0.6); }
-        .content-section::-webkit-scrollbar-thumb { background: #4B5563; } /* Tailwind gray-600 */
-        .content-section::-webkit-scrollbar-thumb:hover { background: #6B7280; } /* Tailwind gray-500 */
+        .content-section::-webkit-scrollbar-track { background: rgba(121, 85, 72, 0.4); } /* Medium Brown track */
+        .content-section::-webkit-scrollbar-thumb { background: #8D6E63; } /* Muted Brown (Material Brown 400) */
+        .content-section::-webkit-scrollbar-thumb:hover { background: #795548; } /* Darker Brown */
 
         .swiper-slide {
-            background: rgba(31, 41, 55, 0.9); /* Darker slides (Tailwind gray-800 like) */
-            border: 1px solid rgba(75, 85, 99, 0.8); /* Tailwind gray-600 border */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            color: #D1D5DB; /* Light gray text */
+            background: rgba(109, 76, 65, 0.9); /* Medium-Dark Brown (Material Brown 600) */
+            border: 1px solid rgba(141, 110, 99, 0.8); /* Lighter Brown border */
+            box-shadow: 0 8px 16px rgba(40,20,10,0.3);
+            color: #EFEBE9; /* Lightest Brown/Beige text */
         }
-        .swiper-slide:hover { box-shadow: 0 12px 24px rgba(0,0,0,0.35); }
-        .swiper-slide img.venture-image { border: 2px solid #4B5563; }
-        .swiper-slide h3 { color: #E5E7EB; /* Tailwind gray-200 */ }
-        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { color: #60A5FA; } /* Tailwind blue-400 */
-        .swiper-slide p { color: #9CA3AF; /* Tailwind gray-400 */ }
+        .swiper-slide:hover { box-shadow: 0 12px 24px rgba(40,20,10,0.35); }
+        .swiper-slide img.venture-image { border: 2px solid #A1887F; } /* Muted Brown */
+        .swiper-slide h3 { color: #FFECB3; /* Light Amber/Gold */ }
+        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { color: #FFB74D; } /* Orange/Amber */
+        .swiper-slide p { color: #D7CCC8; }
         .swiper-slide a.cta-link, .swiper-slide button.cta-link {
-            background-color: #3B82F6; /* Tailwind blue-500 */ color: white;
+            background-color: #4CAF50; /* Green accent (Material Green 500) */ color: white;
         }
-        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { background-color: #2563EB; } /* Tailwind blue-600 */
+        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { background-color: #388E3C; } /* Darker Green */
         
         .swiper-button-next, .swiper-button-prev {
-            color: #E0E0E0 !important; background-color: rgba(0, 0, 0, 0.55);
+            color: #FAF3E0 !important; background-color: rgba(46, 30, 26, 0.55); /* Darkest Brown, semi-transparent */
         }
-        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(0, 0, 0, 0.75) !important; }
-        .swiper-pagination-bullet-active { background-color: #60A5FA !important; }
-        .swiper-pagination-bullet { background-color: #4B5563; }
+        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(46, 30, 26, 0.75) !important; }
+        .swiper-pagination-bullet-active { background-color: #FFB74D !important; } /* Orange/Amber */
+        .swiper-pagination-bullet { background-color: #A1887F; } /* Muted Brown */
 
-
-        #books .swiper-slide { background-color: rgba(41, 51, 65, 0.9); } /* Slightly different dark for books */
+        #books .swiper-slide { background-color: rgba(121, 85, 72, 0.9); } /* Medium brown for books */
         #books .swiper-slide img.book-cover-image { box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
-        #books .swiper-slide h3 { color: #E5E7EB; }
-        #books .swiper-slide p { color: #9CA3AF; }
+        #books .swiper-slide h3 { color: #FFECB3; }
+        #books .swiper-slide p { color: #D7CCC8; }
+        .recommended-reads h3 { color: #FFECB3; }
+        .recommended-reads li { color: #EFEBE9; }
+        .recommended-reads li strong { color: #FFECB3; }
 
-        .section-footer { color: rgba(156, 163, 175, 0.7); } /* Tailwind gray-400 */
-        .content-section h2 { color: #FFFFFF; border-bottom: 1px solid #4B5563; }
-        .content-section h2 .fa-solid, .content-section h2 .fa-brands { color: #60A5FA; }
-        .content-section h3 { color: #E5E7EB; }
-        .content-section h3 .fa-solid, .content-section h3 .fa-brands { color: #93C5FD; }
-        .content-section h4 { color: #9CA3AF; }
-        .content-section p, .content-section li { color: #D1D5DB; }
-        .content-section ul li::before { color: #60A5FA; }
-        .content-section .publication-list li::before { color: #60A5FA; }
-        .content-section a { color: #60A5FA; border-bottom: 1px dotted #60A5FA; }
-        .content-section a:hover { color: #93C5FD; border-bottom-color: #93C5FD; }
+
+        .section-footer { color: rgba(224, 224, 224, 0.7); } 
+        .content-section h2 { color: #FFECB3; border-bottom: 1px solid #A1887F; }
+        .content-section h2 .fa-solid, .content-section h2 .fa-brands { color: #8BC34A; } /* Green */
+        .content-section h3 { color: #FFE0B2; }
+        .content-section h3 .fa-solid, .content-section h3 .fa-brands { color: #AED581; } /* Light Green */
+        .content-section h4 { color: #D7CCC8; }
+        .content-section p, .content-section li { color: #EFEBE9; }
+        .content-section ul li::before { color: #8BC34A; }
+        .content-section .publication-list li::before { color: #8BC34A; }
+        .content-section a { color: #AED581; border-bottom: 1px dotted #AED581; }
+        .content-section a:hover { color: #C5E1A5; border-bottom-color: #C5E1A5; }
         .profile-quote {
-            color: #A5B4FC; /* Tailwind indigo-300 */
-            border-left: 3px solid #60A5FA; 
-            background-color: rgba(31, 41, 55, 0.7); 
+            color: #FFDAB9; /* Peach */
+            border-left: 3px solid #8BC34A; 
+            background-color: rgba(109, 76, 65, 0.7); 
         }
-        .timeline::before { background-color: #4B5563; }
+        .timeline::before { background-color: #A1887F; }
         .timeline-item::before {
-            content: '\f017'; /* clock */
-            color: #111827; background-color: #60A5FA; 
-            border: 2px solid #1F2937; 
+            content: '\f19c'; /* Font Awesome university/building icon for heritage */
+            color: #4E342E; background-color: #FFB74D; 
+            border: 2px solid #6D4C41; 
         }
-        .timeline-item-content h4 { color: #93C5FD; }
-        .timeline-item-content h4 .fa-solid { color: #60A5FA; }
-        .timeline-item-content h5 { color: #E5E7EB; }
-        .timeline-item-content p, .timeline-item-content ul { color: #D1D5DB; }
-        .hero-roles { color: #9CA3AF; }
-        #connect a.cta-link { background-color: #10B981; } /* Emerald for connect button */
-        #connect a.cta-link:hover { background-color: #059669; }
-
-
+        .timeline-item-content h4 { color: #FFCC80; } /* Light orange */
+        .timeline-item-content h4 .fa-solid { color: #FFB74D; }
+        .timeline-item-content h5 { color: #EFEBE9; }
+        .timeline-item-content p, .timeline-item-content ul { color: #D7CCC8; }
+        .hero-roles { color: #D7CCC8; }
+        #connect a.cta-link { background-color: #FF9800; color: #4E342E; } /* Orange for connect, dark text */
+        #connect a.cta-link:hover { background-color: #F57C00; }
     </style>
-</head>
-<body>
+    <body>
 
     <video autoplay muted loop id="video-background">
         <source src="./assets/videos/salatiso_background_loop.mp4" type="video/mp4"> 
@@ -260,14 +266,14 @@
 
     <div class="content-overlay">
         <section id="hero-content" class="content-section active text-center">
-            <img src="./assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-gray-600 shadow-xl object-cover">
-            <h1 class="text-3xl md:text-5xl font-bold mb-1 text-white">Salatiso Lonwabo Mdeni</h1>
-            <p class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">Father</p>
+            <img src="./assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-yellow-700 shadow-xl object-cover">
+            <h1 class="text-3xl md:text-5xl font-bold mb-1">Salatiso Lonwabo Mdeni</h1>
+            <p class="text-xl md:text-2xl font-semibold mb-2">Father</p>
             <p class="text-sm md:text-base font-light hero-roles">OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate</p>
             <p class="mt-6 text-md max-w-xl mx-auto profile-quote">
                 "I am a father to my son; all else is a means to this end."
             </p>
-            <p class="mt-4 text-sm text-gray-400">Navigate through to learn more about my journey, ventures, and how we can connect.</p>
+            <p class="mt-4 text-sm">Navigate through to learn more about my journey, ventures, and how we can connect.</p>
         </section>
 
         <section id="about" class="content-section">
@@ -288,13 +294,13 @@
                         <div class="timeline-item-content">
                             <h4><i class="fa-solid fa-seedling"></i>1982 - Early Years</h4>
                             <h5>Born in Transkei, Eastern Cape</h5>
-                            <p>Raised in rural Transkei, my early education was unconventional, often taking place under a tree. This fostered resilience and a profound love for learning. My parents instilled a strong value for education; my mother’s self-sufficiency and my father’s emphasis on personal excellence were formative.</p>
+                            <p>Raised in rural Transkei (Fort Malan, Nqabane, Songwevu, Mahasane), my early education was unconventional, often taking place under a tree or in community churches due to classroom shortages. This fostered resilience and a profound love for learning. My parents instilled a strong value for education. Key locations include: Fort Malan (birthplace vicinity: 32°09'03"S 28°31'25"E; mother's childhood home: 32°09'02"S 28°31'53"E), Nqabane (father's home: 31°55'37"S 28°21'40"E), Mahasane (first school: 32°20'10"S 28°43'35"E), Lencane (rented home: 32°08'30"S 28°19'55"E; Lencane Primary: 32°08'41"S 28°20'30"E), Drayini (childhood home: 32°08'09"S 28°20'39"E), Matolweni School (approx. 32°08'13"S 28°20'39"E).</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-item-content">
                             <h4><i class="fa-solid fa-user-graduate"></i>1999 - Secondary Education</h4>
-                            <h5>Kiriyatswane Secondary School</h5>
+                            <h5>Kiriyatswane Secondary School, Mbalenhle, Mpumalanga</h5>
                             <p>Excelled academically, earning awards in poetry, physics, Xhosa, and biology. An early interest in health and safety was sparked by environmental concerns near a Sasol plant in Mbalenhle township.</p>
                         </div>
                     </div>
@@ -377,20 +383,14 @@
                 </div>
 
                 <h3 class="mt-10"><i class="fa-solid fa-newspaper"></i>Authored Works & Publications</h3>
-                <p>Beyond my direct OHS and Risk career, I am passionate about sharing knowledge and insights through writing. I have contributed numerous articles to the National Safety Magazine:</p>
-                <ul class="publication-list mt-4 mb-6 pl-4">
-                    <li>Overcoming educational challenges (September-October 2020)</li>
-                    <li>Learning online, The safe and affordable way (May-June 2020)</li>
-                    <li>Working from home, beyond COVID-19 (April 2020)</li>
-                    <li>Implementation of emergency response planning (January-February 2020)</li>
-                    <li>Risk Management within the personal context (July-August 2019)</li>
-                    <li>Home Energy Security (September-October 2019)</li>
-                    <li>Facility Management vs Health and Safety Part 2 (September – October 2018)</li>
-                    <li>Facility Management vs Health and Safety Part 1 (July - August 2018)</li>
-                    <li>Emergency Response Plan vs Business Continuity (May - June 2018)</li>
-                    <li>Emergency Response Planning, Who does the law hold accountable for implementation? (January – February 2015)</li>
-                    <li>Guidelines, Project Health and Safety Compliance (January – February 2013)</li>
+                <p>Beyond my direct OHS and Risk career, I am passionate about sharing knowledge and insights through writing. I have contributed numerous articles to the National Safety Magazine. Here are a few highlights:</p>
+                <ul class="publication-list mt-4 mb-2 pl-4">
+                    <li><a href="#" target="_blank">Overcoming educational challenges (September-October 2020)</a></li>
+                    <li><a href="#" target="_blank">Learning online, The safe and affordable way (May-June 2020)</a></li>
+                    <li><a href="#" target="_blank">Working from home, beyond COVID-19 (April 2020)</a></li>
                 </ul>
+                <p class="text-sm mb-6"><em>(More articles available upon request or via a dedicated publications link - placeholder for now)</em></p>
+
                 <p class="profile-quote">
                     My journey is a testament to resilience, continuous growth, and the unwavering belief in the power of applying one's skills to create a safer, more equitable world, starting with the foundations of family and community.
                 </p>
@@ -468,104 +468,104 @@
 
         <section id="books" class="content-section">
             <h2>My Books <i class="fa-solid fa-swatchbook"></i></h2>
-            <p class="text-center mb-8 text-gray-300">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
+            <p class="text-center mb-6">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
             
             <div class="swiper-container" id="booksSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="./assets/photos/goliath.jpg" alt="Goliath's Reckoning" class="book-cover-image">
                         <h3>Goliath's Reckoning</h3>
-                        <p class="text-xs text-gray-400">Advocacy & Fathers' Rights</p>
+                        <p class="text-xs">Advocacy & Fathers' Rights</p>
                         <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/photos/Beyond_Redress.jpg" alt="Beyond Redress" class="book-cover-image">
                         <h3>Beyond Redress</h3>
-                         <p class="text-xs text-gray-400">Social Commentary</p>
+                         <p class="text-xs">Social Commentary</p>
                         <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/photos/homeschooling_father.jpg" alt="The Homeschooling Father" class="book-cover-image">
                         <h3>The Homeschooling Father</h3>
-                        <p class="text-xs text-gray-400">Education & Parenting</p>
+                        <p class="text-xs">Education & Parenting</p>
                         <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/SF_Career.jpg" alt="Safety First: Essentials for Your OHS Career" class="book-cover-image">
                         <h3>Safety First: OHS Career</h3>
-                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <p class="text-xs">Occupational Health & Safety</p>
                         <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/photos/SF_Plans.jpg" alt="Safety First: The Essentials of OHS Plans" class="book-cover-image">
                         <h3>Safety First: OHS Plans</h3>
-                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <p class="text-xs">Occupational Health & Safety</p>
                         <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/photos/Rise_of_Q.jpg" alt="The Perfect Cage: Isivumo Legacy" class="book-cover-image">
                         <h3>The Perfect Cage: Isivumo</h3>
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <p class="text-xs">Dystopian Thriller Series</p>
                         <a href="https://play.google.com/books/reader?id=s51DEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Modern_Broke.jpg" alt="Modern, Broke, and Confused" class="book-cover-image">
                         <h3>Modern, Broke, and Confused</h3>
-                        <p class="text-xs text-gray-400">Social Commentary</p>
+                        <p class="text-xs">Social Commentary</p>
                         <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Unravelling_Xhosa_History.jpg" alt="Getting to Know Yourself as a South African" class="book-cover-image">
                         <h3>Getting to Know Yourself...</h3>
-                        <p class="text-xs text-gray-400">Culture & History</p>
+                        <p class="text-xs">Culture & History</p>
                         <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Beyond_the_Grave.jpg" alt="Beyond the Grave" class="book-cover-image">
                         <h3>Beyond the Grave</h3>
-                        <p class="text-xs text-gray-400">Spirituality & Tradition</p>
+                        <p class="text-xs">Spirituality & Tradition</p>
                         <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en_IE" target="_blank" class="cta-link">View Book</a>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/photos/Die_Tuisonderrig_Vader.jpg" alt="Die Tuisonderrig Vader" class="book-cover-image">
                         <h3>Die Tuisonderrig Vader</h3>
-                        <p class="text-xs text-gray-400">Education & Parenting (Afrikaans)</p>
+                        <p class="text-xs">Education & Parenting (Afrikaans)</p>
                         <a href="https://play.google.com/books/reader?id=CsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Ntate.jpg" alt="Ntate ea rutang bana ba hae hae" class="book-cover-image">
                         <h3>Ntate ea rutang...</h3>
-                        <p class="text-xs text-gray-400">Education & Parenting (Sesotho)</p>
+                        <p class="text-xs">Education & Parenting (Sesotho)</p>
                         <a href="https://play.google.com/books/reader?id=MsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Dystopian Struggle" class="book-cover-image">
                         <h3>The Perfect Cage: Dystopian</h3>
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <p class="text-xs">Dystopian Thriller Series</p>
                         <a href="https://play.google.com/books/reader?id=RdU8EQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/The_Perfect_Cage2.jpg" alt="The Perfect Cage: Secrets of the Inner Earth" class="book-cover-image">
                         <h3>The Perfect Cage: Inner Earth</h3>
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <p class="text-xs">Dystopian Thriller Series</p>
                         <a href="https://play.google.com/books/reader?id=GIQ9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/The_Perfect_Cage3.jpg" alt="The Perfect Cage: Journey Beyond the Horizon" class="book-cover-image">
                         <h3>The Perfect Cage: Horizon</h3>
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <p class="text-xs">Dystopian Thriller Series</p>
                         <a href="https://play.google.com/books/reader?id=7fE9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika" class="book-cover-image">
                         <h3>Zazi Mzantsi Afrika</h3>
-                        <p class="text-xs text-gray-400">Culture & History (isiXhosa)</p>
+                        <p class="text-xs">Culture & History (isiXhosa)</p>
                         <a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                      <div class="swiper-slide">
                         <img src="./assets/photos/Utata_Ozifundiselayo.jpg" alt="Utata ozifundiselayo ekhayeni" class="book-cover-image">
                         <h3>Utata ozifundiselayo...</h3>
-                        <p class="text-xs text-gray-400">Education & Parenting (isiXhosa)</p>
+                        <p class="text-xs">Education & Parenting (isiXhosa)</p>
                         <a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
                     </div>
                 </div>
@@ -573,7 +573,17 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-             <p class="text-center mt-8 text-gray-400 text-sm">Many titles are also available on <a href="https://www.takealot.com/all?filter=Author:Salatiso+Mdeni" target="_blank">Takealot</a> and <a href="https://books.apple.com/ca/author/salatiso-mdeni/id1745396063" target="_blank">Apple Books</a>.</p>
+            <div class="recommended-reads">
+                <h3><i class="fa-solid fa-star"></i> My Highly Recommended Reads</h3>
+                <ul class="recommended-reads-list">
+                    <li><strong>Basic Economics</strong> by Thomas Sowell</li>
+                    <li><strong>Knowledge and Decisions</strong> by Thomas Sowell (My all-time favorite)</li>
+                    <li>Works by <strong>Steven Pinker</strong> (e.g., *The Blank Slate*, *The Better Angels of Our Nature*)</li>
+                    <li>Works by <strong>Richard Dawkins</strong> (e.g., *The Selfish Gene*, *The Blind Watchmaker*)</li>
+                    <li><strong>Debt: The First 5,000 Years</strong> by David Graeber</li>
+                </ul>
+            </div>
+             <p class="text-center mt-8 text-gray-400 text-sm">Many of my titles are also available on <a href="https://www.takealot.com/all?filter=Author:Salatiso+Mdeni" target="_blank">Takealot</a> and <a href="https://books.apple.com/ca/author/salatiso-mdeni/id1745396063" target="_blank">Apple Books</a>.</p>
         </section>
 
         <section id="connect" class="content-section text-center">
