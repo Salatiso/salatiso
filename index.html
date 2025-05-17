@@ -3,35 +3,782 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salatiso Lonwabo Mdeni - Author</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Salatiso Lonwabo Mdeni - OHS Expert, Author, Entrepreneur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body, html {
+            font-family: 'Inter', sans-serif;
+            height: 100%;
+            margin: 0;
+            overflow: hidden; 
+            color: #E0E0E0; 
+        }
+
+        #video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            transition: 1s opacity;
+            filter: brightness(0.35); 
+        }
+
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        .content-section {
+            background-color: rgba(17, 24, 39, 0.88); /* Tailwind gray-900 with opacity */
+            padding: 1.5rem; 
+            border-radius: 0.75rem; 
+            width: 90%;
+            max-width: 1000px; 
+            max-height: 88vh; 
+            overflow-y: auto; 
+            display: none; 
+            animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            border: 1px solid rgba(55, 65, 81, 0.5); 
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.6); 
+            backdrop-filter: blur(10px); 
+            padding: 12px 25px; 
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(55, 65, 81, 0.4); 
+        }
+
+        nav a.nav-brand {
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: #FFFFFF;
+        }
+        nav .nav-links button {
+            color: #D1D5DB; 
+            background: none;
+            border: none;
+            padding: 7px 12px; 
+            margin-left: 3px; 
+            cursor: pointer;
+            font-size: 0.9rem; 
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        nav .nav-links button:hover, nav .nav-links button.active-nav {
+            color: #FFFFFF;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+
+        .content-section::-webkit-scrollbar {
+            width: 10px;
+        }
+        .content-section::-webkit-scrollbar-track {
+            background: rgba(31, 41, 55, 0.5); 
+            border-radius: 10px;
+        }
+        .content-section::-webkit-scrollbar-thumb {
+            background: #4B5563; 
+            border-radius: 10px;
+        }
+        .content-section::-webkit-scrollbar-thumb:hover {
+            background: #6B7280; 
+        }
+
+        /* Swiper Styles - General */
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 50px; 
+            position: relative; 
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 1rem; 
+            background: rgba(31, 41, 55, 0.8); 
+            border-radius: 0.5rem; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; 
+            color: #F3F4F6; 
+            min-height: 420px; 
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
+            border: 1px solid rgba(75, 85, 99, 0.7); 
+            transition: transform 0.3s ease-out; 
+        }
+        .swiper-slide:hover {
+            transform: translateY(-5px); 
+        }
+
+        .swiper-slide img.venture-image { 
+            width: 100%;
+            max-width: 260px; 
+            height: 160px; 
+            object-fit: cover;
+            border-radius: 0.375rem; 
+            margin-bottom: 15px;
+            border: 2px solid rgba(75, 85, 99, 0.8); 
+        }
+        .swiper-slide h3 {
+            font-size: 1.125rem; 
+            font-weight: 600; 
+            margin-bottom: 0.5rem; 
+            color: #FFFFFF;
+        }
+        .swiper-slide p {
+            font-size: 0.875rem; 
+            line-height: 1.5; 
+            color: #D1D5DB; 
+            flex-grow: 1;
+            margin-bottom: 1rem; 
+        }
+        .swiper-slide a.cta-link, .swiper-slide button.cta-link {
+            display: inline-block;
+            margin-top: auto; 
+            padding: 0.6rem 1.2rem; 
+            background-color: #3B82F6; 
+            color: white;
+            border-radius: 0.375rem; 
+            text-decoration: none;
+            font-size: 0.875rem; 
+            font-weight: 500; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none; 
+            cursor: pointer;
+        }
+        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover {
+            background-color: #2563EB; 
+            transform: scale(1.05); 
+        }
+
+        /* Swiper Navigation Buttons Styling */
+        .swiper-button-next, .swiper-button-prev {
+            color: #FFFFFF !important; 
+            background-color: rgba(0, 0, 0, 0.4); 
+            border-radius: 50%;
+            width: 40px !important; 
+            height: 40px !important; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            --swiper-navigation-size: 20px; /* Size of the arrow icon itself */
+            top: 50%; 
+            margin-top: -20px; /* Half of height for precise centering */
+            z-index: 10; /* Ensure buttons are above slides */
+        }
+        /* Position adjustment for buttons to be more visible */
+        .swiper-button-prev { left: 10px; }
+        .swiper-button-next { right: 10px; }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            transform: scale(1.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: var(--swiper-navigation-size) !important;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #FFFFFF !important;
+        }
+
+        /* Book Carousel Specific Styles */
+        #books .swiper-slide { 
+            min-height: 340px; 
+            justify-content: flex-start;
+        }
+        #books .swiper-slide img.book-cover-image {
+            max-width: 170px; 
+            height: 250px; 
+            object-fit: cover; 
+            margin-bottom: 12px; 
+        }
+         #books .swiper-slide h3 { 
+            font-size: 1rem;
+            margin-bottom: 6px; 
+        }
+        #books .swiper-slide p { 
+            font-size: 0.8rem;
+            margin-bottom: 12px; 
+            flex-grow: 0; 
+        }
+
+
+        .section-footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem; 
+            color: rgba(209, 213, 219, 0.7); 
+            z-index: 20;
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            text-align: center;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem; 
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.5); 
+        }
+        .content-section h3 {
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            color: #E5E7EB; 
+            margin-top: 1.25rem; 
+            margin-bottom: 0.75rem; 
+        }
+         .content-section h4 {
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: #9CA3AF; 
+            margin-top: 1rem; 
+            margin-bottom: 0.25rem; 
+        }
+        .content-section p, .content-section li {
+            font-size: 0.95rem; 
+            line-height: 1.65; 
+            color: #D1D5DB; 
+            margin-bottom: 0.65rem; 
+        }
+        .content-section ul {
+            list-style-type: disc; 
+            list-style-position: inside;
+            padding-left: 0.5rem; 
+        }
+         .content-section .publication-list li {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .content-section a {
+            color: #60A5FA; 
+            text-decoration: none; 
+            border-bottom: 1px dotted #60A5FA; 
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        .content-section a:hover {
+            color: #93C5FD; 
+            border-bottom-color: #93C5FD;
+        }
+        .profile-quote {
+            font-style: italic;
+            color: #9CA3AF; 
+            text-align: center;
+            margin-top: 1.5rem; 
+            margin-bottom: 1rem; 
+            font-size: 1.125rem; 
+            border-left: 3px solid #3B82F6; 
+            padding: 0.5rem 1rem; 
+            background-color: rgba(31, 41, 55, 0.5); 
+            border-radius: 0.25rem; 
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem; 
+            margin-left: 1rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #374151; 
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem; 
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.4375rem; 
+            top: 0.25rem; 
+            width: 14px;
+            height: 14px;
+            background-color: #3B82F6; 
+            border: 2px solid #1F2937; 
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item-content {
+            padding-left: 1.5rem; 
+        }
+        .timeline-item-content h4 { 
+            color: #60A5FA; 
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+        .timeline-item-content h5 { 
+            color: #E5E7EB; 
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-item-content p, .timeline-item-content ul {
+            font-size: 0.9rem;
+            color: #D1D5DB; 
+            margin-bottom: 0.5rem;
+        }
+
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>Salatiso Lonwabo Mdeni</h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="index-bg">
-        <section class="hero">
-            <h2>Writing with Grit, Living with Heart</h2>
-            <p>Hey, I’m Salatiso—author, father, father-figure, and advocate for fathers, boys equal treatment before the law. My books tackle tough stuff like court biases and dystopian traps, all to spark change and lift up families.</p>
-            <a href="books.html" class="cta">Dive Into My Books</a>
+
+    <video autoplay muted loop id="video-background">
+        <source src="./assets/videos/salatiso_background_loop.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    <nav>
+        <a href="#" class="nav-brand" id="brand-name">Salatiso Lonwabo Mdeni</a>
+        <div class="nav-links">
+            <button data-section="hero-content" class="active-nav">Home</button>
+            <button data-section="about">My Journey</button>
+            <button data-section="ventures">Ventures & Passions</button>
+            <button data-section="books">My Books</button> 
+            <button data-section="connect">Connect</button>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <section id="hero-content" class="content-section active text-center">
+            <img src="https://placehold.co/150x150/FFFFFF/111827?text=SLM" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-gray-700 shadow-xl">
+            <h1 class="text-3xl md:text-5xl font-bold mb-2 text-white">Salatiso Lonwabo Mdeni</h1>
+            <p class="text-lg md:text-xl font-light text-gray-300">OHS & Risk Expert | Author | Entrepreneur | Father</p>
+            <p class="mt-6 text-gray-300 text-md max-w-xl mx-auto profile-quote">
+                "I am a father to my son; all else is a means to this end."
+            </p>
+            <p class="mt-4 text-gray-400 text-sm">Navigate through to learn more about my journey, ventures, and how we can connect.</p>
         </section>
-        <section class="intro">
-            <h3>What Drives Me</h3>
-            <p>I'm a father to my son, all else is s means to this end.</p>
-            <p>I write to shake things up—whether it’s fighting for equal treatment of fathers and paternal families before the family court through <a href="https://flamea.org">flamea.org</a> or spinning sci-fi tales that make you think. It’s all about real talk and real impact.</p>
+
+        <section id="about" class="content-section">
+            <h2>My Journey</h2>
+            <div class="max-h-[78vh] overflow-y-auto pr-3 text-left">
+                <p class="mb-6">
+                    My path has been one of continuous learning, adaptation, and a deep-seated drive to make a meaningful impact. From humble beginnings in rural Transkei, where my earliest education unfolded under a tree, to navigating complex risk landscapes for major corporations, my experiences have shaped my perspective and fueled my endeavors. My career began in Occupational Health and Safety (OHS), gradually evolving into a broader expertise in Risk Management, Compliance, and Business Continuity.
+                </p>
+
+                <h3>My Drive & Motivation</h3>
+                <p>
+                    At the heart of everything I do is my role as a father: "I am a father to my son; all else is a means to this end." This core principle extends to my broader family responsibilities. As an Umlandeli (successor) to my father, Mlandeli Nelson Mdeni, I carry the duty to uphold our family's legacy and honor – a responsibility deeply embedded in Xhosa culture where a successor inherits not just assets but the mantle of familial and spiritual duties. This role transcends mere inheritance, emphasizing the continuation of lineage and the holistic well-being of the family, even if it requires personal sacrifice to address past debts and maintain family honor.
+                </p>
+                <p>
+                    This commitment includes being an uncle to my nephews and nieces, a father-figure within my family, a dutiful son, and a provider for my mother and sisters. The significance of names in our lineage further underscores this: my grandfather named my father Mlandeli (the follower/successor); my father, in turn, named me Salatiso (show us the way/the guide); and I named my son Sazisi (the one who makes known/introduces), often called Sazi, embodying the spirit of "Baza Kusazi!" (They will know you!). This intergenerational naming reflects a legacy of guidance, responsibility, and the aspiration for each generation to illuminate the path for the next. This commitment to family and legacy fuels my passion for education, self-sufficiency, and creating a better future. I strive to share knowledge, empower others, and advocate for equality, driven by the resilience forged from overcoming challenges and a desire to leave a lasting positive impact.
+                </p>
+
+                <div class="timeline mt-8">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>1982 - Early Years</h4>
+                            <h5>Born in Transkei, Eastern Cape</h5>
+                            <p>Raised in rural Transkei, my early education was unconventional, often taking place under a tree. This fostered resilience and a profound love for learning. My parents instilled a strong value for education; my mother’s self-sufficiency and my father’s emphasis on personal excellence were formative.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>1999 - Secondary Education</h4>
+                            <h5>Kiriyatswane Secondary School</h5>
+                            <p>Excelled academically, earning awards in poetry, physics, Xhosa, and biology. An early interest in health and safety was sparked by environmental concerns near a Sasol plant in Mbalenhle township.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2000 - 2008 - Tertiary Education & Certifications</h4>
+                            <h5>Tshwane University of Technology (TUT) & GIBS</h5>
+                            <ul>
+                                <li>National Diploma in Environmental Health, TUT (2002).</li>
+                                <li>Nominated and served as a student representative for my environmental health class, organizing activities and coordinating events.</li>
+                                <li>B-Tech in Environmental Health, TUT (2008), focusing on occupational hygiene with practical training in Namibia.</li>
+                                <li>Management Development Program (MDP), Gordon Institute of Business Science (GIBS) (2008).</li>
+                                <li>Additional Certifications: Certificate in Mine Environmental Control (COMEC), ISO 45001, SAMTRAC Levels 1-3, NQF Level 5 OHS, SAIOSH & SAIOH certifications (occupational hygiene, hazardous materials, industrial ventilation), and short courses in first aid, firefighting, internal auditing, cybersecurity, and law.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                     <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2003 - Dept. of Health, Eastern Cape</h4>
+                            <h5>Junior Environmental Health Practitioner</h5>
+                            <p>Conducted health inspections and community education. Compiled research on the hygiene practices of informal vendors in Buffalo City in conjunction with the municipality's environmental health division.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2004 - 2006 - Anglo Platinum</h4>
+                            <h5>Ventilation & Occupational Hygiene Trainee, then Technologist</h5>
+                            <p>Awarded "Best Trainee" (2004). During the 18-month training, acted in senior roles for approximately 4 months, entrusted to manage the occupational hygiene program for my section. Immediately post-training, appointed Occupational Hygiene Assistant at Amandelbult Concentrator, then promoted to Technologist. Performed risk assessments and environmental stressor testing.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2007 - 2009 - SARCC Metrorail, Gauteng</h4>
+                            <h5>Safety, Health & Environmental Manager</h5>
+                            <p>Revamped SHE programs. Set up an occupational hygiene program from scratch, significantly improving overall OHS performance. NOSA audit scores improved across departments, with more achieving 5-star ratings. Though initially for Wits Region, the program's success led to a national rollout, travelling to Pretoria and Eastern Cape regions.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2008 - 2012 - Yeyethu Trust</h4>
+                            <h5>Founder & Project Manager</h5>
+                            <p>Founded and ran Yeyethu Trust, a community project providing medals and trophies for academic performance in Lencane and Matolweni schools.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2009 - 2010 - Liberty Group Properties</h4>
+                            <h5>Environment, Health and Safety Manager</h5>
+                            <p>Managed SHE programs and construction compliance. Tasked with addressing a DoL investigation following a major incident with fatalities. Successfully implemented DoL-identified controls and a robust OHS management system, minimizing incidents and managing client liability for multi-billion rand contracts (Midlands Mall, Eastgate, Sandton City). This success led to being headhunted by ABSA.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2010 - 2016 - Barclays Africa Group (ABSA)</h4>
+                            <h5>Environment, Health and Safety Consultant & Risk Specialist</h5>
+                            <p>Developed and managed a national asbestos management program, ensuring bank properties were asbestos-free or safely managed. Coordinated safe evacuations for 4,000 employees during critical incidents.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2012 - 2022 - 5G Property Consultants</h4>
+                            <h5>Managing Director</h5>
+                            <p>Founded and ran 5G Property Consultants, providing consultancy in EHS, property management, and compliance across various industries. Clients included Ster-Kinekor, Mine Investment Corporation, Alexander Forbes, and contractors like Masupa Tsela and Vikinduku.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2016 - 2024 - Telkom (CRES) / Gyro Group Pty Ltd</h4>
+                            <h5>Specialist: Risk, Audit, Business Continuity</h5>
+                            <p>Joined Telkom's CRES division, which later became Gyro Group. Instrumental in designing the compliance structure for OHS and risk management, including roles and functions. Upon Gyro's incorporation, took charge of the risk management role, assisting H&S roles in setup and proper functioning. Ensured the risk function operated effectively with no gaps for over two years, even after an executive role was established.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <h4>2023 - Present</h4>
+                            <h5>Author, Writer & Publisher (Self-Employed)</h5>
+                            <p>Creating e-learning content and advising on risk and compliance. Authored "Safety First: Essentials for Your OHS Career Journey" and currently working on "Safety First: The Comprehensive Blueprint for Your OHS Career."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-10">Authored Works & Publications</h3>
+                <p>Beyond my direct OHS and Risk career, I am passionate about sharing knowledge and insights through writing. I have contributed numerous articles to the National Safety Magazine:</p>
+                <ul class="publication-list mt-4 mb-6 pl-4">
+                    <li>Overcoming educational challenges (September-October 2020)</li>
+                    <li>Learning online, The safe and affordable way (May-June 2020)</li>
+                    <li>Working from home, beyond COVID-19 (April 2020)</li>
+                    <li>Implementation of emergency response planning (January-February 2020)</li>
+                    <li>Risk Management within the personal context (July-August 2019)</li>
+                    <li>Home Energy Security (September-October 2019)</li>
+                    <li>Facility Management vs Health and Safety Part 2 (September – October 2018)</li>
+                    <li>Facility Management vs Health and Safety Part 1 (July - August 2018)</li>
+                    <li>Emergency Response Plan vs Business Continuity (May - June 2018)</li>
+                    <li>Emergency Response Planning, Who does the law hold accountable for implementation? (January – February 2015)</li>
+                    <li>Guidelines, Project Health and Safety Compliance (January – February 2013)</li>
+                </ul>
+
+                <p class="profile-quote">
+                    My journey is a testament to resilience, continuous growth, and the unwavering belief in the power of applying one's skills to create a safer, more equitable world, starting with the foundations of family and community.
+                </p>
+            </div>
         </section>
-    </main>
-    <footer>
-        <p>© 2025 Salatiso. All rights reserved.</p>
-    </footer>
+
+        <section id="ventures" class="content-section">
+            <h2 class="mb-0">My Ventures & Passions</h2>
+            <div class="swiper-container" id="venturesSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/0284C7/FFFFFF?text=SafetyHelp" alt="SafetyHelp Platform" class="venture-image">
+                        <h3>SafetyHelp</h3>
+                        <p>Launching June 1, 2025, an online platform simplifying OHS compliance for businesses, schools, and informal sectors with tools for risk assessments, training, and management.</p>
+                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link">Visit SafetyHelp</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/10B981/FFFFFF?text=Sazi+Learning" alt="Sazi Learning Platform" class="venture-image">
+                        <h3>Sazi Learning</h3>
+                        <p>Inspired by my son, Sazi, this platform focuses on personalized education, homeschooling resources, and preserving Xhosa language and culture.</p>
+                        <a href="https://www.sazi.life/sazi/" target="_blank" class="cta-link">Explore Sazi.life</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/F59E0B/FFFFFF?text=Flamea+Org" alt="Flamea Organization" class="venture-image">
+                        <h3>Flamea</h3>
+                        <p>Promoting equality through education, Flamea provides learning opportunities for underserved communities and advocates for fathers' rights and family equality.</p>
+                        <a href="https://flamea.org/" target="_blank" class="cta-link">Learn about Flamea</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/4F46E5/FFFFFF?text=Author+%26+Creative" alt="Salatiso Mdeni - Author and Creative Writer" class="venture-image">
+                        <h3>Author & Thought Leader</h3>
+                        <p>I share insights through books, articles, e-learning content, and creative writing, including poetry, focusing on OHS, risk, personal development, and cultural narratives.</p>
+                        <button data-section="books" class="cta-link nav-button-trigger">Explore My Books</button>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/14B8A6/FFFFFF?text=Digital+Creator" alt="Web Development and Tech Skills" class="venture-image">
+                        <h3>Digital Creator & Tech Innovator</h3>
+                        <p>Leveraging self-taught web development skills to build impactful platforms like <a href="https://salatiso.com/" target="_blank">salatiso.com</a>, <a href="https://safetyfirst.help/" target="_blank">safetyfirst.help</a>, <a href="https://flamea.org/" target="_blank">flamea.org</a>, and <a href="https://www.sazi.life/sazi/" target="_blank">sazi.life</a>.</p>
+                        <a href="https://salatiso.com/" target="_blank" class="cta-link">View My Portfolio</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/D946EF/FFFFFF?text=Family+%26+Community" alt="Family and Community" class="venture-image">
+                        <h3>Family & Community Pillar</h3>
+                        <p>My commitment extends to being a father-figure, an uncle, a dutiful son, and a provider for my mother and sisters, nurturing a strong family and community foundation.</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/0891B2/FFFFFF?text=Core+Expertise" alt="OHS and Risk Management Skills" class="venture-image">
+                        <h3>Core Expertise</h3>
+                        <p>Specializing in OHS Management, Risk Management & Auditing, Business Continuity, Emergency Response, Training Development, Occupational Hygiene, and Website Development.</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/78716C/FFFFFF?text=DIY+Projects" alt="DIY and Home Improvement" class="venture-image">
+                        <h3>DIY & Home Improvement</h3>
+                        <p>Passionate about hands-on work: woodworking, plumbing, welding, and IT projects, embodying self-sufficiency and practical problem-solving.</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/600x360/34D399/FFFFFF?text=Homeschooling" alt="Homeschooling my son Sazi" class="venture-image">
+                        <h3>Homeschooling Advocate</h3>
+                        <p>Actively homeschooling my son, Sazi, integrating learning into daily life and developing resources through the Sazi platform to support others.</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section id="books" class="content-section">
+            <h2>My Books</h2>
+            <p class="text-center mb-8 text-gray-300">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
+            
+            <div class="swiper-container" id="booksSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Goliath's+Reckoning" alt="Goliath's Reckoning" class="book-cover-image">
+                        <h3>Goliath's Reckoning</h3>
+                        <p class="text-xs text-gray-400">Advocacy & Fathers' Rights</p>
+                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Beyond+Redress" alt="Beyond Redress" class="book-cover-image">
+                        <h3>Beyond Redress</h3>
+                         <p class="text-xs text-gray-400">Social Commentary</p>
+                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=The+Homeschooling+Father" alt="The Homeschooling Father" class="book-cover-image">
+                        <h3>The Homeschooling Father</h3>
+                        <p class="text-xs text-gray-400">Education & Parenting</p>
+                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Safety+First:+OHS+Career" alt="Safety First: Essentials for Your OHS Career" class="book-cover-image">
+                        <h3>Safety First: OHS Career</h3>
+                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Safety+First:+OHS+Plans" alt="Safety First: The Essentials of OHS Plans" class="book-cover-image">
+                        <h3>Safety First: OHS Plans</h3>
+                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=The+Perfect+Cage" alt="The Perfect Cage: Isivumo Legacy" class="book-cover-image">
+                        <h3>The Perfect Cage: Isivumo</h3>
+                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
+                        <a href="https://play.google.com/books/reader?id=s51DEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Modern,+Broke,+Confused" alt="Modern, Broke, and Confused" class="book-cover-image">
+                        <h3>Modern, Broke, and Confused</h3>
+                        <p class="text-xs text-gray-400">Social Commentary</p>
+                        <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="https://placehold.co/300x450/1F2937/FFFFFF?text=Unravelling+Xhosa+History" alt="Getting to Know Yourself as a South African" class="book-cover-image">
+                        <h3>Getting to Know Yourself...</h3>
+                        <p class="text-xs text-gray-400">Culture & History</p>
+                        <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE" target="_blank" class="cta-link">View on Google Play</a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+             <p class="text-center mt-8 text-gray-400 text-sm">Many titles are also available on <a href="https://www.takealot.com/all?filter=Author:Salatiso+Mdeni" target="_blank">Takealot</a> and <a href="https://books.apple.com/ca/author/salatiso-mdeni/id1745396063" target="_blank">Apple Books</a>.</p>
+        </section>
+
+        <section id="connect" class="content-section text-center">
+            <h2>Let's Connect</h2>
+            <p class="text-md text-gray-300 mb-6 max-w-lg mx-auto">
+                I'm always open to collaborations, discussions on OHS, risk management, entrepreneurship, education, or if you'd just like to learn more about my work.
+            </p>
+            <a href="mailto:salatiso@salatiso.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-300 text-lg mb-4">
+                Email: salatiso@salatiso.com
+            </a>
+            <div class="mt-6 space-y-3">
+                <p><a href="https://salatiso.com/" target="_blank" class="hover:text-blue-300">Personal Website: salatiso.com</a></p>
+                <p><a href="https://www.youtube.com/@Salatiso" target="_blank" class="hover:text-blue-300">YouTube: OHS, Self-Sufficiency, Homeschooling</a></p>
+                <p><a href="https://www.youtube.com/@SalatisoMdeni" target="_blank" class="hover:text-blue-300">Audiobooks & Writing Hub</a></p>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-footer">
+        <p>© <span id="currentYear"></span> Salatiso Lonwabo Mdeni. All Rights Reserved.</p>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-links button, button.nav-button-trigger');
+            const contentSections = document.querySelectorAll('.content-section');
+            const brandName = document.getElementById('brand-name');
+
+            function showSection(sectionId) {
+                contentSections.forEach(section => {
+                    if (section.id === sectionId) {
+                        section.classList.add('active');
+                        section.scrollTop = 0; 
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                document.querySelectorAll('.nav-links button').forEach(button => {
+                     if (button.dataset.section === sectionId) {
+                        button.classList.add('active-nav');
+                    } else {
+                        button.classList.remove('active-nav');
+                    }
+                });
+            }
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    showSection(button.dataset.section);
+                });
+            });
+            
+            brandName.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection('hero-content'); 
+            });
+
+            // Initialize Swiper for Ventures & Passions
+            const venturesSwiper = new Swiper('#venturesSwiper', { 
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 25, 
+                grabCursor: true,
+                speed: 700, // Smoother transition speed
+                effect: 'slide', // Default, usually smooth
+                pagination: {
+                    el: '#venturesSwiper .swiper-pagination', 
+                    clickable: true,
+                },
+                navigation: { // Ensure navigation is enabled
+                    nextEl: '#venturesSwiper .swiper-button-next', 
+                    prevEl: '#venturesSwiper .swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5500, 
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: { 
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    1024: { 
+                        slidesPerView: 3,
+                        spaceBetween: 35 
+                    }
+                }
+            });
+
+            // Initialize Swiper for Books
+            const booksSwiper = new Swiper('#booksSwiper', { 
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                grabCursor: true,
+                speed: 700, // Smoother transition speed
+                pagination: {
+                    el: '#booksSwiper .swiper-pagination', 
+                    clickable: true,
+                },
+                navigation: { // Ensure navigation is enabled
+                    nextEl: '#booksSwiper .swiper-button-next', 
+                    prevEl: '#booksSwiper .swiper-button-prev',
+                },
+                 autoplay: {
+                    delay: 6500, 
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    640: { 
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    768: { 
+                        slidesPerView: 3,
+                        spaceBetween: 25
+                    },
+                    1024: { 
+                        slidesPerView: 4, 
+                        spaceBetween: 30
+                    }
+                }
+            });
+
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            showSection('hero-content');
+        });
+    </script>
+
 </body>
 </html>
