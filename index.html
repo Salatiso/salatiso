@@ -1,2000 +1,1461 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Salatiso Lonwabo Mdeni - Father, OHS & Risk Expert, Author</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-
-    <style>
-
-        /* Base Styles - Consistent across color variations */
-
-        body, html {
-
-            font-family: 'Inter', sans-serif;
-
-            height: 100%; margin: 0; overflow: hidden; 
-
-        }
-
-        #video-background {
-
-            position: fixed; top: 50%; left: 50%;
-
-            min-width: 100%; min-height: 100%;
-
-            width: auto; height: auto; z-index: -100;
-
-            transform: translateX(-50%) translateY(-50%);
-
-            background-size: cover; transition: 1s opacity;
-
-        }
-
-        .content-overlay {
-
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-
-            padding: 20px; box-sizing: border-box; z-index: 10;
-
-        }
-
-        .content-section {
-
-            padding: 1.5rem; border-radius: 0.75rem; 
-
-            width: 90%; max-width: 1000px; max-height: 88vh; 
-
-            overflow-y: auto; display: none; 
-
-            animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
-
-        }
-
-        .content-section.active { display: block; }
-
-        @keyframes fadeIn {
-
-            from { opacity: 0; transform: translateY(25px) scale(0.97); }
-
-            to { opacity: 1; transform: translateY(0) scale(1); }
-
-        }
-
-        nav {
-
-            position: fixed; top: 0; left: 0; width: 100%;
-
-            padding: 12px 25px; z-index: 100;
-
-            display: flex; justify-content: space-between; align-items: center;
-
-        }
-
-        nav a.nav-brand { font-size: 1.4rem; font-weight: 700; }
-
-        nav .nav-links button {
-
-            background: none; border: none; padding: 7px 12px; margin-left: 3px; 
-
-            cursor: pointer; font-size: 0.9rem; 
-
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-
-        }
-
-        nav .nav-links button .fa-solid, nav .nav-links button .fa-brands { margin-right: 6px; }
-
-
-
-        .content-section::-webkit-scrollbar { width: 10px; }
-
-        .content-section::-webkit-scrollbar-track { border-radius: 10px; }
-
-        .content-section::-webkit-scrollbar-thumb { border-radius: 10px; }
-
-        
-
-        .swiper-container { width: 100%; height: auto; padding-top: 10px; padding-bottom: 50px; position: relative; }
-
-        .swiper-slide {
-
-            text-align: center; font-size: 1rem; 
-
-            border-radius: 0.5rem; padding: 20px;
-
-            display: flex; flex-direction: column; align-items: center; justify-content: space-between; 
-
-            min-height: 430px; /* Consistent height for venture slides */
-
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
-
-        }
-
-        .swiper-slide:hover { transform: translateY(-6px); }
-
-        .swiper-slide img.venture-image { 
-
-            width: 100%; max-width: 260px; height: 160px; 
-
-            object-fit: cover; border-radius: 0.375rem; margin-bottom: 15px;
-
-        }
-
-        .swiper-slide h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
-
-        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { margin-right: 8px; }
-
-        .swiper-slide p { font-size: 0.875rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1rem; }
-
-        .swiper-slide a.cta-link, .swiper-slide button.cta-link {
-
-            display: inline-block; margin-top: auto; padding: 0.6rem 1.2rem; 
-
-            border-radius: 0.375rem; text-decoration: none;
-
-            font-size: 0.875rem; font-weight: 500; 
-
-            transition: background-color 0.3s ease, transform 0.2s ease;
-
-            border: none; cursor: pointer; width: 80%; /* Ensure buttons are of similar width */
-
-        }
-
-        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { transform: scale(1.05); }
-
-
-
-        .swiper-button-next, .swiper-button-prev {
-
-            border-radius: 50%; width: 40px !important; height: 40px !important; 
-
-            transition: background-color 0.3s ease, transform 0.2s ease;
-
-            --swiper-navigation-size: 20px; 
-
-            top: 50%; margin-top: -20px; z-index: 10; 
-
-        }
-
-        .swiper-button-prev { left: 10px; } 
-
-        .swiper-button-next { right: 10px; } 
-
-        .swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.1); }
-
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: var(--swiper-navigation-size) !important; }
-
-        
-
-        #books .swiper-slide { min-height: 370px; justify-content: flex-start; } /* Adjusted height for books */
-
-        #books .swiper-slide img.book-cover-image {
-
-            max-width: 170px; height: 250px; object-fit: cover; 
-
-            margin-bottom: 12px; 
-
-        }
-
-        #books .swiper-slide h3 { font-size: 1rem; margin-bottom: 6px; }
-
-        #books .swiper-slide p { font-size: 0.8rem; margin-bottom: 12px; flex-grow: 0; }
-
-        .recommended-reads { margin-top: 2rem; padding-top: 1.5rem; }
-
-        .recommended-reads h3 { text-align: center; margin-bottom: 1rem; }
-
-        .recommended-reads ul { list-style: none; padding: 0; }
-
-        .recommended-reads li { margin-bottom: 0.5rem; text-align: center; font-size: 0.95rem;}
-
-
-
-
-
-        .section-footer {
-
-            position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
-
-            font-size: 0.8rem; z-index: 20;
-
-        }
-
-        .content-section h2 {
-
-            font-size: 1.75rem; font-weight: 700; text-align: center;
-
-            margin-bottom: 1.5rem; padding-bottom: 0.75rem; 
-
-        }
-
-        .content-section h2 .fa-solid, .content-section h2 .fa-brands { margin-left: 10px; }
-
-        .content-section h3 {
-
-            font-size: 1.25rem; font-weight: 600; 
-
-            margin-top: 1.25rem; margin-bottom: 0.75rem; 
-
-        }
-
-        .content-section h3 .fa-solid, .content-section h3 .fa-brands { margin-right: 8px; }
-
-        .content-section h4 {
-
-            font-size: 1.1rem; font-weight: 600; 
-
-            margin-top: 1rem; margin-bottom: 0.25rem; 
-
-        }
-
-        .content-section p, .content-section li {
-
-            font-size: 0.95rem; line-height: 1.65; margin-bottom: 0.65rem; 
-
-        }
-
-        .content-section ul { list-style-type: none; padding-left: 0; }
-
-        .content-section ul li::before {
-
-            font-family: "Font Awesome 5 Free"; font-weight: 900;
-
-            margin-right: 0.6em;
-
-        }
-
-        .content-section .publication-list li { margin-bottom: 0.5rem; }
-
-        .content-section .publication-list li a { display: block; }
-
-        .content-section .publication-list li::before { content: "\f15c"; } 
-
-        .content-section ul:not(.publication-list):not(.recommended-reads-list) li::before { content: "\f105"; } 
-
-        .content-section .recommended-reads-list li::before { content: "\f02d"; /* book icon */ }
-
-        
-
-        .content-section a { text-decoration: none; transition: color 0.3s ease, border-bottom-color 0.3s ease; }
-
-        .profile-quote {
-
-            font-style: italic; text-align: center;
-
-            margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.125rem; 
-
-            padding: 0.75rem 1.25rem; border-radius: 0.375rem; 
-
-        }
-
-        
-
-        /* Interactive Timeline Styles */
-
-        .journey-intro { margin-bottom: 2rem; }
-
-        .interactive-timeline {
-
-            position: relative;
-
-            margin: 2rem 0;
-
-        }
-
-        .interactive-timeline::before {
-
-            content: '';
-
-            position: absolute;
-
-            left: 9px; /* Adjust to center line with dots */
-
-            top: 0;
-
-            bottom: 0;
-
-            width: 4px;
-
-            background-color: #4B5563; /* Timeline color */
-
-            border-radius: 2px;
-
-        }
-
-        .timeline-event {
-
-            position: relative;
-
-            margin-bottom: 1.5rem;
-
-            padding-left: 35px; /* Space for dot and year */
-
-        }
-
-        .timeline-dot {
-
-            position: absolute;
-
-            left: 0;
-
-            top: 5px; 
-
-            width: 22px;
-
-            height: 22px;
-
-            background-color: #60A5FA; /* Dot color */
-
-            border: 3px solid #1F2937; /* Content section bg for contrast */
-
-            border-radius: 50%;
-
-            z-index: 1;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-        }
-
-        .timeline-dot .fa-solid { font-size: 10px; color: #111827; }
-
-
-
-        .timeline-year {
-
-            font-size: 0.9rem;
-
-            font-weight: 600;
-
-            color: #93C5FD; /* Year color */
-
-            margin-bottom: 0.25rem;
-
-        }
-
-        .timeline-title {
-
-            font-size: 1.1rem;
-
-            font-weight: 600;
-
-            color: #E5E7EB; /* Title color */
-
-            margin-bottom: 0.5rem;
-
-            cursor: pointer; /* Indicate it's clickable */
-
-        }
-
-        .timeline-title .fa-chevron-down {
-
-            margin-left: 8px;
-
-            transition: transform 0.3s ease;
-
-            font-size: 0.8em;
-
-        }
-
-        .timeline-title.expanded .fa-chevron-down {
-
-            transform: rotate(180deg);
-
-        }
-
-        .timeline-details {
-
-            max-height: 0;
-
-            overflow: hidden;
-
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-top 0.5s ease-out;
-
-            opacity: 0;
-
-            font-size: 0.85rem;
-
-            color: #D1D5DB;
-
-            padding-left: 5px; /* Indent details slightly */
-
-            border-left: 2px solid #4B5563;
-
-            margin-left: -3px; /* Align border with main timeline line */
-
-            margin-top: 0;
-
-        }
-
-        .timeline-details.expanded {
-
-            max-height: 500px; /* Adjust as needed for content */
-
-            opacity: 1;
-
-            margin-top: 0.5rem;
-
-            padding-top: 0.5rem;
-
-        }
-
-        .timeline-details p, .timeline-details ul {
-
-            margin-bottom: 0.5rem;
-
-        }
-
-
-
-        .hero-roles { margin-top: 0.25rem; font-size: 1rem; }
-
-
-
-        /* COLOR SCHEME 1.1: Professional & Tech-Focused (Dark Blues & Grays) */
-
-        body { color: #E0E0E0; }
-
-        #video-background { filter: brightness(0.35); }
-
-        .content-section {
-
-            background-color: rgba(17, 24, 39, 0.92); 
-
-            border: 1px solid rgba(55, 65, 81, 0.7); 
-
-            color: #D1D5DB; 
-
-        }
-
-        nav {
-
-            background-color: rgba(17, 24, 39, 0.7); 
-
-            backdrop-filter: blur(12px); 
-
-            border-bottom: 1px solid rgba(55, 65, 81, 0.6); 
-
-        }
-
-        nav a.nav-brand { color: #FFFFFF; }
-
-        nav .nav-links button { color: #9CA3AF; }
-
-        nav .nav-links button:hover, nav .nav-links button.active-nav {
-
-            color: #FFFFFF; text-shadow: 0 0 8px rgba(129, 140, 248, 0.7); 
-
-        }
-
-        .content-section::-webkit-scrollbar-track { background: rgba(31, 41, 55, 0.6); }
-
-        .content-section::-webkit-scrollbar-thumb { background: #4B5563; } 
-
-        .content-section::-webkit-scrollbar-thumb:hover { background: #6B7280; } 
-
-
-
-        .swiper-slide {
-
-            background: rgba(31, 41, 55, 0.9); 
-
-            border: 1px solid rgba(75, 85, 99, 0.8); 
-
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-
-            color: #D1D5DB; 
-
-        }
-
-        .swiper-slide:hover { box-shadow: 0 12px 24px rgba(0,0,0,0.35); }
-
-        .swiper-slide img.venture-image { border: 2px solid #4B5563; }
-
-        .swiper-slide h3 { color: #E5E7EB; }
-
-        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { color: #60A5FA; } 
-
-        .swiper-slide p { color: #9CA3AF; }
-
-        .swiper-slide a.cta-link, .swiper-slide button.cta-link {
-
-            background-color: #3B82F6; color: white;
-
-        }
-
-        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { background-color: #2563EB; } 
-
-        
-
-        .swiper-button-next, .swiper-button-prev {
-
-            color: #E0E0E0 !important; background-color: rgba(0, 0, 0, 0.55);
-
-        }
-
-        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(0, 0, 0, 0.75) !important; }
-
-        .swiper-pagination-bullet-active { background-color: #60A5FA !important; }
-
-        .swiper-pagination-bullet { background-color: #4B5563; }
-
-
-
-        #books .swiper-slide { background-color: rgba(41, 51, 65, 0.9); } 
-
-        #books .swiper-slide img.book-cover-image { box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
-
-        #books .swiper-slide h3 { color: #E5E7EB; }
-
-        #books .swiper-slide p { color: #9CA3AF; }
-
-        .recommended-reads { border-top: 1px solid #4B5563; }
-
-        .recommended-reads h3 { color: #E5E7EB; }
-
-        .recommended-reads li { color: #D1D5DB; }
-
-        .recommended-reads li strong { color: #E5E7EB; }
-
-
-
-        .section-footer { color: rgba(156, 163, 175, 0.7); } 
-
-        .content-section h2 { color: #FFFFFF; border-bottom: 1px solid #4B5563; }
-
-        .content-section h2 .fa-solid, .content-section h2 .fa-brands { color: #60A5FA; }
-
-        .content-section h3 { color: #E5E7EB; }
-
-        .content-section h3 .fa-solid, .content-section h3 .fa-brands { color: #93C5FD; }
-
-        .content-section h4 { color: #9CA3AF; }
-
-        .content-section p, .content-section li { color: #D1D5DB; }
-
-        .content-section ul li::before { color: #60A5FA; }
-
-        .content-section .publication-list li::before { color: #60A5FA; }
-
-        .content-section a { color: #60A5FA; border-bottom: 1px dotted #60A5FA; }
-
-        .content-section a:hover { color: #93C5FD; border-bottom-color: #93C5FD; }
-
-        .profile-quote {
-
-            color: #A5B4FC; 
-
-            border-left: 3px solid #60A5FA; 
-
-            background-color: rgba(31, 41, 55, 0.7); 
-
-        }
-
-        .interactive-timeline::before { background-color: #4B5563; }
-
-        .timeline-dot { background-color: #60A5FA; border: 3px solid #111827; }
-
-        .timeline-dot .fa-solid { color: #111827; }
-
-        .timeline-year { color: #93C5FD; }
-
-        .timeline-title { color: #E5E7EB; }
-
-        .timeline-details { color: #D1D5DB; border-left: 2px solid #4B5563; }
-
-
-
-        .timeline-item-content h4 { color: #93C5FD; }
-
-        .timeline-item-content h4 .fa-solid { color: #60A5FA; }
-
-        .timeline-item-content h5 { color: #E5E7EB; }
-
-        .timeline-item-content p, .timeline-item-content ul { color: #D1D5DB; }
-
-        .hero-roles { color: #9CA3AF; }
-
-        #connect a.cta-link { background-color: #10B981; } 
-
-        #connect a.cta-link:hover { background-color: #059669; }
-
-      /* Styles for new Nav elements in salatiso.com */
-nav .nav-links-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-end; }
-nav .nav-links { display: flex; flex-wrap: nowrap; /* Prevent nav buttons from wrapping too early */ overflow-x: auto; /* Allow horizontal scroll if too many items */ }
-nav .search-and-lang { display: flex; align-items: center; margin-left: 15px; flex-shrink: 0; /* Prevent shrinking */ }
-nav .search-bar-container { position: relative; margin-right: 10px;}
-nav .search-input {
-    padding: 6px 10px 6px 30px; 
-    border-radius: 15px; border: 1px solid #4B5563;
-    background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
-    font-size: 0.8rem; width: 150px; transition: width 0.3s ease;
-}
-nav .search-input:focus { width: 220px; }
-nav .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9CA3AF; font-size: 0.8rem;}
-nav .language-selector-main select {
-    padding: 6px 8px; border-radius: 5px; border: 1px solid #4B5563;
-    background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
-    font-size: 0.8rem; -webkit-appearance: none; -moz-appearance: none; appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239CA3AF'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1.2em;
-    padding-right: 2rem; 
-}
-nav .language-selector-main select option { background-color: #1F2937; color: #E0E0E0; }
-
-/* Login Page Specific Styles */
-#login .login-outer-container { width: 100%; display: flex; flex-direction:column; justify-content: center; align-items: center; min-height: 70vh; }
-#login .login-container {
-    display: flex; flex-direction: column; gap: 1.5rem; /* Reduced gap */
-    align-items: center; width: 100%; max-width: 900px;
-}
-#login .login-card {
-    background-color: rgba(31, 41, 55, 0.95); 
-    padding: 1.5rem 2rem; /* Reduced padding */
-    border-radius: 0.75rem;
-    border: 1px solid rgba(75, 85, 99, 0.8);
-    width: 100%; max-width: 380px; /* Slightly reduced card width */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
-#login .login-card h3 { color: #FFFFFF; font-size: 1.3rem; text-align: center; margin-bottom: 1rem; }
-#login .login-card h3 .fa-solid { margin-right: 0.6rem; color: #60A5FA; font-size: 1.2em; }
-#login .form-group { margin-bottom: 1rem; }
-#login .form-group label { display: block; color: #9CA3AF; font-size: 0.8rem; margin-bottom: 0.4rem; }
-#login .form-group input {
-    width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.375rem;
-    border: 1px solid #4B5563; background-color: #1F2937; 
-    color: #E0E0E0; font-size: 0.9rem;
-}
-#login .form-group input:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-#login .login-button {
-    width: 100%; padding: 0.75rem; border-radius: 0.375rem;
-    background-color: #3B82F6; color: white; font-size: 0.95rem;
-    font-weight: 600; border: none; cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-#login .login-button:hover { background-color: #2563EB; }
-#login .login-button .fa-solid { margin-right: 0.5rem; }
-@media (min-width: 1024px) { 
-    #login .login-container { flex-direction: row; align-items: flex-start; justify-content: center; }
-}
-
-/* FamilyValue Tool Specific Styles (Scoped within #familyValueTool) */
-#familyValueTool {
-    /* FV --light */ background-color: #F7FAFC; 
-    /* FV --dark */ color: #2D3748; 
-    padding: 0; max-height: calc(100vh - 80px); overflow: hidden;
-    font-family: 'Poppins', sans-serif; /* Override Inter for this section */
-}
-#familyValueTool h1, #familyValueTool h2, #familyValueTool h3, #familyValueTool h4, #familyValueTool h5 {
-    font-family: 'Ubuntu', sans-serif; color: #2D3748 !important;
-}
-#familyValueTool .fv-hero-gradient { background: linear-gradient(135deg, #8C52FF 0%, #FF5C8D 100%); }
-#familyValueTool .fv-btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
-#familyValueTool .fv-btn-primary { background-color: #8C52FF; color: white; }
-#familyValueTool .fv-btn-primary:hover { background-color: #B28DFF; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-#familyValueTool .fv-btn-secondary { background-color: #FF914D; color: white; }
-#familyValueTool .fv-btn-secondary:hover { background-color: #FFB07D; }
-#familyValueTool .fv-btn-outline-primary { border: 2px solid #8C52FF; color: #8C52FF; }
-#familyValueTool .fv-btn-outline-primary:hover { background-color: #8C52FF; color: white; }
-#familyValueTool .fv-main-container { display: flex; width: 500%; height: calc(100vh - 80px); transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-#familyValueTool .fv-main-section { width: 100vw; height: 100%; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-#familyValueTool .fv-main-section::-webkit-scrollbar { display: none; }
-#familyValueTool .fv-main-section { -ms-overflow-style: none; scrollbar-width: none; }
-#familyValueTool .fv-tile { background-color: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 8px 16px rgba(45, 55, 72, 0.1); transition: all 0.3s ease; cursor: pointer; text-align: center; }
-#familyValueTool .fv-tile:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(45, 55, 72, 0.15); }
-#familyValueTool .fv-tile i { font-size: 2.5rem; margin-bottom: 1rem; color: #8C52FF; /* FV Primary for icons */}
-#familyValueTool .fv-modal { display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
-#familyValueTool .fv-modal-content { background-color: #fff; margin: auto; padding: 2rem; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-#familyValueTool .fv-modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; font-weight: bold; color: #aaa; cursor: pointer; }
-#familyValueTool .fv-modal-close:hover { color: #2D3748; }
-#familyValueTool .fv-wizard-step { display: none; }
-#familyValueTool .fv-wizard-step.active { display: block; }
-#familyValueTool .fv-family-tree ul { padding-top: 20px; position: relative; transition: all 0.5s; }
-#familyValueTool .fv-family-tree li { float: left; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; transition: all 0.5s; }
-#familyValueTool .fv-family-tree li::before, #familyValueTool .fv-family-tree li::after{ content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid #B28DFF; width: 50%; height: 20px; }
-#familyValueTool .fv-family-tree li::after{ right: auto; left: 50%; border-left: 2px solid #B28DFF; }
-#familyValueTool .fv-family-tree li:only-child::after, #familyValueTool .fv-family-tree li:only-child::before { display: none; }
-#familyValueTool .fv-family-tree li:only-child{ padding-top: 0;}
-#familyValueTool .fv-family-tree li:first-child::before, #familyValueTool .fv-family-tree li:last-child::after{ border: 0 none; }
-#familyValueTool .fv-family-tree li:last-child::before{ border-right: 2px solid #B28DFF; border-radius: 0 5px 0 0; }
-#familyValueTool .fv-family-tree li:first-child::after{ border-radius: 5px 0 0 0; }
-#familyValueTool .fv-family-tree ul ul::before{ content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #B28DFF; width: 0; height: 20px; }
-#familyValueTool .fv-family-tree li div{ border: 1px solid #B28DFF; padding: 10px; text-decoration: none; color: #2D3748; background-color: rgba(255,255,255,0.8); font-family: 'Poppins', sans-serif; font-size: 0.9em; display: inline-block; border-radius: 8px; transition: all 0.3s; min-width: 120px; }
-#familyValueTool .fv-family-tree li div:hover, #familyValueTool .fv-family-tree li div:hover+ul li div { background: #B28DFF; color: #fff; border: 1px solid #8C52FF; transform: scale(1.05); }
-#familyValueTool .fv-family-tree li div .role { font-size: 0.7em; color: #FF914D; display: block; margin-top: 4px; }
-#familyValueTool .fv-family-tree li div .relation-degree { font-size: 0.6em; color: #45C4B0; display: block; margin-top: 2px; }
-#familyValueTool .fv-animate-float { animation: fv-float 6s ease-in-out infinite; }
-@keyframes fv-float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-#familyValueTool .fv-nav { display: none !important; } /* This is FamilyValue's own nav, which we hide */
-#familyValueTool .fv-language-selector select { /* Style for FV's internal lang selector if it had one */
-    background-color: rgba(140, 82, 255, 0.2); border: none; color: #2D3748; 
-    padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; 
-}
-#familyValueTool .fv-language-selector select option { background-color: #8C52FF; color: white; }
-#familyValueTool .fv-section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #2D3748; }
-#familyValueTool .fv-section-subtitle { font-size: 1.2rem; color: #555; margin-bottom: 3rem; max-width: 700px; text-align:center; }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salatiso Lonwabo Mdeni - Father, OHS & Risk Expert, Author</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.15.1/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.0.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <style>
+        /* Base Styles - Consistent across color variations */
+        body, html {
+            font-family: 'Inter', sans-serif;
+            height: 100%; margin: 0; overflow: hidden; 
+        }
+        #video-background {
+            position: fixed; top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover; transition: 1s opacity;
+        }
+        .content-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            padding: 20px; box-sizing: border-box; z-index: 10;
+        }
+        .content-section {
+            padding: 1.5rem; border-radius: 0.75rem; 
+            width: 90%; max-width: 1000px; max-height: 88vh; 
+            overflow-y: auto; display: none; 
+            animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+        .content-section.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 12px 25px; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        nav a.nav-brand { font-size: 1.4rem; font-weight: 700; }
+        nav .nav-links button {
+            background: none; border: none; padding: 7px 12px; margin-left: 3px; 
+            cursor: pointer; font-size: 0.9rem; 
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        nav .nav-links button .fa-solid, nav .nav-links button .fa-brands { margin-right: 6px; }
+        .content-section::-webkit-scrollbar { width: 10px; }
+        .content-section::-webkit-scrollbar-track { border-radius: 10px; background: rgba(31, 41, 55, 0.6); }
+        .content-section::-webkit-scrollbar-thumb { border-radius: 10px; background: #4B5563; } 
+        .content-section::-webkit-scrollbar-thumb:hover { background: #6B7280; } 
+        .swiper-container { width: 100%; height: auto; padding-top: 10px; padding-bottom: 50px; position: relative; }
+        .swiper-slide {
+            text-align: center; font-size: 1rem; 
+            border-radius: 0.5rem; padding: 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between; 
+            min-height: 430px; /* Consistent height for venture slides */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
+        }
+        .swiper-slide:hover { transform: translateY(-6px); }
+        .swiper-slide img.venture-image { 
+            width: 100%; max-width: 260px; height: 160px; 
+            object-fit: cover; border-radius: 0.375rem; margin-bottom: 15px;
+        }
+        .swiper-slide h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { margin-right: 8px; }
+        .swiper-slide p { font-size: 0.875rem; line-height: 1.5; flex-grow: 1; margin-bottom: 1rem; }
+        .swiper-slide a.cta-link, .swiper-slide button.cta-link {
+            display: inline-block; margin-top: auto; padding: 0.6rem 1.2rem; 
+            border-radius: 0.375rem; text-decoration: none;
+            font-size: 0.875rem; font-weight: 500; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none; cursor: pointer; width: 80%; /* Ensure buttons are of similar width */
+        }
+        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { transform: scale(1.05); }
+        .swiper-button-next, .swiper-button-prev {
+            border-radius: 50%; width: 40px !important; height: 40px !important; 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            --swiper-navigation-size: 20px; 
+            top: 50%; margin-top: -20px; z-index: 10; 
+        }
+        .swiper-button-prev { left: 10px; } 
+        .swiper-button-next { right: 10px; } 
+        .swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.1); }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: var(--swiper-navigation-size) !important; }
+        #books .swiper-slide { min-height: 370px; justify-content: flex-start; } /* Adjusted height for books */
+        #books .swiper-slide img.book-cover-image {
+            max-width: 170px; height: 250px; object-fit: cover; 
+            margin-bottom: 12px; 
+        }
+        #books .swiper-slide h3 { font-size: 1rem; margin-bottom: 6px; }
+        #books .swiper-slide p { font-size: 0.8rem; margin-bottom: 12px; flex-grow: 0; }
+        .recommended-reads { margin-top: 2rem; padding-top: 1.5rem; }
+        .recommended-reads h3 { text-align: center; margin-bottom: 1rem; }
+        .recommended-reads li { margin-bottom: 0.5rem; text-align: center; font-size: 0.95rem;}
+        .section-footer {
+            position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+            font-size: 0.8rem; z-index: 20;
+        }
+        .content-section h2 {
+            font-size: 1.75rem; font-weight: 700; text-align: center;
+            margin-bottom: 1.5rem; padding-bottom: 0.75rem; 
+        }
+        .content-section h2 .fa-solid, .content-section h2 .fa-brands { margin-left: 10px; }
+        .content-section h3 {
+            font-size: 1.25rem; font-weight: 600; 
+            margin-top: 1.25rem; margin-bottom: 0.75rem; 
+        }
+        .content-section h3 .fa-solid, .content-section h3 .fa-brands { margin-right: 8px; }
+        .content-section h4 {
+            font-size: 1.1rem; font-weight: 600; 
+            margin-top: 1rem; margin-bottom: 0.25rem; 
+        }
+        .content-section p, .content-section li {
+            font-size: 0.95rem; line-height: 1.65; margin-bottom: 0.65rem; 
+        }
+        .content-section ul { list-style-type: none; padding-left: 0; }
+        .content-section ul li::before {
+            font-family: "Font Awesome 5 Free"; font-weight: 900;
+            margin-right: 0.6em;
+        }
+        .content-section .publication-list li { margin-bottom: 0.5rem; }
+        .content-section .publication-list li a { display: block; }
+        .content-section .publication-list li::before { content: "\f15c"; } 
+        .content-section ul:not(.publication-list):not(.recommended-reads-list) li::before { content: "\f105"; } 
+        .content-section .recommended-reads-list li::before { content: "\f02d"; /* book icon */ }
+        .content-section a { text-decoration: none; transition: color 0.3s ease, border-bottom-color 0.3s ease; }
+        .profile-quote {
+            font-style: italic; text-align: center;
+            margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.125rem; 
+            padding: 0.75rem 1.25rem; border-radius: 0.375rem; 
+        }
+        /* Interactive Timeline Styles */
+        .journey-intro { margin-bottom: 2rem; }
+        .interactive-timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .interactive-timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px; /* Adjust to center line with dots */
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #4B5563; /* Timeline color */
+            border-radius: 2px;
+        }
+        .timeline-event {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 35px; /* Space for dot and year */
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px; 
+            width: 22px;
+            height: 22px;
+            background-color: #60A5FA; /* Dot color */
+            border: 3px solid #1F2937; /* Content section bg for contrast */
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-dot .fa-solid { font-size: 10px; color: #111827; }
+        .timeline-year {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #93C5FD; /* Year color */
+            margin-bottom: 0.25rem;
+        }
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #E5E7EB; /* Title color */
+            margin-bottom: 0.5rem;
+            cursor: pointer; /* Indicate it's clickable */
+        }
+        .timeline-title .fa-chevron-down {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+        }
+        .timeline-title.expanded .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .timeline-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-top 0.5s ease-out;
+            opacity: 0;
+            font-size: 0.85rem;
+            color: #D1D5DB;
+            padding-left: 5px; /* Indent details slightly */
+            border-left: 2px solid #4B5563;
+            margin-left: -3px; /* Align border with main timeline line */
+            margin-top: 0;
+        }
+        .timeline-details.expanded {
+            max-height: 500px; /* Adjust as needed for content */
+            opacity: 1;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+        }
+        .timeline-details p, .timeline-details ul {
+            margin-bottom: 0.5rem;
+        }
+        .hero-roles { margin-top: 0.25rem; font-size: 1rem; }
+        /* COLOR SCHEME 1.1: Professional & Tech-Focused (Dark Blues & Grays) */
+        body { color: #E0E0E0; }
+        #video-background { filter: brightness(0.35); }
+        .content-section {
+            background-color: rgba(17, 24, 39, 0.92); 
+            border: 1px solid rgba(55, 65, 81, 0.7); 
+            color: #D1D5DB; 
+        }
+        nav {
+            background-color: rgba(17, 24, 39, 0.7); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(55, 65, 81, 0.6); 
+        }
+        nav a.nav-brand { color: #FFFFFF; }
+        nav .nav-links button { color: #9CA3AF; }
+        nav .nav-links button:hover, nav .nav-links button.active-nav {
+            color: #FFFFFF; text-shadow: 0 0 8px rgba(129, 140, 248, 0.7); 
+        }
+        .swiper-slide {
+            background: rgba(31, 41, 55, 0.9); 
+            border: 1px solid rgba(75, 85, 99, 0.8); 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            color: #D1D5DB; 
+        }
+        .swiper-slide:hover { box-shadow: 0 12px 24px rgba(0,0,0,0.35); }
+        .swiper-slide img.venture-image { border: 2px solid #4B5563; }
+        .swiper-slide h3 { color: #E5E7EB; }
+        .swiper-slide h3 .fa-solid, .swiper-slide h3 .fa-brands { color: #60A5FA; } 
+        .swiper-slide p { color: #9CA3AF; }
+        .swiper-slide a.cta-link, .swiper-slide button.cta-link {
+            background-color: #3B82F6; color: white;
+        }
+        .swiper-slide a.cta-link:hover, .swiper-slide button.cta-link:hover { background-color: #2563EB; } 
+        .swiper-button-next, .swiper-button-prev {
+            color: #E0E0E0 !important; background-color: rgba(0, 0, 0, 0.55);
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(0, 0, 0, 0.75) !important; }
+        .swiper-pagination-bullet-active { background-color: #60A5FA !important; }
+        .swiper-pagination-bullet { background-color: #4B5563; }
+        #books .swiper-slide { background-color: rgba(41, 51, 65, 0.9); } 
+        #books .swiper-slide img.book-cover-image { box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+        #books .swiper-slide h3 { color: #E5E7EB; }
+        #books .swiper-slide p { color: #9CA3AF; }
+        .recommended-reads { border-top: 1px solid #4B5563; }
+        .recommended-reads h3 { color: #E5E7EB; }
+        .recommended-reads li { color: #D1D5DB; }
+        .recommended-reads li strong { color: #E5E7EB; }
+        .section-footer { color: rgba(156, 163, 175, 0.7); } 
+        .content-section h2 { color: #FFFFFF; border-bottom: 1px solid #4B5563; }
+        .content-section h2 .fa-solid, .content-section h2 .fa-brands { color: #60A5FA; }
+        .content-section h3 { color: #E5E7EB; }
+        .content-section h3 .fa-solid, .content-section h3 .fa-brands { color: #93C5FD; }
+        .content-section h4 { color: #9CA3AF; }
+        .content-section p, .content-section li { color: #D1D5DB; }
+        .content-section ul li::before { color: #60A5FA; }
+        .content-section .publication-list li::before { color: #60A5FA; }
+        .content-section a { color: #60A5FA; border-bottom: 1px dotted #60A5FA; }
+        .content-section a:hover { color: #93C5FD; border-bottom-color: #93C5FD; }
+        .profile-quote {
+            color: #A5B4FC; 
+            border-left: 3px solid #60A5FA; 
+            background-color: rgba(31, 41, 55, 0.7); 
+        }
+        .interactive-timeline::before { background-color: #4B5563; }
+        .timeline-dot { background-color: #60A5FA; border: 3px solid #111827; }
+        .timeline-dot .fa-solid { color: #111827; }
+        .timeline-year { color: #93C5FD; }
+        .timeline-title { color: #E5E7EB; }
+        .timeline-details { color: #D1D5DB; border-left: 2px solid #4B5563; }
+        .timeline-item-content h4 { color: #93C5FD; }
+        .timeline-item-content h4 .fa-solid { color: #60A5FA; }
+        .timeline-item-content h5 { color: #E5E7EB; }
+        .timeline-item-content p, .timeline-item-content ul { color: #D1D5DB; }
+        .hero-roles { color: #9CA3AF; }
+        #connect a.cta-link { background-color: #10B981; } 
+        #connect a.cta-link:hover { background-color: #059669; }
+        nav .nav-links-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-end; }
+        nav .nav-links { display: flex; flex-wrap: nowrap; overflow-x: auto; }
+        nav .search-and-lang { display: flex; align-items: center; margin-left: 15px; flex-shrink: 0; }
+        nav .search-bar-container { position: relative; margin-right: 10px;}
+        nav .search-input {
+            padding: 6px 10px 6px 30px; 
+            border-radius: 15px; border: 1px solid #4B5563;
+            background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
+            font-size: 0.8rem; width: 150px; transition: width 0.3s ease;
+        }
+        nav .search-input:focus { width: 220px; }
+        nav .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9CA3AF; font-size: 0.8rem;}
+        nav .language-selector-main select {
+            padding: 6px 8px; border-radius: 5px; border: 1px solid #4B5563;
+            background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
+            font-size: 0.8rem; -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239CA3AF'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1.2em;
+            padding-right: 2rem; 
+        }
+        nav .language-selector-main select option { background-color: #1F2937; color: #E0E0E0; }
+        /* Login Page Specific Styles */
+        #login .login-outer-container { width: 100%; display: flex; flex-direction:column; justify-content: center; align-items: center; min-height: 70vh; }
+        #login .login-container {
+            display: flex; flex-direction: column; gap: 1.5rem; align-items: center; width: 100%; max-width: 900px;
+        }
+        #login .login-card {
+            background-color: rgba(31, 41, 55, 0.95); 
+            padding: 1.5rem 2rem; border-radius: 0.75rem;
+            border: 1px solid rgba(75, 85, 99, 0.8);
+            width: 100%; max-width: 380px; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        #login .login-card h3 { color: #FFFFFF; font-size: 1.3rem; text-align: center; margin-bottom: 1rem; }
+        #login .login-card h3 .fa-solid { margin-right: 0.6rem; color: #60A5FA; font-size: 1.2em; }
+        #login .form-group { margin-bottom: 1rem; }
+        #login .form-group label { display: block; color: #9CA3AF; font-size: 0.8rem; margin-bottom: 0.4rem; }
+        #login .form-group input {
+            width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.375rem;
+            border: 1px solid #4B5563; background-color: #1F2937; 
+            color: #E0E0E0; font-size: 0.9rem;
+        }
+        #login .form-group input:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        #login .login-button {
+            width: 100%; padding: 0.75rem; border-radius: 0.375rem;
+            background-color: #3B82F6; color: white; font-size: 0.95rem;
+            font-weight: 600; border: none; cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #login .login-button:hover, #login .login-button:focus { background-color: #2563EB; outline: 2px solid #60A5FA; outline-offset: 2px; }
+        #login .login-button .fa-solid { margin-right: 0.5rem; }
+        @media (min-width: 1024px) { 
+            #login .login-container { flex-direction: row; align-items: flex-start; justify-content: center; }
+        }
+        /* FamilyValue Tool Specific Styles (Scoped within #familyValueTool) */
+        #familyValueTool {
+            background-color: #F7FAFC; 
+            color: #2D3748; 
+            padding: 0; max-height: calc(100vh - 80px); overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        #familyValueTool h1, #familyValueTool h2, #familyValueTool h3, #familyValueTool h4, #familyValueTool h5 {
+            font-family: 'Ubuntu', sans-serif; color: #2D3748 !important;
+        }
+        #familyValueTool .fv-hero-gradient { background: linear-gradient(135deg, #8C52FF 0%, #FF5C8D 100%); }
+        #familyValueTool .fv-btn { 
+            padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; 
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+            display: inline-flex; align-items: center; justify-content: center; 
+        }
+        #familyValueTool .fv-btn:focus { outline: 2px solid #8C52FF; outline-offset: 2px; }
+        #familyValueTool .fv-btn-primary { background-color: #8C52FF; color: white; }
+        #familyValueTool .fv-btn-primary:hover, #familyValueTool .fv-btn-primary:focus { 
+            background-color: #B28DFF; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        }
+        #familyValueTool .fv-btn-secondary { background-color: #FF914D; color: white; }
+        #familyValueTool .fv-btn-secondary:hover, #familyValueTool .fv-btn-secondary:focus { background-color: #FFB07D; }
+        #familyValueTool .fv-btn-outline-primary { border: 2px solid #8C52FF; color: #8C52FF; }
+        #familyValueTool .fv-btn-outline-primary:hover, #familyValueTool .fv-btn-outline-primary:focus { 
+            background-color: #8C52FF; color: white; 
+        }
+        #familyValueTool .fv-main-container { 
+            display: flex; height: calc(100vh - 80px); 
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+        }
+        #familyValueTool .fv-main-section { 
+            width: 100vw; height: 100%; overflow-y: auto; padding: 2rem; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+        }
+        #familyValueTool .fv-main-section::-webkit-scrollbar { width: 6px; }
+        #familyValueTool .fv-main-section::-webkit-scrollbar-track { background: #E2E8F0; border-radius: 3px; }
+        #familyValueTool .fv-main-section::-webkit-scrollbar-thumb { background: #B28DFF; border-radius: 3px; }
+        #familyValueTool .fv-main-section::-webkit-scrollbar-thumb:hover { background: #8C52FF; }
+        #familyValueTool .fv-tile { 
+            background-color: white; border-radius: 12px; padding: 1.5rem; 
+            box-shadow: 0 8px 16px rgba(45, 55, 72, 0.1); 
+            transition: all 0.3s ease; cursor: pointer; text-align: center; 
+        }
+        #familyValueTool .fv-tile:hover, #familyValueTool .fv-tile:focus { 
+            transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(45, 55, 72, 0.15); 
+        }
+        #familyValueTool .fv-tile:focus { outline: 2px solid #8C52FF; outline-offset: 2px; }
+        #familyValueTool .fv-tile i { font-size: 2.5rem; margin-bottom: 1rem; color: #8C52FF; }
+        #familyValueTool .fv-modal { 
+            display: none; position: fixed; z-index: 1050; left: 0; top: 0; 
+            width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); 
+            align-items: center; justify-content: center; 
+        }
+        #familyValueTool .fv-modal-content { 
+            background-color: #fff; margin: auto; padding: 2rem; border-radius: 12px; 
+            width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; 
+            position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+        }
+        #familyValueTool .fv-modal-content::-webkit-scrollbar { width: 6px; }
+        #familyValueTool .fv-modal-content::-webkit-scrollbar-track { background: #E2E8F0; border-radius: 3px; }
+        #familyValueTool .fv-modal-content::-webkit-scrollbar-thumb { background: #B28DFF; border-radius: 3px; }
+        #familyValueTool .fv-modal-content::-webkit-scrollbar-thumb:hover { background: #8C52FF; }
+        #familyValueTool .fv-modal-close { 
+            position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; 
+            font-weight: bold; color: #aaa; cursor: pointer; 
+        }
+        #familyValueTool .fv-modal-close:hover, #familyValueTool .fv-modal-close:focus { color: #2D3748; }
+        #familyValueTool .fv-wizard-step { display: none; }
+        #familyValueTool .fv-wizard-step.active { display: block; }
+        #familyValueTool .fv-family-tree ul { 
+            padding-top: 20px; position: relative; transition: all 0.5s; 
+        }
+        #familyValueTool .fv-family-tree li { 
+            float: left; text-align: center; list-style-type: none; 
+            position: relative; padding: 20px 5px 0 5px; transition: all 0.5s; 
+        }
+        #familyValueTool .fv-family-tree li::before, #familyValueTool .fv-family-tree li::after { 
+            content: ''; position: absolute; top: 0; right: 50%; 
+            border-top: 2px solid #B28DFF; width: 50%; height: 20px; 
+        }
+        #familyValueTool .fv-family-tree li::after { 
+            right: auto; left: 50%; border-left: 2px solid #B28DFF; 
+        }
+        #familyValueTool .fv-family-tree li:only-child::after, #familyValueTool .fv-family-tree li:only-child::before { display: none; }
+        #familyValueTool .fv-family-tree li:only-child { padding-top: 0;}
+        #familyValueTool .fv-family-tree li:first-child::before, #familyValueTool .fv-family-tree li:last-child::after { border: 0 none; }
+        #familyValueTool .fv-family-tree li:last-child::before { 
+            border-right: 2px solid #B28DFF; border-radius: 0 5px 0 0; 
+        }
+        #familyValueTool .fv-family-tree li:first-child::after { border-radius: 5px 0 0 0; }
+        #familyValueTool .fv-family-tree ul ul::before { 
+            content: ''; position: absolute; top: 0; left: 50%; 
+            border-left: 2px solid #B28DFF; width: 0; height: 20px; 
+        }
+        #familyValueTool .fv-family-tree li div { 
+            border: 1px solid #B28DFF; padding: 10px; text-decoration: none; 
+            color: #2D3748; background-color: rgba(255,255,255,0.8); 
+            font-family: 'Poppins', sans-serif; font-size: 0.9em; 
+            display: inline-block; border-radius: 8px; transition: all 0.3s; 
+            min-width: 120px; 
+        }
+        #familyValueTool .fv-family-tree li div:hover, 
+        #familyValueTool .fv-family-tree li div:focus, 
+        #familyValueTool .fv-family-tree li div:hover+ul li div { 
+            background: #B28DFF; color: #fff; border: 1px solid #8C52FF; 
+            transform: scale(1.05); 
+        }
+        #familyValueTool .fv-family-tree li div:focus { outline: 2px solid #8C52FF; outline-offset: 2px; }
+        #familyValueTool .fv-family-tree li div .role { 
+            font-size: 0.7em; color: #FF914D; display: block; margin-top: 4px; 
+        }
+        #familyValueTool .fv-family-tree li div .relation-degree { 
+            font-size: 0.6em; color: #45C4B0; display: block; margin-top: 2px; 
+        }
+        #familyValueTool .fv-animate-float { animation: fv-float 6s ease-in-out infinite; }
+        @keyframes fv-float { 
+            0% { transform: translateY(0px); } 
+            50% { transform: translateY(-15px); } 
+            100% { transform: translateY(0px); } 
+        }
+        #familyValueTool .fv-nav { display: none !important; }
+        #familyValueTool .fv-language-selector select { 
+            background-color: rgba(140, 82, 255, 0.2); border: none; color: #2D3748; 
+            padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; 
+        }
+        #familyValueTool .fv-language-selector select option { background-color: #8C52FF; color: white; }
+        #familyValueTool .fv-section-title { 
+            font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #2D3748; 
+        }
+        #familyValueTool .fv-section-subtitle { 
+            font-size: 1.2rem; color: #555; margin-bottom: 3rem; max-width: 700px; text-align: center; 
+        }
+    </style>
 </head>
-
 <body>
+    <video autoplay muted loop id="video-background">
+        <source src="./assets/videos/salatiso_background_loop.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
 
-
-
-    <video autoplay muted loop id="video-background">
-
-        <source src="./assets/videos/salatiso_background_loop.mp4" type="video/mp4"> 
-
-        Your browser does not support the video tag.
-
-    </video>
-
-
-
-    <nav>
-    <a href="#" class="nav-brand" id="brand-name" data-translate-key="salatiso.brand">Salatiso Lonwabo Mdeni</a>
-    <div class="nav-links-container">
-        <div class="nav-links">
-            <button data-section="hero-content" class="active-nav" data-translate-key="salatiso.nav.home"><i class="fa-solid fa-house"></i>Home</button>
-            <button data-section="about" data-translate-key="salatiso.nav.journey"><i class="fa-solid fa-user-tie"></i>My Journey</button>
-            <button data-section="ventures" data-translate-key="salatiso.nav.ventures"><i class="fa-solid fa-lightbulb"></i>Ventures</button>
-            <button data-section="books" data-translate-key="salatiso.nav.books"><i class="fa-solid fa-book-open"></i>My Books</button> 
-            <button data-section="familyValueTool" data-translate-key="salatiso.nav.familyValue"><i class="fa-solid fa-heart-circle-check"></i>FamilyValue</button> {/* New Button */}
-            <button data-section="connect" data-translate-key="salatiso.nav.connect"><i class="fa-solid fa-envelope"></i>Connect</button>
-            <button data-section="login" id="mainLoginNavButton" data-translate-key="salatiso.nav.login"><i class="fa-solid fa-right-to-bracket"></i>Login</button> {/* Updated/Ensured */}
-        </div>
-        <div class="search-and-lang ml-auto"> {/* Ensure ml-auto to push to right */}
-            <div class="search-bar-container">
-                <i class="fa-solid fa-search search-icon"></i>
-                <input type="text" id="siteSearchInput" class="search-input" placeholder="Search site..." data-translate-key="[placeholder]salatiso.search.placeholder">
+    <nav>
+        <a href="#" class="nav-brand" id="brand-name" data-translate-key="salatiso.brand">Salatiso Lonwabo Mdeni</a>
+        <div class="nav-links-container">
+            <div class="nav-links">
+                <button data-section="hero-content" class="active-nav" data-translate-key="salatiso.nav.home"><i class="fa-solid fa-house"></i>Home</button>
+                <button data-section="about" data-translate-key="salatiso.nav.journey"><i class="fa-solid fa-user-tie"></i>My Journey</button>
+                <button data-section="ventures" data-translate-key="salatiso.nav.ventures"><i class="fa-solid fa-lightbulb"></i>Ventures</button>
+                <button data-section="books" data-translate-key="salatiso.nav.books"><i class="fa-solid fa-book-open"></i>My Books</button> 
+                <button data-section="familyValueTool" data-translate-key="salatiso.nav.familyValue"><i class="fa-solid fa-heart-circle-check"></i>FamilyValue</button>
+                <button data-section="connect" data-translate-key="salatiso.nav.connect"><i class="fa-solid fa-envelope"></i>Connect</button>
+                <button data-section="login" id="mainLoginNavButton" data-translate-key="salatiso.nav.login"><i class="fa-solid fa-right-to-bracket"></i>Login</button>
             </div>
-            <div class="language-selector-main ml-2"> {/* Added ml-2 for spacing */}
-                <select id="globalLanguageSwitcher" aria-label="Select language" class="text-xs"> {/* Made text smaller */}
-                    <option value="en">EN</option>
-                    <option value="xh" data-translate-key="salatiso.lang.xh">XH</option>
-                    <option value="zu" data-translate-key="salatiso.lang.zu">ZU</option>
-                    <option value="af" data-translate-key="salatiso.lang.af">AF</option>
-                    <option value="st" data-translate-key="salatiso.lang.st">ST</option>
-                    <option value="tn" data-translate-key="salatiso.lang.tn">TN</option>
-                    <option value="nso" data-translate-key="salatiso.lang.nso">NSO</option>
-                    <option value="ts" data-translate-key="salatiso.lang.ts">TS</option>
-                    <option value="ss" data-translate-key="salatiso.lang.ss">SS</option>
-                    <option value="ve" data-translate-key="salatiso.lang.ve">VE</option>
-                    <option value="nr" data-translate-key="salatiso.lang.nr">NR</option>
-                    <option value="sw" data-translate-key="salatiso.lang.sw">SW</option>
-                    <option value="zh" data-translate-key="salatiso.lang.zh">ZH</option>
-                    <option value="ja" data-translate-key="salatiso.lang.ja">JA</option>
-                    <option value="sn" data-translate-key="salatiso.lang.sn">SN</option>
-                    <option value="fr" data-translate-key="salatiso.lang.fr">FR</option>
-                    <option value="pt" data-translate-key="salatiso.lang.pt">PT</option>
-                </select>
+            <div class="search-and-lang ml-auto">
+                <div class="search-bar-container">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="siteSearchInput" class="search-input" placeholder="Search site..." data-translate-key="[placeholder]salatiso.search.placeholder">
+                </div>
+                <div class="language-selector-main ml-2">
+                    <select id="globalLanguageSwitcher" aria-label="Select language" class="text-xs">
+                        <option value="en">EN</option>
+                        <option value="xh" data-translate-key="salatiso.lang.xh">XH</option>
+                        <option value="zu" data-translate-key="salatiso.lang.zu">ZU</option>
+                        <option value="af" data-translate-key="salatiso.lang.af">AF</option>
+                        <option value="st" data-translate-key="salatiso.lang.st">ST</option>
+                        <option value="tn" data-translate-key="salatiso.lang.tn">TN</option>
+                        <option value="nso" data-translate-key="salatiso.lang.nso">NSO</option>
+                        <option value="ts" data-translate-key="salatiso.lang.ts">TS</option>
+                        <option value="ss" data-translate-key="salatiso.lang.ss">SS</option>
+                        <option value="ve" data-translate-key="salatiso.lang.ve">VE</option>
+                        <option value="nr" data-translate-key="salatiso.lang.nr">NR</option>
+                        <option value="sw" data-translate-key="salatiso.lang.sw">SW</option>
+                        <option value="zh" data-translate-key="salatiso.lang.zh">ZH</option>
+                        <option value="ja" data-translate-key="salatiso.lang.ja">JA</option>
+                        <option value="sn" data-translate-key="salatiso.lang.sn">SN</option>
+                        <option value="fr" data-translate-key="salatiso.lang.fr">FR</option>
+                        <option value="pt" data-translate-key="salatiso.lang.pt">PT</option>
+                    </select>
+                </div>
             </div>
         </div>
+    </nav>
+
+    <div class="content-overlay">
+        <section id="hero-content" class="content-section active text-center">
+            <img src="./assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-gray-600 shadow-xl object-cover">
+            <h1 class="text-3xl md:text-5xl font-bold mb-1 text-white" data-translate-key="salatiso.hero.name">Salatiso Lonwabo Mdeni</h1>
+            <p class="text-xl md:text-2xl font-semibold text-blue-400 mb-2" data-translate-key="salatiso.hero.role_father">Father</p>
+            <p class="text-sm md:text-base font-light hero-roles" data-translate-key="salatiso.hero.roles_desc">OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate</p>
+            <p class="mt-6 text-md max-w-xl mx-auto profile-quote" data-translate-key="salatiso.hero.quote">
+                "I am a father to my son; all else is a means to this end."
+            </p>
+            <p class="mt-4 text-sm text-gray-400" data-translate-key="salatiso.hero.cta_nav">Navigate through to learn more about my journey, ventures, and how we can connect.</p>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2 data-translate-key="salatiso.journey.title">My Journey <i class="fa-solid fa-route"></i></h2>
+            <div class="max-h-[78vh] overflow-y-auto pr-3 text-left">
+                <div class="journey-intro">
+                    <p class="mb-4" data-translate-key="salatiso.journey.intro">
+                        My path has been one of continuous learning, adaptation, and a deep-seated drive to make a meaningful impact. From humble beginnings in rural Transkei to navigating complex risk landscapes, my experiences have shaped my perspective. My career began in Occupational Health and Safety (OHS), evolving into broader expertise in Risk Management and Compliance.
+                    </p>
+                    <h3 data-translate-key="salatiso.journey.motivation.title"><i class="fa-solid fa-heart-pulse"></i>My Drive & Motivation</h3>
+                    <p data-translate-key="salatiso.journey.motivation">
+                        At the heart of everything is my role as a father: "I am a father to my son; all else is a means to this end." This extends to my responsibilities as an Umlandeli (successor) to my father, Mlandeli Nelson Mdeni, upholding our Xhosa family legacy. This includes being an uncle, a father-figure, a dutiful son, and provider. The names in our lineage – Mlandeli (successor), Salatiso (guide), and Sazisi (introducer, for my son Sazi, "Baza Kusazi!") – reflect a legacy of guidance and responsibility. This commitment fuels my passion for education, self-sufficiency, and equality.
+                    </p>
+                </div>
+                <h3 class="mt-6 mb-4 text-center text-xl font-semibold text-gray-200" data-translate-key="salatiso.journey.timeline.title">Timeline of Key Milestones</h3>
+                <div class="interactive-timeline">
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-map-marker-alt"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.1982.year">1982 - Early Years</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-1982" data-translate-key="salatiso.journey.timeline.1982.title">Born in Transkei, Eastern Cape <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-1982" data-translate-key="salatiso.journey.timeline.1982.details">
+                            <p>Raised in rural Transkei (Fort Malan, Nqabane, Songwevu, Mahasane). Early education often under a tree or in community churches. Key locations: Fort Malan (birthplace vicinity: 32°09'03"S 28°31'25"E), Nqabane (father's home: 31°55'37"S 28°21'40"E), Mahasane (first school: 32°20'10"S 28°43'35"E), Lencane (rented home: 32°08'30"S 28°19'55"E; Lencane Primary: 32°08'41"S 28°20'30"E), Drayini (childhood home: 32°08'09"S 28°20'39"E), Matolweni School (approx. 32°08'13"S 28°20'39"E).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.1999.year">1999</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-1999" data-translate-key="salatiso.journey.timeline.1999.title">Secondary Education <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-1999" data-translate-key="salatiso.journey.timeline.1999.details">
+                            <p>Matriculated from Kiriyatswane Secondary School, Mbalenhle, Mpumalanga. Excelled academically, earning awards in poetry, physics, Xhosa, and biology. Developed an early interest in health and safety.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-university"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2000_2008.year">2000 - 2008</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2000-2008" data-translate-key="salatiso.journey.timeline.2000_2008.title">Tertiary Education & Certifications <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2000-2008" data-translate-key="salatiso.journey.timeline.2000_2008.details">
+                            <p>National Diploma in Environmental Health, TUT (2002). Served as student representative. B-Tech in Environmental Health, TUT (2008). MDP, GIBS (2008). Numerous OHS and Risk certifications.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2003.year">2003</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2003" data-translate-key="salatiso.journey.timeline.2003.title">Dept. of Health, Eastern Cape <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2003" data-translate-key="salatiso.journey.timeline.2003.details">
+                            <p>Junior Environmental Health Practitioner. Conducted inspections, community education, research on informal vendor hygiene.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-helmet-safety"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2004_2006.year">2004-2006</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2004-2006" data-translate-key="salatiso.journey.timeline.2004_2006.title">Anglo Platinum <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2004-2006" data-translate-key="salatiso.journey.timeline.2004_2006.details">
+                            <p>Ventilation & Occupational Hygiene Trainee, then Technologist. Awarded "Best Trainee" (2004). Acted in senior roles.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-train-subway"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2007_2009.year">2007-2009</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2007-2009" data-translate-key="salatiso.journey.timeline.2007_2009.title">SARCC Metrorail <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2007-2009" data-translate-key="salatiso.journey.timeline.2007_2009.details">
+                            <p>SHE Manager. Revamped programs, established occupational hygiene, led national rollout.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2008_2012.year">2008-2012</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2008-2012" data-translate-key="salatiso.journey.timeline.2008_2012.title">Yeyethu Trust <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2008-2012" data-translate-key="salatiso.journey.timeline.2008_2012.details">
+                            <p>Founder & Project Manager. Awarded academic excellence in Lencane and Matolweni schools.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-building-shield"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2009_2010.year">2009-2010</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2009-2010" data-translate-key="salatiso.journey.timeline.2009_2010.title">Liberty Group Properties <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2009-2010" data-translate-key="salatiso.journey.timeline.2009_2010.details">
+                            <p>EHS Manager. Addressed DoL investigation post-incident, implemented robust OHS systems. Headhunted by ABSA.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2010_2016.year">2010-2016</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2010-2016" data-translate-key="salatiso.journey.timeline.2010_2016.title">Barclays Africa Group (ABSA) <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2010-2016" data-translate-key="salatiso.journey.timeline.2010_2016.details">
+                            <p>EHS Consultant & Risk Specialist. Developed national asbestos program. Coordinated safe evacuations.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-city"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2012_2022.year">2012-2022</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2012-2022" data-translate-key="salatiso.journey.timeline.2012_2022.title">5G Property Consultants <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2012-2022" data-translate-key="salatiso.journey.timeline.2012_2022.details">
+                            <p>Managing Director. Consultancy for clients like Ster-Kinekor, Mine Investment Corp, Alexander Forbes.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-cogs"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2016_2024.year">2016-2024</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2016-2024" data-translate-key="salatiso.journey.timeline.2016_2024.title">Telkom (CRES) / Gyro Group <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2016-2024" data-translate-key="salatiso.journey.timeline.2016_2024.details">
+                            <p>Specialist: Risk, Audit, Business Continuity. Instrumental in designing compliance structures. Led risk management.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-dot"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <div class="timeline-year" data-translate-key="salatiso.journey.timeline.2023_present.year">2023-Present</div>
+                        <button class="timeline-title" aria-expanded="false" aria-controls="timeline-2023-present" data-translate-key="salatiso.journey.timeline.2023_present.title">Author, Writer & Publisher <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="timeline-details" id="timeline-2023-present" data-translate-key="salatiso.journey.timeline.2023_present.details">
+                            <p>Creating e-learning content, advising on risk/compliance. Authored "Safety First" series.</p>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-10" data-translate-key="salatiso.journey.publications.title"><i class="fa-solid fa-newspaper"></i>Authored Works & Publications</h3>
+                <p data-translate-key="salatiso.journey.publications.intro">I have contributed numerous articles to the National Safety Magazine. Here are a few:</p>
+                <ul class="publication-list mt-4 mb-2 pl-0">
+                    <li><a href="https://drive.google.com/file/d/1RFwNQXMtEXhjV5S15ur-dX5se0gFNUHV/view" target="_blank" title="Read article: Overcoming educational challenges" data-translate-key="salatiso.journey.publications.article1">Overcoming educational challenges (Sept-Oct 2020)</a></li>
+                    <li><a href="https://drive.google.com/file/d/18JS0D8b33Tyya6ygozPsi6gN_1CkN2ni/view" target="_blank" title="Read article: Learning online, The safe and affordable way" data-translate-key="salatiso.journey.publications.article2">Learning online, The safe and affordable way (May-June 2020)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1UEGE-UqJVbhnpIfGBT4gCO810AsJdHyc/view" target="_blank" title="Read article: Working from home, beyond COVID-19" data-translate-key="salatiso.journey.publications.article3">Working from home, beyond COVID-19 (April 2020)</a></li>
+                </ul>
+                <button id="viewMoreArticles" class="text-sm text-blue-400 hover:text-blue-300 underline mt-2 mb-4" data-translate-key="salatiso.journey.publications.viewMore">View More Articles</button>
+                <ul class="publication-list mt-2 pl-0 hidden" id="moreArticles">
+                    <li><a href="https://drive.google.com/file/d/157kvEkMgl2F65s7d0EGwfn-NtY9CoAXI/view" target="_blank" title="Read article: Implementation of emergency response planning" data-translate-key="salatiso.journey.publications.article4">Implementation of emergency response planning (Jan-Feb 2020)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1BGQ5kMh5ubjOqRqjeU1dzbu4-QTq3RHm/view" target="_blank" title="Read article: Risk Management within the personal context" data-translate-key="salatiso.journey.publications.article5">Risk Management within the personal context (July-Aug 2019)</a></li>
+                    <li><a href="https://drive.google.com/file/d/14XGJCW8ipCrAjenlV1vEzpUxXok4604y/view" target="_blank" title="Read article: Home Energy Security" data-translate-key="salatiso.journey.publications.article6">Home Energy Security (Sept-Oct 2019)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1YbJtuw4rY-aygkr08tYws6eRLxFMBOiL/view" target="_blank" title="Read article: Facility Management vs Health and Safety Part 2" data-translate-key="salatiso.journey.publications.article7">Facility Management vs Health and Safety Part 2 (Sept–Oct 2018)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1fRwqsE9nSRY8ceti1xUM84hXqiH3dh9l/view" target="_blank" title="Read article: Facility Management vs Health and Safety Part 1" data-translate-key="salatiso.journey.publications.article8">Facility Management vs Health and Safety Part 1 (July-Aug 2018)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1JcKGo6Gnu8pB0seoOh9VHx6OKK427mhn/view" target="_blank" title="Read article: Emergency Response Plan vs Business Continuity" data-translate-key="salatiso.journey.publications.article9">Emergency Response Plan vs Business Continuity (May-June 2018)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1nDhrUCJxbND9-v0uWtm8bMIFqscgc_b6/view" target="_blank" title="Read article: Emergency Response Planning, Accountability" data-translate-key="salatiso.journey.publications.article10">Emergency Response Planning, Accountability (Jan–Feb 2015)</a></li>
+                    <li><a href="https://drive.google.com/file/d/1EpNUdChwQxtU_ZlphWY_e8T8uCs5qdAg/view" target="_blank" title="Read article: Guidelines, Project Health and Safety Compliance" data-translate-key="salatiso.journey.publications.article11">Guidelines, Project Health and Safety Compliance (Jan–Feb 2013)</a></li>
+                </ul>
+                <p class="profile-quote mt-6" data-translate-key="salatiso.journey.quote">
+                    My journey is a testament to resilience, continuous growth, and the unwavering belief in the power of applying one's skills to create a safer, more equitable world, starting with the foundations of family and community.
+                </p>
+            </div>
+        </section>
+
+        <section id="ventures" class="content-section">
+            <h2 class="mb-0" data-translate-key="salatiso.ventures.title">My Ventures & Passions <i class="fa-solid fa-rocket"></i></h2>
+            <div class="swiper-container" id="venturesSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/SafetyHelp_Logo.jpg" alt="SafetyHelp Platform" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.safetyhelp.title"><i class="fa-solid fa-helmet-safety"></i>SafetyHelp</h3>
+                        <p data-translate-key="salatiso.ventures.safetyhelp.desc">Launching June 1, 2025, an online platform simplifying OHS compliance for businesses, schools, and informal sectors with tools for risk assessments, training, and management.</p>
+                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.safetyhelp.cta">Visit SafetyHelp</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Sazi_Learning_Logo.jpg" alt="Sazi Learning Platform" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.sazi.title"><i class="fa-solid fa-graduation-cap"></i>Sazi Learning</h3>
+                        <p data-translate-key="salatiso.ventures.sazi.desc">Inspired by my son, Sazi, this platform focuses on personalized education, homeschooling resources, and preserving Xhosa language and culture.</p>
+                        <a href="https://www.sazi.life/sazi/" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.sazi.cta">Explore Sazi.life</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Flamea_Logo.jpg" alt="Flamea Organization" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.flamea.title"><i class="fa-solid fa-scale-balanced"></i>Flamea</h3>
+                        <p data-translate-key="salatiso.ventures.flamea.desc">Promoting equality through education, Flamea provides learning opportunities for underserved communities and advocates for fathers' rights and family equality.</p>
+                        <a href="https://flamea.org/" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.flamea.cta">Learn about Flamea</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Author_Speaker_Salatiso.jpg" alt="Salatiso Mdeni - Author and Creative Writer" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.author.title"><i class="fa-solid fa-pen-nib"></i>Author & Thought Leader</h3>
+                        <p data-translate-key="salatiso.ventures.author.desc">I share insights through books, articles, e-learning content, and creative writing, including poetry, focusing on OHS, risk, personal development, and cultural narratives.</p>
+                        <button data-section="books" class="cta-link nav-button-trigger" data-translate-key="salatiso.ventures.author.cta">Explore My Books</button>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Digital_Creator_Salatiso.jpg" alt="Web Development and Tech Skills" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.digital.title"><i class="fa-solid fa-laptop-code"></i>Digital Creator & Tech Innovator</h3>
+                        <p data-translate-key="salatiso.ventures.digital.desc">Leveraging self-taught web development skills to build impactful platforms like <a href="https://salatiso.com/" target="_blank">salatiso.com</a>, <a href="https://safetyfirst.help/" target="_blank">safetyfirst.help</a>, <a href="https://flamea.org/" target="_blank">flamea.org</a>, and <a href="https://www.sazi.life/sazi/" target="_blank">sazi.life</a>.</p>
+                        <a href="https://salatiso.com/" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.digital.cta">View My Portfolio</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Family_Community_Salatiso.jpg" alt="Family and Community" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.family.title"><i class="fa-solid fa-users-line"></i>Family & Community Pillar</h3>
+                        <p data-translate-key="salatiso.ventures.family.desc">My commitment extends to being a father-figure, an uncle, a dutiful son, and a provider for my mother and sisters, nurturing a strong family and community foundation.</p>
+                        <button data-section="about" class="cta-link nav-button-trigger" data-translate-key="salatiso.ventures.family.cta">Learn More</button>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Core_Expertise_Salatiso.jpg" alt="OHS and Risk Management Skills" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.expertise.title"><i class="fa-solid fa-brain"></i>Core Expertise</h3>
+                        <p data-translate-key="salatiso.ventures.expertise.desc">Specializing in OHS Management, Risk Management & Auditing, Business Continuity, Emergency Response, Training Development, Occupational Hygiene, and Website Development.</p>
+                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.expertise.cta">Learn More</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/DIY_Salatiso.jpg" alt="DIY and Home Improvement" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.diy.title"><i class="fa-solid fa-screwdriver-wrench"></i>DIY & Home Improvement</h3>
+                        <p data-translate-key="salatiso.ventures.diy.desc">Passionate about hands-on work: woodworking, plumbing, welding, and IT projects, embodying self-sufficiency and practical problem-solving.</p>
+                        <a href="https://www.youtube.com/@Salatiso" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.diy.cta">Watch DIY Projects</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Homeschooling_Salatiso.jpg" alt="Homeschooling my son Sazi" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.homeschooling.title"><i class="fa-solid fa-child-reaching"></i>Homeschooling Advocate</h3>
+                        <p data-translate-key="salatiso.ventures.homeschooling.desc">Actively homeschooling my son, Sazi, integrating learning into daily life and developing resources through the Sazi platform to support others.</p>
+                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.ventures.homeschooling.cta">Read "The Homeschooling Father"</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/Reader_Learner_Salatiso.jpg" alt="Avid Reader and Lifelong Learner" class="venture-image">
+                        <h3 data-translate-key="salatiso.ventures.reader.title"><i class="fa-solid fa-book-reader"></i>Avid Reader & Lifelong Learner</h3>
+                        <p data-translate-key="salatiso.ventures.reader.desc">A firm believer in uncertified knowledge, I'm an avid reader and audiobook enthusiast. Authors like Thomas Sowell, Steven Pinker, and Richard Dawkins profoundly shape my perspectives.</p>
+                        <button data-section="books" class="cta-link nav-button-trigger" data-translate-key="salatiso.ventures.reader.cta">See Recommendations</button>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section id="books" class="content-section">
+            <h2 data-translate-key="salatiso.books.title">My Books <i class="fa-solid fa-swatchbook"></i></h2>
+            <p class="text-center mb-6 text-gray-300" data-translate-key="salatiso.books.intro">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
+            <div class="swiper-container" id="booksSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/goliath.jpg" alt="Goliath's Reckoning" class="book-cover-image">
+                        <h3 data-translate-key="salatiso.books.goliath.title">Goliath's Reckoning</h3>
+                        <p class="text-xs text-gray-400" data-translate-key="salatiso.books.goliath.category">Advocacy & Fathers' Rights</p>
+                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/redress.jpg" alt="Beyond Redress" class="book-cover-image">
+                        <h3 data-translate-key="salatiso.books.redress.title">Beyond Redress</h3>
+                        <p class="text-xs text-gray-400" data-translate-key="salatiso.books.redress.category">Social Commentary</p>
+                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/homeschooling_father.jpg" alt="The Homeschooling Father" class="book-cover-image">
+                        <h3 data-translate-key="salatiso.books.homeschooling.title">The Homeschooling Father</h3>
+                        <p class="text-xs text-gray-400" data-translate-key="salatiso.books.homeschooling.category">Education & Parenting</p>
+                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/SF_Career.jpg" alt="Safety First: Essentials for Your OHS Career" class="book-cover-image">
+                        <h3 data-translate-key="salatiso.books.ohs_career.title">Safety First: OHS Career</h3>
+                        <p class="text-xs text-gray-400" data-translate-key="salatiso.books.ohs_career.category">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/photos/SF_Plans.jpg" alt="Safety First: The Essentials of OHS Plans" class="book-cover-image">
+                        <h3 data-translate-key="salatiso.books.ohs_plans.title">Safety First: OHS Plans</h3>
+                        <p class="text-xs text-gray-400" data-translate-key="salatiso.books.ohs_plans.category">Occupational Health & Safety</p>
+                        <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+                    </div>
+                   <div class="swiper-slide">
+    <img src="./assets/photos/Rise_of_Q.jpg" alt="The Perfect Cage: Isivumo Legacy" class="book-cover-image">
+    <h3 data-translate-key="salatiso.books.isivumo.title">The Perfect Cage: Isivumo Legacy</h3>
+    <p class="text-xs text-gray-400" data-translate-key="salatiso.books.isivumo.category">Fiction & Cultural Narrative</p>
+    <a href="https://play.google.com/books/reader?id=exampleID&hl=en_IE" target="_blank" class="cta-link" data-translate-key="salatiso.books.view">View Book</a>
+</div>
+</div>
+<div class="swiper-pagination"></div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+<div class="recommended-reads">
+    <h3 data-translate-key="salatiso.books.recommended.title">Recommended Reads</h3>
+    <ul class="recommended-reads-list">
+        <li data-translate-key="salatiso.books.recommended.sowell"><strong>Thomas Sowell</strong>: "Wealth, Poverty and Politics"</li>
+        <li data-translate-key="salatiso.books.recommended.pinker"><strong>Steven Pinker</strong>: "Enlightenment Now"</li>
+        <li data-translate-key="salatiso.books.recommended.dawkins"><strong>Richard Dawkins</strong>: "The Selfish Gene"</li>
+        <li data-translate-key="salatiso.books.recommended.rothbard"><strong>Murray Rothbard</strong>: "Anatomy of the State"</li>
+    </ul>
+</div>
+</section>
+
+<section id="connect" class="content-section text-center">
+    <h2 data-translate-key="salatiso.connect.title">Connect With Me <i class="fa-solid fa-handshake-simple"></i></h2>
+    <p class="mb-6 max-w-xl mx-auto" data-translate-key="salatiso.connect.intro">
+        I'm always open to meaningful collaborations, discussions, or inquiries about OHS, Risk Management, Education, or Family Advocacy. Reach out through the following platforms or send me a direct message.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+        <a href="https://x.com/SalatisoMdeni" target="_blank" class="cta-link" data-translate-key="salatiso.connect.x"><i class="fa-brands fa-x-twitter"></i>Follow on X</a>
+        <a href="https://linkedin.com/in/salatiso-mdeni" target="_blank" class="cta-link" data-translate-key="salatiso.connect.linkedin"><i class="fa-brands fa-linkedin"></i>Connect on LinkedIn</a>
+        <a href="mailto:contact@salatiso.com" class="cta-link" data-translate-key="salatiso.connect.email"><i class="fa-solid fa-envelope"></i>Email Me</a>
+        <a href="https://www.youtube.com/@Salatiso" target="_blank" class="cta-link" data-translate-key="salatiso.connect.youtube"><i class="fa-brands fa-youtube"></i>Watch on YouTube</a>
     </div>
-</nav>
-
-
-
-    <div class="content-overlay">
-
-        <section id="hero-content" class="content-section active text-center">
-
-            <img src="./assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-gray-600 shadow-xl object-cover">
-
-            <h1 class="text-3xl md:text-5xl font-bold mb-1 text-white">Salatiso Lonwabo Mdeni</h1>
-
-            <p class="text-xl md:text-2xl font-semibold text-blue-400 mb-2">Father</p>
-
-            <p class="text-sm md:text-base font-light hero-roles">OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate</p>
-
-            <p class="mt-6 text-md max-w-xl mx-auto profile-quote">
-
-                "I am a father to my son; all else is a means to this end."
-
-            </p>
-
-            <p class="mt-4 text-sm text-gray-400">Navigate through to learn more about my journey, ventures, and how we can connect.</p>
-
-        </section>
-
-
-
-        <section id="about" class="content-section">
-
-            <h2>My Journey <i class="fa-solid fa-route"></i></h2>
-
-            <div class="max-h-[78vh] overflow-y-auto pr-3 text-left">
-
-                <div class="journey-intro">
-
-                    <p class="mb-4">
-
-                        My path has been one of continuous learning, adaptation, and a deep-seated drive to make a meaningful impact. From humble beginnings in rural Transkei to navigating complex risk landscapes, my experiences have shaped my perspective. My career began in Occupational Health and Safety (OHS), evolving into broader expertise in Risk Management and Compliance.
-
-                    </p>
-
-                    <h3><i class="fa-solid fa-heart-pulse"></i>My Drive & Motivation</h3>
-
-                    <p>
-
-                        At the heart of everything is my role as a father: "I am a father to my son; all else is a means to this end." This extends to my responsibilities as an Umlandeli (successor) to my father, Mlandeli Nelson Mdeni, upholding our Xhosa family legacy. This includes being an uncle, a father-figure, a dutiful son, and provider. The names in our lineage – Mlandeli (successor), Salatiso (guide), and Sazisi (introducer, for my son Sazi, "Baza Kusazi!") – reflect a legacy of guidance and responsibility. This commitment fuels my passion for education, self-sufficiency, and equality.
-
-                    </p>
-
-                </div>
-
-
-
-                <h3 class="mt-6 mb-4 text-center text-xl font-semibold text-gray-200">Timeline of Key Milestones</h3>
-
-                <div class="interactive-timeline">
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-map-marker-alt"></i></div>
-
-                        <div class="timeline-year">1982 - Early Years</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Born in Transkei, Eastern Cape <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Raised in rural Transkei (Fort Malan, Nqabane, Songwevu, Mahasane). Early education often under a tree or in community churches. Key locations: Fort Malan (birthplace vicinity: 32°09'03"S 28°31'25"E), Nqabane (father's home: 31°55'37"S 28°21'40"E), Mahasane (first school: 32°20'10"S 28°43'35"E), Lencane (rented home: 32°08'30"S 28°19'55"E; Lencane Primary: 32°08'41"S 28°20'30"E), Drayini (childhood home: 32°08'09"S 28°20'39"E), Matolweni School (approx. 32°08'13"S 28°20'39"E).</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
-
-                        <div class="timeline-year">1999</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Secondary Education <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Matriculated from Kiriyatswane Secondary School, Mbalenhle, Mpumalanga. Excelled academically, earning awards in poetry, physics, Xhosa, and biology. Developed an early interest in health and safety.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-university"></i></div>
-
-                        <div class="timeline-year">2000 - 2008</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Tertiary Education & Certifications <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>National Diploma in Environmental Health, TUT (2002). Served as student representative. B-Tech in Environmental Health, TUT (2008). MDP, GIBS (2008). Numerous OHS and Risk certifications.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-briefcase"></i></div>
-
-                        <div class="timeline-year">2003</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Dept. of Health, Eastern Cape <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Junior Environmental Health Practitioner. Conducted inspections, community education, research on informal vendor hygiene.</p>
-
-                        </div>
-
-                    </div>
-
-                     <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-helmet-safety"></i></div>
-
-                        <div class="timeline-year">2004-2006</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Anglo Platinum <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Ventilation & Occupational Hygiene Trainee, then Technologist. Awarded "Best Trainee" (2004). Acted in senior roles.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-train-subway"></i></div>
-
-                        <div class="timeline-year">2007-2009</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">SARCC Metrorail <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>SHE Manager. Revamped programs, established occupational hygiene, led national rollout.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-hand-holding-heart"></i></div>
-
-                        <div class="timeline-year">2008-2012</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Yeyethu Trust <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Founder & Project Manager. Awarded academic excellence in Lencane and Matolweni schools.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-building-shield"></i></div>
-
-                        <div class="timeline-year">2009-2010</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Liberty Group Properties <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>EHS Manager. Addressed DoL investigation post-incident, implemented robust OHS systems. Headhunted by ABSA.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-shield-halved"></i></div>
-
-                        <div class="timeline-year">2010-2016</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Barclays Africa Group (ABSA) <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>EHS Consultant & Risk Specialist. Developed national asbestos program. Coordinated safe evacuations.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-city"></i></div>
-
-                        <div class="timeline-year">2012-2022</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">5G Property Consultants <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Managing Director. Consultancy for clients like Ster-Kinekor, Mine Investment Corp, Alexander Forbes.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-cogs"></i></div>
-
-                        <div class="timeline-year">2016-2024</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Telkom (CRES) / Gyro Group <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Specialist: Risk, Audit, Business Continuity. Instrumental in designing compliance structures. Led risk management.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeline-event">
-
-                        <div class="timeline-dot"><i class="fa-solid fa-feather-pointed"></i></div>
-
-                        <div class="timeline-year">2023-Present</div>
-
-                        <h5 class="timeline-title" onclick="toggleDetails(this)">Author, Writer & Publisher <i class="fa-solid fa-chevron-down"></i></h5>
-
-                        <div class="timeline-details">
-
-                            <p>Creating e-learning content, advising on risk/compliance. Authored "Safety First" series.</p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <h3 class="mt-10"><i class="fa-solid fa-newspaper"></i>Authored Works & Publications</h3>
-
-                <p>I have contributed numerous articles to the National Safety Magazine. Here are a few:</p>
-
-                <ul class="publication-list mt-4 mb-2 pl-0">
-
-                    <li><a href="https://drive.google.com/file/d/1RFwNQXMtEXhjV5S15ur-dX5se0gFNUHV/view" target="_blank" title="Read article: Overcoming educational challenges">Overcoming educational challenges (Sept-Oct 2020)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/18JS0D8b33Tyya6ygozPsi6gN_1CkN2ni/view" target="_blank" title="Read article: Learning online, The safe and affordable way">Learning online, The safe and affordable way (May-June 2020)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1UEGE-UqJVbhnpIfGBT4gCO810AsJdHyc/view" target="_blank" title="Read article: Working from home, beyond COVID-19">Working from home, beyond COVID-19 (April 2020)</a></li>
-
-                </ul>
-
-                <button id="viewMoreArticles" class="text-sm text-blue-400 hover:text-blue-300 underline mt-2 mb-4">View More Articles</button>
-
-                <ul class="publication-list mt-2 pl-0 hidden" id="moreArticles">
-
-                    <li><a href="https://drive.google.com/file/d/157kvEkMgl2F65s7d0EGwfn-NtY9CoAXI/view" target="_blank" title="Read article: Implementation of emergency response planning">Implementation of emergency response planning (Jan-Feb 2020)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1BGQ5kMh5ubjOqRqjeU1dzbu4-QTq3RHm/view" target="_blank" title="Read article: Risk Management within the personal context">Risk Management within the personal context (July-Aug 2019)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/14XGJCW8ipCrAjenlV1vEzpUxXok4604y/view" target="_blank" title="Read article: Home Energy Security">Home Energy Security (Sept-Oct 2019)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1YbJtuw4rY-aygkr08tYws6eRLxFMBOiL/view" target="_blank" title="Read article: Facility Management vs Health and Safety Part 2">Facility Management vs Health and Safety Part 2 (Sept–Oct 2018)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1fRwqsE9nSRY8ceti1xUM84hXqiH3dh9l/view" target="_blank" title="Read article: Facility Management vs Health and Safety Part 1">Facility Management vs Health and Safety Part 1 (July-Aug 2018)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1JcKGo6Gnu8pB0seoOh9VHx6OKK427mhn/view" target="_blank" title="Read article: Emergency Response Plan vs Business Continuity">Emergency Response Plan vs Business Continuity (May-June 2018)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1nDhrUCJxbND9-v0uWtm8bMIFqscgc_b6/view" target="_blank" title="Read article: Emergency Response Planning, Accountability">Emergency Response Planning, Accountability (Jan–Feb 2015)</a></li>
-
-                    <li><a href="https://drive.google.com/file/d/1EpNUdChwQxtU_ZlphWY_e8T8uCs5qdAg/view" target="_blank" title="Read article: Guidelines, Project Health and Safety Compliance">Guidelines, Project Health and Safety Compliance (Jan–Feb 2013)</a></li>
-
-                </ul>
-
-                <p class="profile-quote mt-6">
-
-                    My journey is a testament to resilience, continuous growth, and the unwavering belief in the power of applying one's skills to create a safer, more equitable world, starting with the foundations of family and community.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <section id="ventures" class="content-section">
-
-            <h2 class="mb-0">My Ventures & Passions <i class="fa-solid fa-rocket"></i></h2>
-
-            <div class="swiper-container" id="venturesSwiper">
-
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/SafetyHelp_Logo.jpg" alt="SafetyHelp Platform" class="venture-image">
-
-                        <h3><i class="fa-solid fa-helmet-safety"></i>SafetyHelp</h3>
-
-                        <p>Launching June 1, 2025, an online platform simplifying OHS compliance for businesses, schools, and informal sectors with tools for risk assessments, training, and management.</p>
-
-                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link">Visit SafetyHelp</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Sazi_Learning_Logo.jpg" alt="Sazi Learning Platform" class="venture-image">
-
-                        <h3><i class="fa-solid fa-graduation-cap"></i>Sazi Learning</h3>
-
-                        <p>Inspired by my son, Sazi, this platform focuses on personalized education, homeschooling resources, and preserving Xhosa language and culture.</p>
-
-                        <a href="https://www.sazi.life/sazi/" target="_blank" class="cta-link">Explore Sazi.life</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Flamea_Logo.jpg" alt="Flamea Organization" class="venture-image">
-
-                        <h3><i class="fa-solid fa-scale-balanced"></i>Flamea</h3>
-
-                        <p>Promoting equality through education, Flamea provides learning opportunities for underserved communities and advocates for fathers' rights and family equality.</p>
-
-                        <a href="https://flamea.org/" target="_blank" class="cta-link">Learn about Flamea</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Author_Speaker_Salatiso.jpg" alt="Salatiso Mdeni - Author and Creative Writer" class="venture-image">
-
-                        <h3><i class="fa-solid fa-pen-nib"></i>Author & Thought Leader</h3>
-
-                        <p>I share insights through books, articles, e-learning content, and creative writing, including poetry, focusing on OHS, risk, personal development, and cultural narratives.</p>
-
-                        <button data-section="books" class="cta-link nav-button-trigger">Explore My Books</button>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Digital_Creator_Salatiso.jpg" alt="Web Development and Tech Skills" class="venture-image">
-
-                        <h3><i class="fa-solid fa-laptop-code"></i>Digital Creator & Tech Innovator</h3>
-
-                        <p>Leveraging self-taught web development skills to build impactful platforms like <a href="https://salatiso.com/" target="_blank">salatiso.com</a>, <a href="https://safetyfirst.help/" target="_blank">safetyfirst.help</a>, <a href="https://flamea.org/" target="_blank">flamea.org</a>, and <a href="https://www.sazi.life/sazi/" target="_blank">sazi.life</a>.</p>
-
-                        <a href="https://salatiso.com/" target="_blank" class="cta-link">View My Portfolio</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Family_Community_Salatiso.jpg" alt="Family and Community" class="venture-image">
-
-                        <h3><i class="fa-solid fa-users-line"></i>Family & Community Pillar</h3>
-
-                        <p>My commitment extends to being a father-figure, an uncle, a dutiful son, and a provider for my mother and sisters, nurturing a strong family and community foundation.</p>
-
-                         <button data-section="about" class="cta-link nav-button-trigger">Learn More</button>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Core_Expertise_Salatiso.jpg" alt="OHS and Risk Management Skills" class="venture-image">
-
-                        <h3><i class="fa-solid fa-brain"></i>Core Expertise</h3>
-
-                        <p>Specializing in OHS Management, Risk Management & Auditing, Business Continuity, Emergency Response, Training Development, Occupational Hygiene, and Website Development.</p>
-
-                        <a href="https://safetyfirst.help/" target="_blank" class="cta-link">Learn More</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/DIY_Salatiso.jpg" alt="DIY and Home Improvement" class="venture-image">
-
-                        <h3><i class="fa-solid fa-screwdriver-wrench"></i>DIY & Home Improvement</h3>
-
-                        <p>Passionate about hands-on work: woodworking, plumbing, welding, and IT projects, embodying self-sufficiency and practical problem-solving.</p>
-
-                        <a href="https://www.youtube.com/@Salatiso" target="_blank" class="cta-link">Watch DIY Projects</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Homeschooling_Salatiso.jpg" alt="Homeschooling my son Sazi" class="venture-image">
-
-                        <h3><i class="fa-solid fa-child-reaching"></i>Homeschooling Advocate</h3>
-
-                        <p>Actively homeschooling my son, Sazi, integrating learning into daily life and developing resources through the Sazi platform to support others.</p>
-
-                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">Read "The Homeschooling Father"</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Reader_Learner_Salatiso.jpg" alt="Avid Reader and Lifelong Learner" class="venture-image">
-
-                        <h3><i class="fa-solid fa-book-reader"></i>Avid Reader & Lifelong Learner</h3>
-
-                        <p>A firm believer in uncertified knowledge, I'm an avid reader and audiobook enthusiast. Authors like Thomas Sowell, Steven Pinker, and Richard Dawkins profoundly shape my perspectives.</p>
-
-                        <button data-section="books" class="cta-link nav-button-trigger">See Recommendations</button>
-
-                    </div>
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-
-                <div class="swiper-button-next"></div>
-
-                <div class="swiper-button-prev"></div>
-
-            </div>
-
-        </section>
-
-
-
-        <section id="books" class="content-section">
-
-            <h2>My Books <i class="fa-solid fa-swatchbook"></i></h2>
-
-            <p class="text-center mb-6 text-gray-300">Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.</p>
-
-            
-
-            <div class="swiper-container" id="booksSwiper">
-
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/goliath.jpg" alt="Goliath's Reckoning" class="book-cover-image">
-
-                        <h3>Goliath's Reckoning</h3>
-
-                        <p class="text-xs text-gray-400">Advocacy & Fathers' Rights</p>
-
-                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&pg=GBS.PP1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/redress.jpg" alt="Beyond Redress" class="book-cover-image">
-
-                        <h3>Beyond Redress</h3>
-
-                         <p class="text-xs text-gray-400">Social Commentary</p>
-
-                        <a href="https://play.google.com/books/reader?id=gZcNEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/homeschooling_father.jpg" alt="The Homeschooling Father" class="book-cover-image">
-
-                        <h3>The Homeschooling Father</h3>
-
-                        <p class="text-xs text-gray-400">Education & Parenting</p>
-
-                        <a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/SF_Career.jpg" alt="Safety First: Essentials for Your OHS Career" class="book-cover-image">
-
-                        <h3>Safety First: OHS Career</h3>
-
-                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
-
-                        <a href="https://play.google.com/books/reader?id=vscJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/SF_Plans.jpg" alt="Safety First: The Essentials of OHS Plans" class="book-cover-image">
-
-                        <h3>Safety First: OHS Plans</h3>
-
-                        <p class="text-xs text-gray-400">Occupational Health & Safety</p>
-
-                        <a href="https://play.google.com/books/reader?id=psgJEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Rise_of_Q.jpg" alt="The Perfect Cage: Isivumo Legacy" class="book-cover-image">
-
-                        <h3>The Perfect Cage: Isivumo</h3>
-
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
-
-                        <a href="https://play.google.com/books/reader?id=s51DEQAAQBAJ&pg=GBS.PA1&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Modern_Broke.jpg" alt="Modern, Broke, and Confused" class="book-cover-image">
-
-                        <h3>Modern, Broke, and Confused</h3>
-
-                        <p class="text-xs text-gray-400">Social Commentary</p>
-
-                        <a href="https://play.google.com/books/reader?id=X3ZDEQAAQBAJ&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Unravelling_Xhosa_History.jpg" alt="Getting to Know Yourself as a South African" class="book-cover-image">
-
-                        <h3>Getting to Know Yourself...</h3>
-
-                        <p class="text-xs text-gray-400">Culture & History</p>
-
-                        <a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&pg=GBS.PA50&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Beyond_the_Grave.jpg" alt="Beyond the Grave" class="book-cover-image">
-
-                        <h3>Beyond the Grave</h3>
-
-                        <p class="text-xs text-gray-400">Spirituality & Tradition</p>
-
-                        <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en_IE" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                    <div class="swiper-slide">
-
-                        <img src="./assets/photos/Die_Tuisonderrig_Vader.jpg" alt="Die Tuisonderrig Vader" class="book-cover-image">
-
-                        <h3>Die Tuisonderrig Vader</h3>
-
-                        <p class="text-xs text-gray-400">Education & Parenting (Afrikaans)</p>
-
-                        <a href="https://play.google.com/books/reader?id=CsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Ntate.jpg" alt="Ntate ea rutang bana ba hae hae" class="book-cover-image">
-
-                        <h3>Ntate ea rutang...</h3>
-
-                        <p class="text-xs text-gray-400">Education & Parenting (Sesotho)</p>
-
-                        <a href="https://play.google.com/books/reader?id=MsoJEQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Dystopian Struggle" class="book-cover-image">
-
-                        <h3>The Perfect Cage: Dystopian</h3>
-
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
-
-                        <a href="https://play.google.com/books/reader?id=RdU8EQAAQBAJ&pg=GBS.PA1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/The_Perfect_Cage2.jpg" alt="The Perfect Cage: Secrets of the Inner Earth" class="book-cover-image">
-
-                        <h3>The Perfect Cage: Inner Earth</h3>
-
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
-
-                        <a href="https://play.google.com/books/reader?id=GIQ9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/The_Perfect_Cage3.jpg" alt="The Perfect Cage: Journey Beyond the Horizon" class="book-cover-image">
-
-                        <h3>The Perfect Cage: Horizon</h3>
-
-                        <p class="text-xs text-gray-400">Dystopian Thriller Series</p>
-
-                        <a href="https://play.google.com/books/reader?id=7fE9EQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika" class="book-cover-image">
-
-                        <h3>Zazi Mzantsi Afrika</h3>
-
-                        <p class="text-xs text-gray-400">Culture & History (isiXhosa)</p>
-
-                        <a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                     <div class="swiper-slide">
-
-                        <img src="./assets/photos/Utata_Ozifundiselayo.jpg" alt="Utata ozifundiselayo ekhayeni" class="book-cover-image">
-
-                        <h3>Utata ozifundiselayo...</h3>
-
-                        <p class="text-xs text-gray-400">Education & Parenting (isiXhosa)</p>
-
-                        <a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en_GB" target="_blank" class="cta-link">View Book</a>
-
-                    </div>
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-
-                <div class="swiper-button-next"></div>
-
-                <div class="swiper-button-prev"></div>
-
-            </div>
-
-            <div class="recommended-reads">
-
-                <h3><i class="fa-solid fa-star text-yellow-400"></i> My Highly Recommended Reads</h3>
-
-                <ul class="recommended-reads-list">
-
-                    <li><strong>Basic Economics</strong> by Thomas Sowell</li>
-
-                    <li><strong>Knowledge and Decisions</strong> by Thomas Sowell</li>
-
-                    <li><strong>The Thomas Sowell Reader</strong> by Thomas Sowell</li>
-
-                    <li><strong>Charter Schools and Their Enemies</strong> by Thomas Sowell</li>
-
-                    <li><strong>Applied Economics: Thinking Beyond Stage One</strong> by Thomas Sowell</li>
-
-                    <li><strong>A Personal Odyssey</strong> by Thomas Sowell</li>
-
-                    <li><strong>The Quest for Cosmic Justice</strong> by Thomas Sowell</li>
-
-                    <li><strong>The Blank Slate: The Modern Denial of Human Nature</strong> by Steven Pinker</li>
-
-                    <li><strong>How the Mind Works</strong> by Steven Pinker</li>
-
-                    <li><strong>The Better Angels of Our Nature: Why Violence Has Declined</strong> by Steven Pinker</li>
-
-                    <li><strong>The Selfish Gene</strong> by Richard Dawkins</li>
-
-                    <li><strong>The Blind Watchmaker</strong> by Richard Dawkins</li>
-
-                    <li><strong>The God Delusion</strong> by Richard Dawkins</li>
-
-                    <li><strong>Debt: The First 5,000 Years</strong> by David Graeber</li>
-
-                    <li><strong>48 Laws of Power</strong> by Robert Greene</li>
-
-                    <li><strong>33 Strategies of War</strong> by Robert Greene</li>
-
-                    <li><strong>Evolution Impossible: 12 Reasons Why Evolution Cannot Explain the Origin of Life on Earth</strong> by Dr. John F. Ashton</li>
-
-                    <li><strong>The Case Against Education: Why the Education System Is a Waste of Time and Money</strong> by Bryan Caplan</li>
-
-                     <li><strong>The Boy Crisis</strong> by Warren Farrell PhD & John Gray PhD</li>
-
-                </ul>
-
-            </div>
-
-             <p class="text-center mt-8 text-gray-400 text-sm">Many of my titles are also available on <a href="https://www.takealot.com/all?filter=Author:Salatiso+Mdeni" target="_blank">Takealot</a> and <a href="https://books.apple.com/ca/author/salatiso-mdeni/id1745396063" target="_blank">Apple Books</a>.</p>
-
-        </section>
-
-
-
-        <section id="connect" class="content-section text-center">
-
-            <h2>Let's Connect <i class="fa-solid fa-comments-dollar"></i></h2>
-
-            <p class="text-md text-gray-300 mb-6 max-w-lg mx-auto">
-
-                I'm always open to collaborations, discussions on OHS, risk management, entrepreneurship, education, or if you'd just like to learn more about my work.
-
-            </p>
-
-            <a href="mailto:salatiso@salatiso.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-300 text-lg mb-4">
-
-                <i class="fa-solid fa-paper-plane mr-2"></i>Email: salatiso@salatiso.com
-
-            </a>
-
-            <div class="mt-6 space-y-3">
-
-                <p><a href="https://salatiso.com/" target="_blank" class="hover:text-blue-300"><i class="fa-solid fa-globe mr-2"></i>Personal Website: salatiso.com</a></p>
-
-                <p><a href="https://www.youtube.com/@Salatiso" target="_blank" class="hover:text-blue-300"><i class="fa-brands fa-youtube mr-2"></i>YouTube: OHS, Self-Sufficiency, Homeschooling</a></p>
-
-                <p><a href="https://www.youtube.com/@SalatisoMdeni" target="_blank" class="hover:text-blue-300"><i class="fa-solid fa-headphones-simple mr-2"></i>Audiobooks & Writing Hub</a></p>
-
-                <p><a href="https://x.com/SalatisoLM/" target="_blank" class="hover:text-blue-300"><i class="fa-brands fa-xing mr-2"></i>X.com: @SalatisoLM</a></p>
-
-            </div>
-
-        </section>
-
-
-      <section id="login" class="content-section">
+    <p class="text-sm text-gray-400" data-translate-key="salatiso.connect.cta">
+        Have a project or idea in mind? Let's make it happen together.
+    </p>
+</section>
+
+<section id="login" class="content-section">
     <div class="login-outer-container">
-        <div class="text-center mb-12">
-             <h2 class="text-3xl font-bold text-white mb-2" data-translate-key="login.mainTitle">Portal Access</h2>
-             <p class="text-gray-400" data-translate-key="login.mainSubtitle">Please select the portal you wish to access.</p>
-        </div>
         <div class="login-container">
             <div class="login-card">
-                <div class="text-center mb-4">
-                    <i class="fa-solid fa-flask-vial text-4xl text-blue-400"></i>
+                <h3 data-translate-key="salatiso.login.register.title"><i class="fa-solid fa-user-plus"></i>Register</h3>
+                <div class="form-group">
+                    <label for="registerEmail" data-translate-key="salatiso.login.email">Email</label>
+                    <input type="email" id="registerEmail" required>
                 </div>
-                <h3 data-translate-key="login.tq4b.title">TQ4B Research</h3>
-                <form id="tq4bLoginForm">
-                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.tq4b.desc">Access the TQ4B research portal and resources.</p>
-                    <button type="submit" class="login-button">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i><span data-translate-key="login.tq4b.button">Go to TQ4B</span>
-                    </button>
-                </form>
+                <div class="form-group">
+                    <label for="registerPassword" data-translate-key="salatiso.login.password">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button class="login-button" data-translate-key="salatiso.login.register.cta"><i class="fa-solid fa-user-plus"></i>Create Account</button>
             </div>
-
             <div class="login-card">
-                <div class="text-center mb-4">
-                    <i class="fa-solid fa-users-cog text-4xl text-blue-400"></i>
+                <h3 data-translate-key="salatiso.login.signin.title"><i class="fa-solid fa-right-to-bracket"></i>Sign In</h3>
+                <div class="form-group">
+                    <label for="loginEmail" data-translate-key="salatiso.login.email">Email</label>
+                    <input type="email" id="loginEmail" required>
                 </div>
-                <h3 data-translate-key="login.mfe.title">MFE Intranet</h3>
-                 <form id="mfeIntranetLoginForm">
-                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.mfe.desc">Secure access for Mdeni Family Enterprise members.</p>
-                    <button type="submit" class="login-button">
-                        <i class="fa-solid fa-key"></i><span data-translate-key="login.mfe.button">Enter Intranet</span>
-                    </button>
-                </form>
+                <div class="form-group">
+                    <label for="loginPassword" data-translate-key="salatiso.login.password">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button class="login-button" data-translate-key="salatiso.login.signin.cta"><i class="fa-solid fa-right-to-bracket"></i>Sign In</button>
             </div>
-
             <div class="login-card">
-                <div class="text-center mb-4">
-                     <i class="fa-solid fa-heart-circle-check text-4xl text-blue-400"></i>
+                <h3 data-translate-key="salatiso.login.actions.title"><i class="fa-solid fa-user-shield"></i>Other Actions</h3>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <button class="login-button" data-translate-key="salatiso.login.reset"><i class="fa-solid fa-key"></i>Reset Password</button>
+                    </div>
+                    <div>
+                        <button class="login-button" data-translate-key="salatiso.login.guest"><i class="fa-solid fa-user-secret"></i>Continue as Guest</button>
+                    </div>
                 </div>
-                <h3 data-translate-key="login.fv.title">FamilyValue Tool</h3>
-                 <form id="familyValueLoginForm">
-                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.fv.desc">Login to manage and track family contributions.</p>
-                    <button type="button" class="login-button" onclick="showSection('familyValueTool', false); fv_navigateToSection(0);">
-                        <i class="fa-solid fa-user-check"></i><span data-translate-key="login.fv.button">Access FamilyValue</span>
-                    </button>
-                </form>
             </div>
         </div>
     </div>
 </section>
 
-    </div>
+<section id="familyValueTool" class="content-section">
+    <div class="fv-nav">
+        <button class="fv-btn fv-btn-primary" data-fv-section="fv-home" data-translate-key="salatiso.familyvalue.nav.home"><i class="fa-solid fa-house"></i>Home</button>
+        <button class="fv-btn fv-btn-primary" data-fv-section="fv-vision" data-translate-key="salatiso.familyvalue.nav.vision"><i class="fa-solid fa-eye"></i>Vision</button>
+        <button class="fv-btn fv-btn-primary" data-fv-section="fv-family" data-translate-key="salatiso.familyvalue.nav.family"><i class="fa-solid fa-users"></i>Family</button>
+        <button class="fv-btn fv-btn-primary" data-fv-section="fv-values" data-translate-key="salatiso.familyvalue.nav.values"><i class="fa-solid fa-heart"></i>Values</button>
+        <button class="fv-btn fv-btn-primary" data-fv-section="fv-connect" data-translate-key="salatiso.familyvalue.nav.connect"><i class="fa-solid fa-handshake"></i>Connect</button>
+        <div class="fv-language-selector">
+            <select id="fvLanguageSwitcher" aria-label="Select language">
+                <option value="en">EN</option>
+                <option value="xh" data-translate-key="salatiso.lang.xh">XH</option>
+                <option value="zu" data-translate-key="salatiso.lang.zu">ZU</option>
+                <option value="af" data-translate-key="salatiso.lang.af">AF</option>
+            </select>
+        </div>
+    </div>
+    <div class="fv-main-container">
+        <div class="fv-main-section" id="fv-home">
+            <h1 class="fv-section-title fv-animate-float" data-fv-translate-key="salatiso.familyvalue.home.title">Welcome to FamilyValue</h1>
+            <p class="fv-section-subtitle" data-fv-translate-key="salatiso.familyvalue.home.subtitle">A platform dedicated to strengthening family bonds, preserving cultural heritage, and fostering shared values.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-homeModal1">
+                    <i class="fa-solid fa-users"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.home.tile1.title">Family Connection</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.home.tile1.desc">Tools to connect and collaborate with family members.</p>
+                </div>
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-homeModal2">
+                    <i class="fa-solid fa-book"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.home.tile2.title">Cultural Heritage</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.home.tile2.desc">Preserve and share your family's stories and traditions.</p>
+                </div>
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-homeModal3">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.home.tile3.title">Shared Values</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.home.tile3.desc">Define and uphold your family's core values.</p>
+                </div>
+            </div>
+        </div>
+        <div class="fv-main-section" id="fv-vision">
+            <h1 class="fv-section-title" data-fv-translate-key="salatiso.familyvalue.vision.title">Our Vision</h1>
+            <p class="fv-section-subtitle" data-fv-translate-key="salatiso.familyvalue.vision.subtitle">Empowering families to thrive through connection, education, and cultural pride.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-visionModal1">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.vision.tile1.title">Global Reach</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.vision.tile1.desc">Connecting families worldwide with shared values.</p>
+                </div>
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-visionModal2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.vision.tile2.title">Education</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.vision.tile2.desc">Providing resources for lifelong learning.</p>
+                </div>
+            </div>
+        </div>
+        <div class="fv-main-section" id="fv-family">
+            <h1 class="fv-section-title" data-fv-translate-key="salatiso.familyvalue.family.title">Family Tree</h1>
+            <p class="fv-section-subtitle" data-fv-translate-key="salatiso.familyvalue.family.subtitle">Visualize and explore your family connections.</p>
+            <div class="fv-family-tree">
+                <ul>
+                    <li>
+                        <div tabindex="0">
+                            <span data-fv-translate-key="salatiso.familyvalue.family.member1.name">Mlandeli Nelson Mdeni</span>
+                            <span class="role" data-fv-translate-key="salatiso.familyvalue.family.member1.role">Father</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <div tabindex="0">
+                                    <span data-fv-translate-key="salatiso.familyvalue.family.member2.name">Salatiso Lonwabo Mdeni</span>
+                                    <span class="role" data-fv-translate-key="salatiso.familyvalue.family.member2.role">Son</span>
+                                    <span class="relation-degree" data-fv-translate-key="salatiso.familyvalue.family.member2.relation">Umlandeli</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div tabindex="0">
+                                            <span data-fv-translate-key="salatiso.familyvalue.family.member3.name">Sazi Mdeni</span>
+                                            <span class="role" data-fv-translate-key="salatiso.familyvalue.family.member3.role">Son</span>
+                                            <span class="relation-degree" data-fv-translate-key="salatiso.familyvalue.family.member3.relation">Sazisi</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fv-main-section" id="fv-values">
+            <h1 class="fv-section-title" data-fv-translate-key="salatiso.familyvalue.values.title">Our Values</h1>
+            <p class="fv-section-subtitle" data-fv-translate-key="salatiso.familyvalue.values.subtitle">Core principles that guide our family.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-valuesModal1">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.values.tile1.title">Respect</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.values.tile1.desc">Honoring each member's dignity and contributions.</p>
+                </div>
+                <div class="fv-tile" tabindex="0" data-fv-modal="fv-valuesModal2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h3 data-fv-translate-key="salatiso.familyvalue.values.tile2.title">Knowledge</h3>
+                    <p data-fv-translate-key="salatiso.familyvalue.values.tile2.desc">Pursuing wisdom and sharing knowledge.</p>
+                </div>
+            </div>
+        </div>
+        <div class="fv-main-section" id="fv-connect">
+            <h1 class="fv-section-title" data-fv-translate-key="salatiso.familyvalue.connect.title">Connect With Us</h1>
+            <p class="fv-section-subtitle" data-fv-translate-key="salatiso.familyvalue.connect.subtitle">Join our community to share and grow.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:familyvalue@salatiso.com" class="fv-btn fv-btn-primary" data-fv-translate-key="salatiso.familyvalue.connect.email"><i class="fa-solid fa-envelope"></i>Email Us</a>
+                <a href="https://x.com/FamilyValue" target="_blank" class="fv-btn fv-btn-secondary" data-fv-translate-key="salatiso.familyvalue.connect.x"><i class="fa-brands fa-x-twitter"></i>Follow on X</a>
+            </div>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-homeModal1">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.home.tile1.title">Family Connection</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.home.tile1.modal">Collaborate with family members through shared calendars, messaging, and task management tools designed to keep everyone connected.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-homeModal2">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.home.tile2.title">Cultural Heritage</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.home.tile2.modal">Document family stories, traditions, and recipes to preserve your heritage for future generations.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-homeModal3">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.home.tile3.title">Shared Values</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.home.tile3.modal">Create a family mission statement and define values that guide your family's decisions and actions.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-visionModal1">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.vision.tile1.title">Global Reach</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.vision.tile1.modal">Our platform connects families across the globe, fostering a sense of unity and shared purpose.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-visionModal2">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.vision.tile2.title">Education</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.vision.tile2.modal">Access educational resources to support family learning and personal growth.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-valuesModal1">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.values.tile1.title">Respect</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.values.tile1.modal">We believe in treating every family member with dignity and valuing their contributions.</p>
+        </div>
+    </div>
+    <div class="fv-modal" id="fv-valuesModal2">
+        <div class="fv-modal-content">
+            <span class="fv-modal-close">&times;</span>
+            <h3 data-fv-translate-key="salatiso.familyvalue.values.tile2.title">Knowledge</h3>
+            <p data-fv-translate-key="salatiso.familyvalue.values.tile2.modal">We prioritize learning and sharing knowledge to empower our family.</p>
+        </div>
+    </div>
+</section>
 
+<div class="section-footer">
+    <p data-translate-key="salatiso.footer">&copy; 2025 Salatiso Lonwabo Mdeni. All rights reserved.</p>
+</div>
+</div>
 
-
-    <div class="section-footer">
-
-        <p>© <span id="currentYear"></span> Salatiso Lonwabo Mdeni. All Rights Reserved.</p>
-
-    </div>
-
-
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <script>
-
-       // --- Salatiso.com Main Site Script ---
-document.addEventListener('DOMContentLoaded', () => {
-    const navButtons = document.querySelectorAll('nav .nav-links button, button.nav-button-trigger');
-    const contentSections = document.querySelectorAll('.content-overlay > .content-section');
-    const brandName = document.getElementById('brand-name');
-    const mainLoginNavButton = document.getElementById('mainLoginNavButton'); // Ensure this ID exists on your Login nav button
-
-    function showSection(sectionId, skipHistory) {
-        let foundSection = false;
-        contentSections.forEach(section => {
-            if (section.id === sectionId) {
-                section.classList.add('active');
-                // For FamilyValueTool, ensure its internal scroll container is reset if needed
-                if (sectionId === 'familyValueTool') {
-                    const fvMainContainer = document.getElementById('fvMainContainer');
-                    if (fvMainContainer) fvMainContainer.scrollTop = 0;
-                } else {
-                    section.scrollTop = 0; 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Translation Setup
+    i18next.use(i18nextBrowserLanguageDetector).init({
+        fallbackLng: 'en',
+        debug: false,
+        resources: {
+            en: {
+                translation: {
+                    "salatiso.brand": "Salatiso Lonwabo Mdeni",
+                    "salatiso.nav.home": "Home",
+                    "salatiso.nav.journey": "My Journey",
+                    "salatiso.nav.ventures": "Ventures",
+                    "salatiso.nav.books": "My Books",
+                    "salatiso.nav.familyValue": "FamilyValue",
+                    "salatiso.nav.connect": "Connect",
+                    "salatiso.nav.login": "Login",
+                    "salatiso.search.placeholder": "Search site...",
+                    "salatiso.lang.xh": "Xhosa",
+                    "salatiso.lang.zu": "Zulu",
+                    "salatiso.lang.af": "Afrikaans",
+                    "salatiso.lang.st": "Sotho",
+                    "salatiso.lang.tn": "Tswana",
+                    "salatiso.lang.nso": "Northern Sotho",
+                    "salatiso.lang.ts": "Tsonga",
+                    "salatiso.lang.ss": "Swati",
+                    "salatiso.lang.ve": "Venda",
+                    "salatiso.lang.nr": "Ndebele",
+                    "salatiso.lang.sw": "Swahili",
+                    "salatiso.lang.zh": "Chinese",
+                    "salatiso.lang.ja": "Japanese",
+                    "salatiso.lang.sn": "Shona",
+                    "salatiso.lang.fr": "French",
+                    "salatiso.lang.pt": "Portuguese",
+                    "salatiso.hero.name": "Salatiso Lonwabo Mdeni",
+                    "salatiso.hero.role_father": "Father",
+                    "salatiso.hero.roles_desc": "OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate",
+                    "salatiso.hero.quote": "\"I am a father to my son; all else is a means to this end.\"",
+                    "salatiso.hero.cta_nav": "Navigate through to learn more about my journey, ventures, and how we can connect.",
+                    "salatiso.journey.title": "My Journey",
+                    "salatiso.journey.intro": "My path has been one of continuous learning, adaptation, and a deep-seated drive to make a meaningful impact. From humble beginnings in rural Transkei to navigating complex risk landscapes, my experiences have shaped my perspective. My career began in Occupational Health and Safety (OHS), evolving into broader expertise in Risk Management and Compliance.",
+                    "salatiso.journey.motivation.title": "My Drive & Motivation",
+                    "salatiso.journey.motivation": "At the heart of everything is my role as a father: \"I am a father to my son; all else is a means to this end.\" This extends to my responsibilities as an Umlandeli (successor) to my father, Mlandeli Nelson Mdeni, upholding our Xhosa family legacy. This includes being an uncle, a father-figure, a dutiful son, and provider. The names in our lineage – Mlandeli (successor), Salatiso (guide), and Sazisi (introducer, for my son Sazi, \"Baza Kusazi!\") – reflect a legacy of guidance and responsibility. This commitment fuels my passion for education, self-sufficiency, and equality.",
+                    "salatiso.journey.timeline.title": "Timeline of Key Milestones",
+                    "salatiso.journey.timeline.1982.year": "1982 - Early Years",
+                    "salatiso.journey.timeline.1982.title": "Born in Transkei, Eastern Cape",
+                    "salatiso.journey.timeline.1982.details": "Raised in rural Transkei (Fort Malan, Nqabane, Songwevu, Mahasane). Early education often under a tree or in community churches. Key locations: Fort Malan (birthplace vicinity: 32°09'03\"S 28°31'25\"E), Nqabane (father's home: 31°55'37\"S 28°21'40\"E), Mahasane (first school: 32°20'10\"S 28°43'35\"E), Lencane (rented home: 32°08'30\"S 28°19'55\"E; Lencane Primary: 32°08'41\"S 28°20'30\"E), Drayini (childhood home: 32°08'09\"S 28°20'39\"E), Matolweni School (approx. 32°08'13\"S 28°20'39\"E).",
+                    "salatiso.journey.timeline.1999.year": "1999",
+                    "salatiso.journey.timeline.1999.title": "Secondary Education",
+                    "salatiso.journey.timeline.1999.details": "Matriculated from Kiriyatswane Secondary School, Mbalenhle, Mpumalanga. Excelled academically, earning awards in poetry, physics, Xhosa, and biology. Developed an early interest in health and safety.",
+                    "salatiso.journey.timeline.2000_2008.year": "2000 - 2008",
+                    "salatiso.journey.timeline.2000_2008.title": "Tertiary Education & Certifications",
+                    "salatiso.journey.timeline.2000_2008.details": "National Diploma in Environmental Health, TUT (2002). Served as student representative. B-Tech in Environmental Health, TUT (2008). MDP, GIBS (2008). Numerous OHS and Risk certifications.",
+                    "salatiso.journey.timeline.2003.year": "2003",
+                    "salatiso.journey.timeline.2003.title": "Dept. of Health, Eastern Cape",
+                    "salatiso.journey.timeline.2003.details": "Junior Environmental Health Practitioner. Conducted inspections, community education, research on informal vendor hygiene.",
+                    "salatiso.journey.timeline.2004_2006.year": "2004-2006",
+                    "salatiso.journey.timeline.2004_2006.title": "Anglo Platinum",
+                    "salatiso.journey.timeline.2004_2006.details": "Ventilation & Occupational Hygiene Trainee, then Technologist. Awarded \"Best Trainee\" (2004). Acted in senior roles.",
+                    "salatiso.journey.timeline.2007_2009.year": "2007-2009",
+                    "salatiso.journey.timeline.2007_2009.title": "SARCC Metrorail",
+                    "salatiso.journey.timeline.2007_2009.details": "SHE Manager. Revamped programs, established occupational hygiene, led national rollout.",
+                    "salatiso.journey.timeline.2008_2012.year": "2008-2012",
+                    "salatiso.journey.timeline.2008_2012.title": "Yeyethu Trust",
+                    "salatiso.journey.timeline.2008_2012.details": "Founder & Project Manager. Awarded academic excellence in Lencane and Matolweni schools.",
+                    "salatiso.journey.timeline.2009_2010.year": "2009-2010",
+                    "salatiso.journey.timeline.2009_2010.title": "Liberty Group Properties",
+                    "salatiso.journey.timeline.2009_2010.details": "EHS Manager. Addressed DoL investigation post-incident, implemented robust OHS systems. Headhunted by ABSA.",
+                    "salatiso.journey.timeline.2010_2016.year": "2010-2016",
+                    "salatiso.journey.timeline.2010_2016.title": "Barclays Africa Group (ABSA)",
+                    "salatiso.journey.timeline.2010_2016.details": "EHS Consultant & Risk Specialist. Developed national asbestos program. Coordinated safe evacuations.",
+                    "salatiso.journey.timeline.2012_2022.year": "2012-2022",
+                    "salatiso.journey.timeline.2012_2022.title": "5G Property Consultants",
+                    "salatiso.journey.timeline.2012_2022.details": "Managing Director. Consultancy for clients like Ster-Kinekor, Mine Investment Corp, Alexander Forbes.",
+                    "salatiso.journey.timeline.2016_2024.year": "2016-2024",
+                    "salatiso.journey.timeline.2016_2024.title": "Telkom (CRES) / Gyro Group",
+                    "salatiso.journey.timeline.2016_2024.details": "Specialist: Risk, Audit, Business Continuity. Instrumental in designing compliance structures. Led risk management.",
+                    "salatiso.journey.timeline.2023_present.year": "2023-Present",
+                    "salatiso.journey.timeline.2023_present.title": "Author, Writer & Publisher",
+                    "salatiso.journey.timeline.2023_present.details": "Creating e-learning content, advising on risk/compliance. Authored \"Safety First\" series.",
+                    "salatiso.journey.publications.title": "Authored Works & Publications",
+                    "salatiso.journey.publications.intro": "I have contributed numerous articles to the National Safety Magazine. Here are a few:",
+                    "salatiso.journey.publications.article1": "Overcoming educational challenges (Sept-Oct 2020)",
+                    "salatiso.journey.publications.article2": "Learning online, The safe and affordable way (May-June 2020)",
+                    "salatiso.journey.publications.article3": "Working from home, beyond COVID-19 (April 2020)",
+                    "salatiso.journey.publications.viewMore": "View More Articles",
+                    "salatiso.journey.publications.article4": "Implementation of emergency response planning (Jan-Feb 2020)",
+                    "salatiso.journey.publications.article5": "Risk Management within the personal context (July-Aug 2019)",
+                    "salatiso.journey.publications.article6": "Home Energy Security (Sept-Oct 2019)",
+                    "salatiso.journey.publications.article7": "Facility Management vs Health and Safety Part 2 (Sept–Oct 2018)",
+                    "salatiso.journey.publications.article8": "Facility Management vs Health and Safety Part 1 (July-Aug 2018)",
+                    "salatiso.journey.publications.article9": "Emergency Response Plan vs Business Continuity (May-June 2018)",
+                    "salatiso.journey.publications.article10": "Emergency Response Planning, Accountability (Jan–Feb 2015)",
+                    "salatiso.journey.publications.article11": "Guidelines, Project Health and Safety Compliance (Jan–Feb 2013)",
+                    "salatiso.journey.quote": "My journey is a testament to resilience, continuous growth, and the unwavering belief in the power of applying one's skills to create a safer, more equitable world, starting with the foundations of family and community.",
+                    "salatiso.ventures.title": "My Ventures & Passions",
+                    "salatiso.ventures.safetyhelp.title": "SafetyHelp",
+                    "salatiso.ventures.safetyhelp.desc": "Launching June 1, 2025, an online platform simplifying OHS compliance for businesses, schools, and informal sectors with tools for risk assessments, training, and management.",
+                    "salatiso.ventures.safetyhelp.cta": "Visit SafetyHelp",
+                    "salatiso.ventures.sazi.title": "Sazi Learning",
+                    "salatiso.ventures.sazi.desc": "Inspired by my son, Sazi, this platform focuses on personalized education, homeschooling resources, and preserving Xhosa language and culture.",
+                    "salatiso.ventures.sazi.cta": "Explore Sazi.life",
+                    "salatiso.ventures.flamea.title": "Flamea",
+                    "salatiso.ventures.flamea.desc": "Promoting equality through education, Flamea provides learning opportunities for underserved communities and advocates for fathers' rights and family equality.",
+                    "salatiso.ventures.flamea.cta": "Learn about Flamea",
+                    "salatiso.ventures.author.title": "Author & Thought Leader",
+                    "salatiso.ventures.author.desc": "I share insights through books, articles, e-learning content, and creative writing, including poetry, focusing on OHS, risk, personal development, and cultural narratives.",
+                    "salatiso.ventures.author.cta": "Explore My Books",
+                    "salatiso.ventures.digital.title": "Digital Creator & Tech Innovator",
+                    "salatiso.ventures.digital.desc": "Leveraging self-taught web development skills to build impactful platforms like <a href=\"https://salatiso.com/\" target=\"_blank\">salatiso.com</a>, <a href=\"https://safetyfirst.help/\" target=\"_blank\">safetyfirst.help</a>, <a href=\"https://flamea.org/\" target=\"_blank\">flamea.org</a>, and <a href=\"https://www.sazi.life/sazi/\" target=\"_blank\">sazi.life</a>.",
+                    "salatiso.ventures.digital.cta": "View My Portfolio",
+                    "salatiso.ventures.family.title": "Family & Community Pillar",
+                    "salatiso.ventures.family.desc": "My commitment extends to being a father-figure, an uncle, a dutiful son, and a provider for my mother and sisters, nurturing a strong family and community foundation.",
+                    "salatiso.ventures.family.cta": "Learn More",
+                    "salatiso.ventures.expertise.title": "Core Expertise",
+                    "salatiso.ventures.expertise.desc": "Specializing in OHS Management, Risk Management & Auditing, Business Continuity, Emergency Response, Training Development, Occupational Hygiene, and Website Development.",
+                    "salatiso.ventures.expertise.cta": "Learn More",
+                    "salatiso.ventures.diy.title": "DIY & Home Improvement",
+                    "salatiso.ventures.diy.desc": "Passionate about hands-on work: woodworking, plumbing, welding, and IT projects, embodying self-sufficiency and practical problem-solving.",
+                    "salatiso.ventures.diy.cta": "Watch DIY Projects",
+                    "salatiso.ventures.homeschooling.title": "Homeschooling Advocate",
+                    "salatiso.ventures.homeschooling.desc": "Actively homeschooling my son, Sazi, integrating learning into daily life and developing resources through the Sazi platform to support others.",
+                    "salatiso.ventures.homeschooling.cta": "Read \"The Homeschooling Father\"",
+                    "salatiso.ventures.reader.title": "Avid Reader & Lifelong Learner",
+                    "salatiso.ventures.reader.desc": "A firm believer in uncertified knowledge, I'm an avid reader and audiobook enthusiast. Authors like Thomas Sowell, Steven Pinker, and Richard Dawkins profoundly shape my perspectives.",
+                    "salatiso.ventures.reader.cta": "See Recommendations",
+                    "salatiso.books.title": "My Books",
+                    "salatiso.books.intro": "Explore my collection of works, including eBooks, Audiobooks, and Paperbacks. Many are also accessible for free on my YouTube Channel. These works share lived experiences, Xhosa wisdom, and professional insights.",
+                    "salatiso.books.goliath.title": "Goliath's Reckoning",
+                    "salatiso.books.goliath.category": "Advocacy & Fathers' Rights",
+                    "salatiso.books.redress.title": "Beyond Redress",
+                    "salatiso.books.redress.category": "Social Commentary",
+                    "salatiso.books.homeschooling.title": "The Homeschooling Father",
+                    "salatiso.books.homeschooling.category": "Education & Parenting",
+                    "salatiso.books.ohs_career.title": "Safety First: OHS Career",
+                    "salatiso.books.ohs_career.category": "Occupational Health & Safety",
+                    "salatiso.books.ohs_plans.title": "Safety First: OHS Plans",
+                    "salatiso.books.ohs_plans.category": "Occupational Health & Safety",
+                    "salatiso.books.isivumo.title": "The Perfect Cage: Isivumo Legacy",
+                    "salatiso.books.isivumo.category": "Fiction & Cultural Narrative",
+                    "salatiso.books.view": "View Book",
+                    "salatiso.books.recommended.title": "Recommended Reads",
+                    "salatiso.books.recommended.sowell": "Thomas Sowell: \"Wealth, Poverty and Politics\"",
+                    "salatiso.books.recommended.pinker": "Steven Pinker: \"Enlightenment Now\"",
+                    "salatiso.books.recommended.dawkins": "Richard Dawkins: \"The Selfish Gene\"",
+                    "salatiso.books.recommended.rothbard": "Murray Rothbard: \"Anatomy of the State\"",
+                    "salatiso.connect.title": "Connect With Me",
+                    "salatiso.connect.intro": "I'm always open to meaningful collaborations, discussions, or inquiries about OHS, Risk Management, Education, or Family Advocacy. Reach out through the following platforms or send me a direct message.",
+                    "salatiso.connect.x": "Follow on X",
+                    "salatiso.connect.linkedin": "Connect on LinkedIn",
+                    "salatiso.connect.email": "Email Me",
+                    "salatiso.connect.youtube": "Watch on YouTube",
+                    "salatiso.connect.cta": "Have a project or idea in mind? Let's make it happen together.",
+                    "salatiso.login.register.title": "Register",
+                    "salatiso.login.signin.title": "Sign In",
+                    "salatiso.login.actions.title": "Other Actions",
+                    "salatiso.login.email": "Email",
+                    "salatiso.login.password": "Password",
+                    "salatiso.login.register.cta": "Create Account",
+                    "salatiso.login.signin.cta": "Sign In",
+                    "salatiso.login.reset": "Reset Password",
+                    "salatiso.login.guest": "Continue as Guest",
+                    "salatiso.footer": "&copy; 2025 Salatiso Lonwabo Mdeni. All rights reserved.",
+                    "salatiso.familyvalue.nav.home": "Home",
+                    "salatiso.familyvalue.nav.vision": "Vision",
+                    "salatiso.familyvalue.nav.family": "Family",
+                    "salatiso.familyvalue.nav.values": "Values",
+                    "salatiso.familyvalue.nav.connect": "Connect",
+                    "salatiso.familyvalue.home.title": "Welcome to FamilyValue",
+                    "salatiso.familyvalue.home.subtitle": "A platform dedicated to strengthening family bonds, preserving cultural heritage, and fostering shared values.",
+                    "salatiso.familyvalue.home.tile1.title": "Family Connection",
+                    "salatiso.familyvalue.home.tile1.desc": "Tools to connect and collaborate with family members.",
+                    "salatiso.familyvalue.home.tile1.modal": "Collaborate with family members through shared calendars, messaging, and task management tools designed to keep everyone connected.",
+                    "salatiso.familyvalue.home.tile2.title": "Cultural Heritage",
+                    "salatiso.familyvalue.home.tile2.desc": "Preserve and share your family's stories and traditions.",
+                    "salatiso.familyvalue.home.tile2.modal": "Document family stories, traditions, and recipes to preserve your heritage for future generations.",
+                    "salatiso.familyvalue.home.tile3.title": "Shared Values",
+                    "salatiso.familyvalue.home.tile3.desc": "Define and uphold your family's core values.",
+                    "salatiso.familyvalue.home.tile3.modal": "Create a family mission statement and define values that guide your family's decisions and actions.",
+                    "salatiso.familyvalue.vision.title": "Our Vision",
+                    "salatiso.familyvalue.vision.subtitle": "Empowering families to thrive through connection, education, and cultural pride.",
+                    "salatiso.familyvalue.vision.tile1.title": "Global Reach",
+                    "salatiso.familyvalue.vision.tile1.desc": "Connecting families worldwide with shared values.",
+                    "salatiso.familyvalue.vision.tile1.modal": "Our platform connects families across the globe, fostering a sense of unity and shared purpose.",
+                    "salatiso.familyvalue.vision.tile2.title": "Education",
+                    "salatiso.familyvalue.vision.tile2.desc": "Providing resources for lifelong learning.",
+                    "salatiso.familyvalue.vision.tile2.modal": "Access educational resources to support family learning and personal growth.",
+                    "salatiso.familyvalue.family.title": "Family Tree",
+                    "salatiso.familyvalue.family.subtitle": "Visualize and explore your family connections.",
+                    "salatiso.familyvalue.family.member1.name": "Mlandeli Nelson Mdeni",
+                    "salatiso.familyvalue.family.member1.role": "Father",
+                    "salatiso.familyvalue.family.member2.name": "Salatiso Lonwabo Mdeni",
+                    "salatiso.familyvalue.family.member2.role": "Son",
+                    "salatiso.familyvalue.family.member2.relation": "Umlandeli",
+                    "salatiso.familyvalue.family.member3.name": "Sazi Mdeni",
+                    "salatiso.familyvalue.family.member3.role": "Son",
+                    "salatiso.familyvalue.family.member3.relation": "Sazisi",
+                    "salatiso.familyvalue.values.title": "Our Values",
+                    "salatiso.familyvalue.values.subtitle": "Core principles that guide our family.",
+                    "salatiso.familyvalue.values.tile1.title": "Respect",
+                    "salatiso.familyvalue.values.tile1.desc": "Honoring each member's dignity and contributions.",
+                    "salatiso.familyvalue.values.tile1.modal": "We believe in treating every family member with dignity and valuing their contributions.",
+                    "salatiso.familyvalue.values.tile2.title": "Knowledge",
+                    "salatiso.familyvalue.values.tile2.desc": "Pursuing wisdom and sharing knowledge.",
+                    "salatiso.familyvalue.values.tile2.modal": "We prioritize learning and sharing knowledge to empower our family.",
+                    "salatiso.familyvalue.connect.title": "Connect With Us",
+                    "salatiso.familyvalue.connect.subtitle": "Join our community to share and grow.",
+                    "salatiso.familyvalue.connect.email": "Email Us",
+                    "salatiso.familyvalue.connect.x": "Follow on X"
                 }
-                foundSection = true;
+                // Add other languages (xh, zu, af, etc.) as needed
+            }
+        },
+        function(err, t) {
+            if (err) console.error('i18next initialization error:', err);
+            updateTranslations();
+        }
+    );
+
+    function updateTranslations() {
+        document.querySelectorAll('[data-translate-key]').forEach(elem => {
+            const key = elem.getAttribute('data-translate-key');
+            if (elem.hasAttribute('placeholder')) {
+                elem.placeholder = i18next.t(key);
             } else {
-                section.classList.remove('active');
+                elem.innerHTML = i18next.t(key);
             }
         });
-        document.querySelectorAll('nav .nav-links button').forEach(button => {
-                if (button.dataset.section === sectionId) {
-                    button.classList.add('active-nav');
-                } else {
-                    button.classList.remove('active-nav');
-                }
+        document.querySelectorAll('[data-fv-translate-key]').forEach(elem => {
+            const key = elem.getAttribute('data-fv-translate-key');
+            elem.innerHTML = i18next.t(key);
         });
-        if (!skipHistory) {
-            // window.location.hash = sectionId; // Optional: for deep linking
-        }
+    }
+
+    document.getElementById('globalLanguageSwitcher').addEventListener('change', (e) => {
+        i18next.changeLanguage(e.target.value, () => {
+            updateTranslations();
+        });
+    });
+
+    document.getElementById('fvLanguageSwitcher').addEventListener('change', (e) => {
+        i18next.changeLanguage(e.target.value, () => {
+            updateTranslations();
+        });
+    });
+
+    // Navigation and Section Switching
+    const sections = document.querySelectorAll('.content-section');
+    const navButtons = document.querySelectorAll('.nav-links button');
+    const navButtonTriggers = document.querySelectorAll('.nav-button-trigger');
+
+    function switchSection(sectionId) {
+        sections.forEach(section => {
+            section.classList.remove('active');
+            if (section.id === sectionId) {
+                section.classList.add('active');
+            }
+        });
+        navButtons.forEach(button => {
+            button.classList.remove('active-nav');
+            if (button.getAttribute('data-section') === sectionId) {
+                button.classList.add('active-nav');
+            }
+        });
+        window.scrollTo(0, 0);
     }
 
     navButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            const sectionId = button.dataset.section;
-            showSection(sectionId, false);
+        button.addEventListener('click', () => {
+            const sectionId = button.getAttribute('data-section');
+            switchSection(sectionId);
         });
     });
-    
-    brandName.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSection('hero-content', false); 
+
+    navButtonTriggers.forEach(button => {
+        button.addEventListener('click', () => {
+            const sectionId = button.getAttribute('data-section');
+            switchSection(sectionId);
+        });
     });
 
-    // Interactive Timeline Toggle (if you re-add it to salatiso.com)
-    document.querySelectorAll('.timeline-title').forEach(title => {
-        title.addEventListener('click', () => {
-            const details = title.nextElementSibling;
-            details.classList.toggle('expanded');
-            title.classList.toggle('expanded');
-        });
-    });
-    
-    const viewMoreButton = document.getElementById('viewMoreArticles');
-    const moreArticlesList = document.getElementById('moreArticles');
-    if (viewMoreButton && moreArticlesList) {
-        viewMoreButton.addEventListener('click', () => {
-            moreArticlesList.classList.toggle('hidden');
-            viewMoreButton.textContent = moreArticlesList.classList.contains('hidden') ? 'View More Articles' : 'View Less Articles';
-        });
-    }
-
-    // Initialize Swipers (only if their respective sections are being shown or are pre-rendered)
-    if (document.getElementById('venturesSwiper')) {
-         const venturesSwiper = new Swiper('#venturesSwiper', { 
-            loop: true, slidesPerView: 1, spaceBetween: 25, grabCursor: true, speed: 800, effect: 'slide', 
-            pagination: { el: '#venturesSwiper .swiper-pagination', clickable: true },
-            navigation: { nextEl: '#venturesSwiper .swiper-button-next', prevEl: '#venturesSwiper .swiper-button-prev' },
-            autoplay: { delay: 5500, disableOnInteraction: false },
-            breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 35 } }
-        });
-    }
-    if (document.getElementById('booksSwiper')) {
-        const booksSwiper = new Swiper('#booksSwiper', { 
-            loop: true, slidesPerView: 1, spaceBetween: 20, grabCursor: true, speed: 800, 
-            pagination: { el: '#booksSwiper .swiper-pagination', clickable: true },
-            navigation: { nextEl: '#booksSwiper .swiper-button-next', prevEl: '#booksSwiper .swiper-button-prev' },
-            autoplay: { delay: 6500, disableOnInteraction: false },
-            breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 768: { slidesPerView: 3, spaceBetween: 25 }, 1024: { slidesPerView: 4, spaceBetween: 30 } }
-        });
-    }
-
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    
-    // Login Form Handlers
-    const tq4bLoginForm = document.getElementById('tq4bLoginForm');
-    if (tq4bLoginForm) {
-        tq4bLoginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // This link should ideally point to the actual TQ4B login page if it's separate,
-            // or trigger its specific login mechanism.
-            window.open('https://salatiso.com/tq4b/index.html', '_blank'); 
-            // alert('Attempting to log into TQ4B Research...'); // User feedback
-        });
-    }
-    const mfeIntranetLoginForm = document.getElementById('mfeIntranetLoginForm');
-    if (mfeIntranetLoginForm) {
-        mfeIntranetLoginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // This will redirect to the directory protected by .htaccess
-            window.location.href = '/mfe_intranet/'; // Ensure this path is correct
-        });
-    }
-    const familyValueLoginForm = document.getElementById('familyValueLoginForm');
-    if (familyValueLoginForm) {
-        familyValueLoginForm.addEventListener('click', function(e) { // Changed to click for the button
-            e.preventDefault();
-            // If FamilyValue has its own login, redirect there.
-            // If it's public parts first, then login, navigate to its section.
-            showSection('familyValueTool', false);
-            // The FamilyValue tool itself would handle its internal login if parts are protected.
-            // For now, this just shows the tool.
-            if (typeof fv_navigateToSection === "function") { // Ensure FV script is loaded
-                 fv_navigateToSection(0); // Navigate to FV's home section
-            }
-            alert('Accessing FamilyValue Tool. Login for premium features might be within the tool itself.');
-        });
-    }
-
-
-    // --- i18next Translation Setup ---
-    const i18nextInstance = i18next.use(i18nextBrowserLanguageDetector);
-    i18nextInstance.init({
-        debug: false, // Set to true for debugging
-        fallbackLng: 'en',
-        resources: {
-            en: { translation: { 
-                "salatiso.brand": "Salatiso Lonwabo Mdeni",
-                "salatiso.nav.home": "Home", "salatiso.nav.journey": "My Journey", "salatiso.nav.ventures": "Ventures",
-                "salatiso.nav.books": "My Books", "salatiso.nav.familyValue": "FamilyValue", "salatiso.nav.connect": "Connect", "salatiso.nav.login": "Login",
-                "salatiso.hero.name": "Salatiso Lonwabo Mdeni", "salatiso.hero.role_father": "Father", "salatiso.hero.roles_desc": "OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate",
-                "salatiso.hero.quote": "\"I am a father to my son; all else is a means to this end.\"", "salatiso.hero.cta_nav": "Navigate through to learn more about my journey, ventures, and how we can connect.",
-                "salatiso.search.placeholder": "Search salatiso.com...",
-                "login.mainTitle": "Portal Access", "login.mainSubtitle": "Please select the portal you wish to access.",
-                "login.tq4b.title": "TQ4B Research", "login.form.username": "Username / Email", "login.form.password": "Password", "login.tq4b.button": "Go to TQ4B", "login.tq4b.desc": "Access the TQ4B research portal and resources.",
-                "login.mfe.title": "MFE Intranet", "login.form.fam_username": "Family Username", "login.form.fam_password": "Family Password", "login.mfe.button": "Enter Intranet", "login.mfe.desc": "Secure access for Mdeni Family Enterprise members.",
-                "login.fv.title": "FamilyValue Tool", "login.form.fv_username": "FamilyValue Email", "login.form.fv_password": "FamilyValue Password", "login.fv.button": "Access FamilyValue", "login.fv.desc": "Login to manage and track family contributions."
-                // Add other salatiso.com specific keys here
-            } },
-            xh: { translation: {
-                "salatiso.brand": "uSalatiso Lonwabo Mdeni",
-                "salatiso.nav.home": "Ekhaya", "salatiso.nav.journey": "Uhambo Lwam", "salatiso.nav.ventures": "Amashishini",
-                "salatiso.nav.books": "Iincwadi Zam", "salatiso.nav.familyValue": "iFamilyValue", "salatiso.nav.connect": "Qhagamshelana", "salatiso.nav.login": "Ngena",
-                "login.mainTitle": "Ufikelelo Lwesiza", "login.mainSubtitle": "Nceda khetha isiza ofuna ukufikelela kuso.",
-                "login.tq4b.title": "uPhando lweTQ4B", "login.form.username": "Igama lomsebenzisi / iEmail", "login.form.password": "Iphasiwedi", "login.tq4b.button": "Yiya kwiTQ4B", "login.tq4b.desc": "Fikelela kwisiza sophando lweTQ4B nezixhobo.",
-                "login.mfe.title": "iIntranet yeMFE", "login.form.fam_username": "Igama losapho lomsebenzisi", "login.form.fam_password": "Iphasiwedi yosapho", "login.mfe.button": "Ngena kwiIntranet", "login.mfe.desc": "Ufikelelo olukhuselekileyo lwamalungu eMdeni Family Enterprise.",
-                "login.fv.title": "Isixhobo seFamilyValue", "login.form.fv_username": "iEmail yeFamilyValue", "login.form.fv_password": "Iphasiwedi yeFamilyValue", "login.fv.button": "Ngena kwiFamilyValue", "login.fv.desc": "Ngena ukuze ulawule kwaye ulandelele amagalelo osapho."
-                // ... other Xhosa translations
-            } },
-            // Add other languages: zu, af, st, tn, nso, ts, ss, ve, nr, sw, zh, ja, sn, fr, pt
-            // Example:
-            ja: { translation: {
-                "salatiso.nav.home": "ホーム", "salatiso.nav.login": "ログイン",
-                "login.mainTitle": "ポータルアクセス", /* ... more Japanese */
-            }}
+    // Swiper Initialization
+    const venturesSwiper = new Swiper('#venturesSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
         }
-    }, (err, t) => {
-        if (err) return console.error('Error initializing i18next:', err);
-        updateSalatisoContent(); // Initial translation
-        document.getElementById('globalLanguageSwitcher').addEventListener('change', (event) => {
-            i18nextInstance.changeLanguage(event.target.value).then(updateSalatisoContent);
+    });
+
+    const booksSwiper = new Swiper('#booksSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+
+    // Timeline Interactivity
+    document.querySelectorAll('.timeline-title').forEach(button => {
+        button.addEventListener('click', () => {
+            const details = button.nextElementSibling;
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !isExpanded);
+            if (isExpanded) {
+                button.classList.remove('expanded');
+                details.classList.remove('expanded');
+            } else {
+                button.classList.add('expanded');
+                details.classList.add('expanded');
+            }
         });
     });
 
-    function updateSalatisoContent() {
-        document.querySelectorAll('[data-translate-key]').forEach(el => {
-            const key = el.dataset.translateKey;
-            let originalText = el.dataset.originalText;
+    // View More Articles Toggle
+    document.getElementById('viewMoreArticles').addEventListener('click', () => {
+        const moreArticles = document.getElementById('moreArticles');
+        moreArticles.classList.toggle('hidden');
+        document.getElementById('viewMoreArticles').textContent = moreArticles.classList.contains('hidden')
+            ? i18next.t('salatiso.journey.publications.viewMore')
+            : 'Hide Articles';
+    });
 
-            if (!originalText && el.childNodes.length > 0 && (el.childNodes[0].nodeType === Node.TEXT_NODE || el.tagName === 'INPUT' && el.type === 'text' && el.placeholder)) {
-                 if (el.tagName === 'INPUT' && el.type === 'text' && el.placeholder) {
-                    el.dataset.originalText = el.placeholder;
-                 } else {
-                    el.dataset.originalText = el.textContent.trim();
-                 }
-                 originalText = el.dataset.originalText;
-            }
-
-
-            if (key) {
-                 const translatedText = i18nextInstance.t(key);
-                 if (translatedText !== key) { // Key was found in translations
-                    if (el.tagName === 'INPUT' && el.type === 'text' && el.getAttribute('placeholder')) {
-                         el.placeholder = translatedText;
-                    } else {
-                        // Preserve icons by only changing the first text node if an icon exists
-                        let iconFound = false;
-                        el.childNodes.forEach(child => {
-                            if (child.nodeType === Node.ELEMENT_NODE && child.tagName === 'I' && child.classList.contains('fa-solid')) {
-                                iconFound = true;
-                            }
-                        });
-                        if(iconFound){
-                            el.childNodes.forEach(child => {
-                                if(child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""){
-                                    child.textContent = " " + translatedText; // Add space before text if icon present
-                                }
-                            });
-                        } else {
-                             el.textContent = translatedText;
-                        }
-                    }
-                 } else if (originalText) { // Key not found, revert to original if stored
-                     if (el.tagName === 'INPUT' && el.type === 'text' && el.getAttribute('placeholder')) {
-                         el.placeholder = originalText;
-                    } else {
-                        // Similar icon preservation for reverting
-                        let iconFound = false;
-                        el.childNodes.forEach(child => {
-                            if (child.nodeType === Node.ELEMENT_NODE && child.tagName === 'I' && child.classList.contains('fa-solid')) {
-                                iconFound = true;
-                            }
-                        });
-                        if(iconFound){
-                             el.childNodes.forEach(child => {
-                                if(child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""){
-                                    child.textContent = " " + originalText;
-                                }
-                            });
-                        } else {
-                           el.textContent = originalText;
-                        }
-                    }
-                 }
-            }
+    // Search Functionality
+    document.getElementById('siteSearchInput').addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        sections.forEach(section => {
+            const textContent = section.textContent.toLowerCase();
+            section.style.display = textContent.includes(query) ? 'block' : 'none';
         });
-        // Also translate FamilyValue tool if its section is active and it uses the same i18next instance
-        if (document.getElementById('familyValueTool').classList.contains('active')) {
-            // Assuming FamilyValue uses data-fv-translate-key
-            document.querySelectorAll('#familyValueTool [data-fv-translate-key]').forEach(el => {
-                 const key = el.dataset.fvTranslateKey;
-                 // ... similar translation logic for FamilyValue elements ...
+    });
+
+    // FamilyValue Tool Script
+    function initFamilyValueScript() {
+        const fvContainer = document.querySelector('.fv-main-container');
+        const fvSections = document.querySelectorAll('.fv-main-section');
+        const fvNavButtons = document.querySelectorAll('.fv-nav button');
+        let currentSectionIndex = 0;
+
+        // Dynamically set container width
+        fvContainer.style.width = `${fvSections.length * 100}%`;
+
+        function switchFvSection(sectionId) {
+            const sectionIndex = Array.from(fvSections).findIndex(section => section.id === sectionId);
+            if (sectionIndex !== -1) {
+                currentSectionIndex = sectionIndex;
+                fvContainer.style.transform = `translateX(-${sectionIndex * (100 / fvSections.length)}%)`;
+                fvNavButtons.forEach(btn => {
+                    btn.classList.toggle('fv-btn-primary', btn.getAttribute('data-fv-section') === sectionId);
+                    btn.classList.toggle('fv-btn-outline-primary', btn.getAttribute('data-fv-section') !== sectionId);
+                });
+            }
+        }
+
+        fvNavButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-fv-section');
+                switchFvSection(sectionId);
             });
-        }
-    }
-
-    // --- Search Functionality ---
-    const siteSearchInput = document.getElementById('siteSearchInput');
-    if (siteSearchInput) {
-        siteSearchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const query = this.value.trim();
-                if (query) {
-                    // For now, defaults to Google site search
-                    window.open(`https://www.google.com/search?q=site:salatiso.com+${encodeURIComponent(query)}`, '_blank');
-                    this.value = ''; 
-                }
-            }
         });
-    }
-    
-    // --- FamilyValue Tool Integration ---
-    const familyValuePlaceholder = document.getElementById('familyValueContentPlaceholder');
-    if (familyValuePlaceholder) {
-        // In a real app, you might fetch this HTML. For now, it's hardcoded.
-        // Make sure the FamilyValue HTML provided by the user is placed here.
-        // This is a simplified injection.
-        const familyValueHTMLContent = `
-            <div id="fvMainContainer" class="fv-main-container">
-                <section class="fv-main-section fv-hero-gradient text-white">
-                    <div class="container mx-auto px-4 text-center">
-                        <h1 class="text-4xl md:text-5xl font-bold mb-6" data-fv-translate-key="hero.title">Recognize the Value in Every Family Role</h1>
-                        <p class="text-lg mb-8" data-fv-translate-key="hero.subtitle">FamilyValue helps you track, visualize, and celebrate each family member's contribution...</p>
-                        <button class="fv-btn bg-white text-primary font-medium" onclick="fv_navigateToSection(3)" data-fv-translate-key="hero.cta.demo"><i class="fas fa-play-circle mr-2"></i>See Demo</button>
-                    </div>
-                </section>
-                <section class="fv-main-section bg-gray-50" data-fv-translate-key="vision.title"> Our Vision Section Content... </section>
-                <section class="fv-main-section bg-white" data-fv-translate-key="features.title"> Core Features Section Content... </section>
-                <section class="fv-main-section bg-gray-100" data-fv-translate-key="demo.title"> Interactive Demo Section Content... </section>
-                <section class="fv-main-section fv-hero-gradient text-white" data-fv-translate-key="join.title"> Join Us Section Content... </section>
-            </div>
-            // Add FamilyValue modals here as well, prefixing their IDs e.g., id="fv_visionModal1"
-        `;
-        familyValuePlaceholder.innerHTML = familyValueHTMLContent;
-        initFamilyValueScript(); // Call its specific JS initializer
-    }
 
-
-    // Default to hero section
-    let initialSection = 'hero-content';
-    if (window.location.hash) {
-        const hashSection = window.location.hash.substring(1);
-        if (document.getElementById(hashSection)) {
-            initialSection = hashSection;
-        }
-    }
-    showSection(initialSection, true); 
-    // Fill in any missing sections that were previously removed
-    const heroContentSection = document.getElementById('hero-content');
-    if (heroContentSection && heroContentSection.innerHTML.trim() === "") {
-        heroContentSection.innerHTML = `<img src="salatiso/assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-gray-600 shadow-xl object-cover">
-        <h1 class="text-3xl md:text-5xl font-bold mb-1 text-white" data-translate-key="salatiso.hero.name">Salatiso Lonwabo Mdeni</h1>
-        <p class="text-xl md:text-2xl font-semibold text-blue-400 mb-2" data-translate-key="salatiso.hero.role_father">Father</p>
-        <p class="text-sm md:text-base font-light hero-roles" data-translate-key="salatiso.hero.roles_desc">OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate</p>
-        <p class="mt-6 text-md max-w-xl mx-auto profile-quote" data-translate-key="salatiso.hero.quote">
-            "I am a father to my son; all else is a means to this end."
-        </p>
-        <p class="mt-4 text-sm text-gray-400" data-translate-key="salatiso.hero.cta_nav">Navigate through to learn more about my journey, ventures, and how we can connect.</p>`;
-    }
-    // ... (Add similar checks and content for other salatiso.com sections: about, ventures, books, connect)
-    // Ensure their data-translate-key attributes are set for the new global translation.
-
-});
-
-// --- FamilyValue Tool Specific Script (needs to be callable after injection) ---
-// Ensure FamilyValue functions are uniquely named or scoped to avoid conflicts
-// For example, prefix them: fv_navigateToSection, fv_openModal, etc.
-function initFamilyValueScript() {
-    const fvMainContainer = document.getElementById('fvMainContainer'); // Make sure this ID is inside the injected HTML
-    if (!fvMainContainer) {
-        console.log("FamilyValue main container not found after injection. Skipping FV script init.");
-        return;
-    }
-    const fvNavLinks = document.querySelectorAll('#familyValueTool .nav-link'); // Use a class specific to FV nav if it exists
-    const fvSections = document.querySelectorAll('#familyValueTool .fv-main-section');
-    
-    let fvCurrentSection = 0;
-
-    window.fv_navigateToSection = function(sectionIndex) {
-        if (sectionIndex >= 0 && sectionIndex < fvSections.length) {
-            fvMainContainer.style.transform = `translateX(-${sectionIndex * 100 / fvSections.length}%)`;
-            fvCurrentSection = sectionIndex;
-            // Update active link style for FamilyValue's internal nav
-            fvNavLinks.forEach(link => link.classList.remove('text-primary', 'font-semibold')); // Use FV's primary color
-            fvNavLinks.forEach(link => {
-                if (parseInt(link.dataset.section) === sectionIndex) {
-                    link.classList.add('text-primary', 'font-semibold');
+        // Modal Handling
+        document.querySelectorAll('.fv-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const modalId = tile.getAttribute('data-fv-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    modal.querySelector('.fv-modal-content').focus();
                 }
             });
-        }
-    }
-
-    fvNavLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionIndex = parseInt(e.target.closest('.nav-link').dataset.section);
-            fv_navigateToSection(sectionIndex);
+            tile.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    tile.click();
+                }
+            });
         });
+
+        document.querySelectorAll('.fv-modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.fv-modal').style.display = 'none';
+            });
+        });
+
+        document.querySelectorAll('.fv-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            modal.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Swipe Gesture Support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        fvContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        fvContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50 && currentSectionIndex < fvSections.length - 1) {
+                switchFvSection(fvSections[currentSectionIndex + 1].id);
+            } else if (touchEndX - touchStartX > 50 && currentSectionIndex > 0) {
+                switchFvSection(fvSections[currentSectionIndex - 1].id);
+            }
+        });
+    }
+
+    // Initialize FamilyValue when section is active
+    document.querySelector('button[data-section="familyValueTool"]').addEventListener('click', () => {
+        setTimeout(initFamilyValueScript, 0);
     });
-    
-    // Swipe gesture for FamilyValue container
-    if (fvMainContainer) {
-        let fvTouchstartX = 0;
-        let fvTouchendX = 0;
-        fvMainContainer.addEventListener('touchstart', function(event) { fvTouchstartX = event.changedTouches[0].screenX; }, false);
-        fvMainContainer.addEventListener('touchend', function(event) { fvTouchendX = event.changedTouches[0].screenX; fvHandleSwipe(); }, false);
 
-        function fvHandleSwipe() {
-            if (fvTouchendX < fvTouchstartX - 50) { if(fvCurrentSection < fvSections.length - 1) fv_navigateToSection(fvCurrentSection + 1); }
-            if (fvTouchendX > fvTouchstartX + 50) { if(fvCurrentSection > 0) fv_navigateToSection(fvCurrentSection - 1); }
-        }
-    }
-    if (fvSections.length > 0) fv_navigateToSection(0);
-
-    // FamilyValue Modal Logic (ensure modal IDs are prefixed like fv_loginModal)
-    window.fv_openModal = function(modalId) { 
-        const modalElement = document.getElementById('fv_' + modalId); // Use prefixed ID
-        if(modalElement) modalElement.style.display = 'flex'; 
-    }
-    window.fv_closeModal = function(modalId) { 
-        const modalElement = document.getElementById('fv_' + modalId);
-        if(modalElement) modalElement.style.display = 'none'; 
-    }
-    
-    window.fv_nextStep = function(nextStepId, currentStepId) {
-        document.getElementById('fv_' + currentStepId).classList.remove('active');
-        document.getElementById('fv_' + nextStepId).classList.add('active');
-    }
-    window.fv_prevStep = function(prevStepId, currentStepId) {
-        document.getElementById('fv_' + currentStepId).classList.remove('active');
-        document.getElementById('fv_' + prevStepId).classList.add('active');
-    }
-    // ... (rest of FamilyValue's specific JS, ensuring selectors are scoped to #familyValueTool or use prefixed IDs/classes)
-    console.log("FamilyValue specific script initialized.");
-}
-
-    </script>
-
+</script>
 </body>
 </html>
-    </script>
-
-
-
-</body>
-
-</html>
-
