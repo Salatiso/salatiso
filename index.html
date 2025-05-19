@@ -1,7 +1,3 @@
-this code is too long and when you provide it it gets interrupted, so using the code below as a base. Don't provide the full code, just the snippets to add the new functionality including translation buttons, search button and login page. make sure the login page is formated to be like the rest of the pages in salatiso.com with a header and footer. 
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -628,6 +624,121 @@ this code is too long and when you provide it it gets interrupted, so using the 
 
         #connect a.cta-link:hover { background-color: #059669; }
 
+      /* Styles for new Nav elements in salatiso.com */
+nav .nav-links-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-end; }
+nav .nav-links { display: flex; flex-wrap: nowrap; /* Prevent nav buttons from wrapping too early */ overflow-x: auto; /* Allow horizontal scroll if too many items */ }
+nav .search-and-lang { display: flex; align-items: center; margin-left: 15px; flex-shrink: 0; /* Prevent shrinking */ }
+nav .search-bar-container { position: relative; margin-right: 10px;}
+nav .search-input {
+    padding: 6px 10px 6px 30px; 
+    border-radius: 15px; border: 1px solid #4B5563;
+    background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
+    font-size: 0.8rem; width: 150px; transition: width 0.3s ease;
+}
+nav .search-input:focus { width: 220px; }
+nav .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9CA3AF; font-size: 0.8rem;}
+nav .language-selector-main select {
+    padding: 6px 8px; border-radius: 5px; border: 1px solid #4B5563;
+    background-color: rgba(31, 41, 55, 0.8); color: #E0E0E0;
+    font-size: 0.8rem; -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239CA3AF'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1.2em;
+    padding-right: 2rem; 
+}
+nav .language-selector-main select option { background-color: #1F2937; color: #E0E0E0; }
+
+/* Login Page Specific Styles */
+#login .login-outer-container { width: 100%; display: flex; flex-direction:column; justify-content: center; align-items: center; min-height: 70vh; }
+#login .login-container {
+    display: flex; flex-direction: column; gap: 1.5rem; /* Reduced gap */
+    align-items: center; width: 100%; max-width: 900px;
+}
+#login .login-card {
+    background-color: rgba(31, 41, 55, 0.95); 
+    padding: 1.5rem 2rem; /* Reduced padding */
+    border-radius: 0.75rem;
+    border: 1px solid rgba(75, 85, 99, 0.8);
+    width: 100%; max-width: 380px; /* Slightly reduced card width */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+#login .login-card h3 { color: #FFFFFF; font-size: 1.3rem; text-align: center; margin-bottom: 1rem; }
+#login .login-card h3 .fa-solid { margin-right: 0.6rem; color: #60A5FA; font-size: 1.2em; }
+#login .form-group { margin-bottom: 1rem; }
+#login .form-group label { display: block; color: #9CA3AF; font-size: 0.8rem; margin-bottom: 0.4rem; }
+#login .form-group input {
+    width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.375rem;
+    border: 1px solid #4B5563; background-color: #1F2937; 
+    color: #E0E0E0; font-size: 0.9rem;
+}
+#login .form-group input:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+#login .login-button {
+    width: 100%; padding: 0.75rem; border-radius: 0.375rem;
+    background-color: #3B82F6; color: white; font-size: 0.95rem;
+    font-weight: 600; border: none; cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#login .login-button:hover { background-color: #2563EB; }
+#login .login-button .fa-solid { margin-right: 0.5rem; }
+@media (min-width: 1024px) { 
+    #login .login-container { flex-direction: row; align-items: flex-start; justify-content: center; }
+}
+
+/* FamilyValue Tool Specific Styles (Scoped within #familyValueTool) */
+#familyValueTool {
+    /* FV --light */ background-color: #F7FAFC; 
+    /* FV --dark */ color: #2D3748; 
+    padding: 0; max-height: calc(100vh - 80px); overflow: hidden;
+    font-family: 'Poppins', sans-serif; /* Override Inter for this section */
+}
+#familyValueTool h1, #familyValueTool h2, #familyValueTool h3, #familyValueTool h4, #familyValueTool h5 {
+    font-family: 'Ubuntu', sans-serif; color: #2D3748 !important;
+}
+#familyValueTool .fv-hero-gradient { background: linear-gradient(135deg, #8C52FF 0%, #FF5C8D 100%); }
+#familyValueTool .fv-btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
+#familyValueTool .fv-btn-primary { background-color: #8C52FF; color: white; }
+#familyValueTool .fv-btn-primary:hover { background-color: #B28DFF; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+#familyValueTool .fv-btn-secondary { background-color: #FF914D; color: white; }
+#familyValueTool .fv-btn-secondary:hover { background-color: #FFB07D; }
+#familyValueTool .fv-btn-outline-primary { border: 2px solid #8C52FF; color: #8C52FF; }
+#familyValueTool .fv-btn-outline-primary:hover { background-color: #8C52FF; color: white; }
+#familyValueTool .fv-main-container { display: flex; width: 500%; height: calc(100vh - 80px); transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+#familyValueTool .fv-main-section { width: 100vw; height: 100%; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#familyValueTool .fv-main-section::-webkit-scrollbar { display: none; }
+#familyValueTool .fv-main-section { -ms-overflow-style: none; scrollbar-width: none; }
+#familyValueTool .fv-tile { background-color: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 8px 16px rgba(45, 55, 72, 0.1); transition: all 0.3s ease; cursor: pointer; text-align: center; }
+#familyValueTool .fv-tile:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(45, 55, 72, 0.15); }
+#familyValueTool .fv-tile i { font-size: 2.5rem; margin-bottom: 1rem; color: #8C52FF; /* FV Primary for icons */}
+#familyValueTool .fv-modal { display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+#familyValueTool .fv-modal-content { background-color: #fff; margin: auto; padding: 2rem; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+#familyValueTool .fv-modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; font-weight: bold; color: #aaa; cursor: pointer; }
+#familyValueTool .fv-modal-close:hover { color: #2D3748; }
+#familyValueTool .fv-wizard-step { display: none; }
+#familyValueTool .fv-wizard-step.active { display: block; }
+#familyValueTool .fv-family-tree ul { padding-top: 20px; position: relative; transition: all 0.5s; }
+#familyValueTool .fv-family-tree li { float: left; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; transition: all 0.5s; }
+#familyValueTool .fv-family-tree li::before, #familyValueTool .fv-family-tree li::after{ content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid #B28DFF; width: 50%; height: 20px; }
+#familyValueTool .fv-family-tree li::after{ right: auto; left: 50%; border-left: 2px solid #B28DFF; }
+#familyValueTool .fv-family-tree li:only-child::after, #familyValueTool .fv-family-tree li:only-child::before { display: none; }
+#familyValueTool .fv-family-tree li:only-child{ padding-top: 0;}
+#familyValueTool .fv-family-tree li:first-child::before, #familyValueTool .fv-family-tree li:last-child::after{ border: 0 none; }
+#familyValueTool .fv-family-tree li:last-child::before{ border-right: 2px solid #B28DFF; border-radius: 0 5px 0 0; }
+#familyValueTool .fv-family-tree li:first-child::after{ border-radius: 5px 0 0 0; }
+#familyValueTool .fv-family-tree ul ul::before{ content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #B28DFF; width: 0; height: 20px; }
+#familyValueTool .fv-family-tree li div{ border: 1px solid #B28DFF; padding: 10px; text-decoration: none; color: #2D3748; background-color: rgba(255,255,255,0.8); font-family: 'Poppins', sans-serif; font-size: 0.9em; display: inline-block; border-radius: 8px; transition: all 0.3s; min-width: 120px; }
+#familyValueTool .fv-family-tree li div:hover, #familyValueTool .fv-family-tree li div:hover+ul li div { background: #B28DFF; color: #fff; border: 1px solid #8C52FF; transform: scale(1.05); }
+#familyValueTool .fv-family-tree li div .role { font-size: 0.7em; color: #FF914D; display: block; margin-top: 4px; }
+#familyValueTool .fv-family-tree li div .relation-degree { font-size: 0.6em; color: #45C4B0; display: block; margin-top: 2px; }
+#familyValueTool .fv-animate-float { animation: fv-float 6s ease-in-out infinite; }
+@keyframes fv-float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+#familyValueTool .fv-nav { display: none !important; } /* This is FamilyValue's own nav, which we hide */
+#familyValueTool .fv-language-selector select { /* Style for FV's internal lang selector if it had one */
+    background-color: rgba(140, 82, 255, 0.2); border: none; color: #2D3748; 
+    padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; 
+}
+#familyValueTool .fv-language-selector select option { background-color: #8C52FF; color: white; }
+#familyValueTool .fv-section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #2D3748; }
+#familyValueTool .fv-section-subtitle { font-size: 1.2rem; color: #555; margin-bottom: 3rem; max-width: 700px; text-align:center; }
+
     </style>
 
 </head>
@@ -647,24 +758,46 @@ this code is too long and when you provide it it gets interrupted, so using the 
 
 
     <nav>
-
-        <a href="#" class="nav-brand" id="brand-name">Salatiso Lonwabo Mdeni</a>
-
-        <div class="nav-links">
-
-            <button data-section="hero-content" class="active-nav"><i class="fa-solid fa-house"></i>Home</button>
-
-            <button data-section="about"><i class="fa-solid fa-user-tie"></i>My Journey</button>
-
-            <button data-section="ventures"><i class="fa-solid fa-lightbulb"></i>Ventures</button>
-
-            <button data-section="books"><i class="fa-solid fa-book-open"></i>My Books</button> 
-
-            <button data-section="connect"><i class="fa-solid fa-envelope"></i>Connect</button>
-
-        </div>
-
-    </nav>
+    <a href="#" class="nav-brand" id="brand-name" data-translate-key="salatiso.brand">Salatiso Lonwabo Mdeni</a>
+    <div class="nav-links-container">
+        <div class="nav-links">
+            <button data-section="hero-content" class="active-nav" data-translate-key="salatiso.nav.home"><i class="fa-solid fa-house"></i>Home</button>
+            <button data-section="about" data-translate-key="salatiso.nav.journey"><i class="fa-solid fa-user-tie"></i>My Journey</button>
+            <button data-section="ventures" data-translate-key="salatiso.nav.ventures"><i class="fa-solid fa-lightbulb"></i>Ventures</button>
+            <button data-section="books" data-translate-key="salatiso.nav.books"><i class="fa-solid fa-book-open"></i>My Books</button> 
+            <button data-section="familyValueTool" data-translate-key="salatiso.nav.familyValue"><i class="fa-solid fa-heart-circle-check"></i>FamilyValue</button> {/* New Button */}
+            <button data-section="connect" data-translate-key="salatiso.nav.connect"><i class="fa-solid fa-envelope"></i>Connect</button>
+            <button data-section="login" id="mainLoginNavButton" data-translate-key="salatiso.nav.login"><i class="fa-solid fa-right-to-bracket"></i>Login</button> {/* Updated/Ensured */}
+        </div>
+        <div class="search-and-lang ml-auto"> {/* Ensure ml-auto to push to right */}
+            <div class="search-bar-container">
+                <i class="fa-solid fa-search search-icon"></i>
+                <input type="text" id="siteSearchInput" class="search-input" placeholder="Search site..." data-translate-key="[placeholder]salatiso.search.placeholder">
+            </div>
+            <div class="language-selector-main ml-2"> {/* Added ml-2 for spacing */}
+                <select id="globalLanguageSwitcher" aria-label="Select language" class="text-xs"> {/* Made text smaller */}
+                    <option value="en">EN</option>
+                    <option value="xh" data-translate-key="salatiso.lang.xh">XH</option>
+                    <option value="zu" data-translate-key="salatiso.lang.zu">ZU</option>
+                    <option value="af" data-translate-key="salatiso.lang.af">AF</option>
+                    <option value="st" data-translate-key="salatiso.lang.st">ST</option>
+                    <option value="tn" data-translate-key="salatiso.lang.tn">TN</option>
+                    <option value="nso" data-translate-key="salatiso.lang.nso">NSO</option>
+                    <option value="ts" data-translate-key="salatiso.lang.ts">TS</option>
+                    <option value="ss" data-translate-key="salatiso.lang.ss">SS</option>
+                    <option value="ve" data-translate-key="salatiso.lang.ve">VE</option>
+                    <option value="nr" data-translate-key="salatiso.lang.nr">NR</option>
+                    <option value="sw" data-translate-key="salatiso.lang.sw">SW</option>
+                    <option value="zh" data-translate-key="salatiso.lang.zh">ZH</option>
+                    <option value="ja" data-translate-key="salatiso.lang.ja">JA</option>
+                    <option value="sn" data-translate-key="salatiso.lang.sn">SN</option>
+                    <option value="fr" data-translate-key="salatiso.lang.fr">FR</option>
+                    <option value="pt" data-translate-key="salatiso.lang.pt">PT</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</nav>
 
 
 
@@ -1406,6 +1539,56 @@ this code is too long and when you provide it it gets interrupted, so using the 
 
         </section>
 
+
+      <section id="login" class="content-section">
+    <div class="login-outer-container">
+        <div class="text-center mb-12">
+             <h2 class="text-3xl font-bold text-white mb-2" data-translate-key="login.mainTitle">Portal Access</h2>
+             <p class="text-gray-400" data-translate-key="login.mainSubtitle">Please select the portal you wish to access.</p>
+        </div>
+        <div class="login-container">
+            <div class="login-card">
+                <div class="text-center mb-4">
+                    <i class="fa-solid fa-flask-vial text-4xl text-blue-400"></i>
+                </div>
+                <h3 data-translate-key="login.tq4b.title">TQ4B Research</h3>
+                <form id="tq4bLoginForm">
+                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.tq4b.desc">Access the TQ4B research portal and resources.</p>
+                    <button type="submit" class="login-button">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i><span data-translate-key="login.tq4b.button">Go to TQ4B</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="login-card">
+                <div class="text-center mb-4">
+                    <i class="fa-solid fa-users-cog text-4xl text-blue-400"></i>
+                </div>
+                <h3 data-translate-key="login.mfe.title">MFE Intranet</h3>
+                 <form id="mfeIntranetLoginForm">
+                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.mfe.desc">Secure access for Mdeni Family Enterprise members.</p>
+                    <button type="submit" class="login-button">
+                        <i class="fa-solid fa-key"></i><span data-translate-key="login.mfe.button">Enter Intranet</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="login-card">
+                <div class="text-center mb-4">
+                     <i class="fa-solid fa-heart-circle-check text-4xl text-blue-400"></i>
+                </div>
+                <h3 data-translate-key="login.fv.title">FamilyValue Tool</h3>
+                 <form id="familyValueLoginForm">
+                    <p class="text-sm text-gray-400 mb-4 text-center" data-translate-key="login.fv.desc">Login to manage and track family contributions.</p>
+                    <button type="button" class="login-button" onclick="showSection('familyValueTool', false); fv_navigateToSection(0);">
+                        <i class="fa-solid fa-user-check"></i><span data-translate-key="login.fv.button">Access FamilyValue</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
     </div>
 
 
@@ -1422,252 +1605,391 @@ this code is too long and when you provide it it gets interrupted, so using the 
 
     <script>
 
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const navButtons = document.querySelectorAll('.nav-links button, button.nav-button-trigger');
-
-            const contentSections = document.querySelectorAll('.content-section');
-
-            const brandName = document.getElementById('brand-name');
-
-
-
-            function showSection(sectionId) {
-
-                contentSections.forEach(section => {
-
-                    if (section.id === sectionId) {
-
-                        section.classList.add('active');
-
-                        section.scrollTop = 0; 
-
-                    } else {
-
-                        section.classList.remove('active');
-
-                    }
-
-                });
-
-                document.querySelectorAll('.nav-links button').forEach(button => {
-
-                     if (button.dataset.section === sectionId) {
-
-                        button.classList.add('active-nav');
-
-                    } else {
-
-                        button.classList.remove('active-nav');
-
-                    }
-
-                });
-
-            }
-
-
-
-            navButtons.forEach(button => {
-
-                button.addEventListener('click', (e) => {
-
-                    e.preventDefault(); 
-
-                    showSection(button.dataset.section);
-
-                });
-
-            });
-
-            
-
-            brandName.addEventListener('click', (e) => {
-
-                e.preventDefault();
-
-                showSection('hero-content'); 
-
-            });
-
-
-
-            // Interactive Timeline Toggle
-
-            document.querySelectorAll('.timeline-title').forEach(title => {
-
-                title.addEventListener('click', () => {
-
-                    const details = title.nextElementSibling;
-
-                    details.classList.toggle('expanded');
-
-                    title.classList.toggle('expanded');
-
-                });
-
-            });
-
-            
-
-            // View More Articles Toggle
-
-            const viewMoreButton = document.getElementById('viewMoreArticles');
-
-            const moreArticlesList = document.getElementById('moreArticles');
-
-            if (viewMoreButton && moreArticlesList) {
-
-                viewMoreButton.addEventListener('click', () => {
-
-                    moreArticlesList.classList.toggle('hidden');
-
-                    viewMoreButton.textContent = moreArticlesList.classList.contains('hidden') ? 'View More Articles' : 'View Less Articles';
-
-                });
-
-            }
-
-
-
-
-
-            const venturesSwiper = new Swiper('#venturesSwiper', { 
-
-                loop: true,
-
-                slidesPerView: 1,
-
-                spaceBetween: 25, 
-
-                grabCursor: true,
-
-                speed: 800, 
-
-                effect: 'slide', 
-
-                pagination: {
-
-                    el: '#venturesSwiper .swiper-pagination', 
-
-                    clickable: true,
-
-                },
-
-                navigation: { 
-
-                    nextEl: '#venturesSwiper .swiper-button-next', 
-
-                    prevEl: '#venturesSwiper .swiper-button-prev',
-
-                },
-
-                autoplay: {
-
-                    delay: 5500, 
-
-                    disableOnInteraction: false,
-
-                },
-
-                breakpoints: {
-
-                    768: { 
-
-                        slidesPerView: 2,
-
-                        spaceBetween: 30
-
-                    },
-
-                    1024: { 
-
-                        slidesPerView: 3,
-
-                        spaceBetween: 35 
-
-                    }
-
-                }
-
-            });
-
-
-
-            const booksSwiper = new Swiper('#booksSwiper', { 
-
-                loop: true,
-
-                slidesPerView: 1,
-
-                spaceBetween: 20,
-
-                grabCursor: true,
-
-                speed: 800, 
-
-                pagination: {
-
-                    el: '#booksSwiper .swiper-pagination', 
-
-                    clickable: true,
-
-                },
-
-                navigation: { 
-
-                    nextEl: '#booksSwiper .swiper-button-next', 
-
-                    prevEl: '#booksSwiper .swiper-button-prev',
-
-                },
-
-                 autoplay: {
-
-                    delay: 6500, 
-
-                    disableOnInteraction: false,
-
-                },
-
-                breakpoints: {
-
-                    640: { 
-
-                        slidesPerView: 2,
-
-                        spaceBetween: 20
-
-                    },
-
-                    768: { 
-
-                        slidesPerView: 3,
-
-                        spaceBetween: 25
-
-                    },
-
-                    1024: { 
-
-                        slidesPerView: 4, 
-
-                        spaceBetween: 30
-
-                    }
-
-                }
-
-            });
-
-
-
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-            showSection('hero-content');
-
-        });
-
+       // --- Salatiso.com Main Site Script ---
+document.addEventListener('DOMContentLoaded', () => {
+    const navButtons = document.querySelectorAll('nav .nav-links button, button.nav-button-trigger');
+    const contentSections = document.querySelectorAll('.content-overlay > .content-section');
+    const brandName = document.getElementById('brand-name');
+    const mainLoginNavButton = document.getElementById('mainLoginNavButton'); // Ensure this ID exists on your Login nav button
+
+    function showSection(sectionId, skipHistory) {
+        let foundSection = false;
+        contentSections.forEach(section => {
+            if (section.id === sectionId) {
+                section.classList.add('active');
+                // For FamilyValueTool, ensure its internal scroll container is reset if needed
+                if (sectionId === 'familyValueTool') {
+                    const fvMainContainer = document.getElementById('fvMainContainer');
+                    if (fvMainContainer) fvMainContainer.scrollTop = 0;
+                } else {
+                    section.scrollTop = 0; 
+                }
+                foundSection = true;
+            } else {
+                section.classList.remove('active');
+            }
+        });
+        document.querySelectorAll('nav .nav-links button').forEach(button => {
+                if (button.dataset.section === sectionId) {
+                    button.classList.add('active-nav');
+                } else {
+                    button.classList.remove('active-nav');
+                }
+        });
+        if (!skipHistory) {
+            // window.location.hash = sectionId; // Optional: for deep linking
+        }
+    }
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            const sectionId = button.dataset.section;
+            showSection(sectionId, false);
+        });
+    });
+    
+    brandName.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('hero-content', false); 
+    });
+
+    // Interactive Timeline Toggle (if you re-add it to salatiso.com)
+    document.querySelectorAll('.timeline-title').forEach(title => {
+        title.addEventListener('click', () => {
+            const details = title.nextElementSibling;
+            details.classList.toggle('expanded');
+            title.classList.toggle('expanded');
+        });
+    });
+    
+    const viewMoreButton = document.getElementById('viewMoreArticles');
+    const moreArticlesList = document.getElementById('moreArticles');
+    if (viewMoreButton && moreArticlesList) {
+        viewMoreButton.addEventListener('click', () => {
+            moreArticlesList.classList.toggle('hidden');
+            viewMoreButton.textContent = moreArticlesList.classList.contains('hidden') ? 'View More Articles' : 'View Less Articles';
+        });
+    }
+
+    // Initialize Swipers (only if their respective sections are being shown or are pre-rendered)
+    if (document.getElementById('venturesSwiper')) {
+         const venturesSwiper = new Swiper('#venturesSwiper', { 
+            loop: true, slidesPerView: 1, spaceBetween: 25, grabCursor: true, speed: 800, effect: 'slide', 
+            pagination: { el: '#venturesSwiper .swiper-pagination', clickable: true },
+            navigation: { nextEl: '#venturesSwiper .swiper-button-next', prevEl: '#venturesSwiper .swiper-button-prev' },
+            autoplay: { delay: 5500, disableOnInteraction: false },
+            breakpoints: { 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 35 } }
+        });
+    }
+    if (document.getElementById('booksSwiper')) {
+        const booksSwiper = new Swiper('#booksSwiper', { 
+            loop: true, slidesPerView: 1, spaceBetween: 20, grabCursor: true, speed: 800, 
+            pagination: { el: '#booksSwiper .swiper-pagination', clickable: true },
+            navigation: { nextEl: '#booksSwiper .swiper-button-next', prevEl: '#booksSwiper .swiper-button-prev' },
+            autoplay: { delay: 6500, disableOnInteraction: false },
+            breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 768: { slidesPerView: 3, spaceBetween: 25 }, 1024: { slidesPerView: 4, spaceBetween: 30 } }
+        });
+    }
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Login Form Handlers
+    const tq4bLoginForm = document.getElementById('tq4bLoginForm');
+    if (tq4bLoginForm) {
+        tq4bLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // This link should ideally point to the actual TQ4B login page if it's separate,
+            // or trigger its specific login mechanism.
+            window.open('https://salatiso.com/tq4b/index.html', '_blank'); 
+            // alert('Attempting to log into TQ4B Research...'); // User feedback
+        });
+    }
+    const mfeIntranetLoginForm = document.getElementById('mfeIntranetLoginForm');
+    if (mfeIntranetLoginForm) {
+        mfeIntranetLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // This will redirect to the directory protected by .htaccess
+            window.location.href = '/mfe_intranet/'; // Ensure this path is correct
+        });
+    }
+    const familyValueLoginForm = document.getElementById('familyValueLoginForm');
+    if (familyValueLoginForm) {
+        familyValueLoginForm.addEventListener('click', function(e) { // Changed to click for the button
+            e.preventDefault();
+            // If FamilyValue has its own login, redirect there.
+            // If it's public parts first, then login, navigate to its section.
+            showSection('familyValueTool', false);
+            // The FamilyValue tool itself would handle its internal login if parts are protected.
+            // For now, this just shows the tool.
+            if (typeof fv_navigateToSection === "function") { // Ensure FV script is loaded
+                 fv_navigateToSection(0); // Navigate to FV's home section
+            }
+            alert('Accessing FamilyValue Tool. Login for premium features might be within the tool itself.');
+        });
+    }
+
+
+    // --- i18next Translation Setup ---
+    const i18nextInstance = i18next.use(i18nextBrowserLanguageDetector);
+    i18nextInstance.init({
+        debug: false, // Set to true for debugging
+        fallbackLng: 'en',
+        resources: {
+            en: { translation: { 
+                "salatiso.brand": "Salatiso Lonwabo Mdeni",
+                "salatiso.nav.home": "Home", "salatiso.nav.journey": "My Journey", "salatiso.nav.ventures": "Ventures",
+                "salatiso.nav.books": "My Books", "salatiso.nav.familyValue": "FamilyValue", "salatiso.nav.connect": "Connect", "salatiso.nav.login": "Login",
+                "salatiso.hero.name": "Salatiso Lonwabo Mdeni", "salatiso.hero.role_father": "Father", "salatiso.hero.roles_desc": "OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate",
+                "salatiso.hero.quote": "\"I am a father to my son; all else is a means to this end.\"", "salatiso.hero.cta_nav": "Navigate through to learn more about my journey, ventures, and how we can connect.",
+                "salatiso.search.placeholder": "Search salatiso.com...",
+                "login.mainTitle": "Portal Access", "login.mainSubtitle": "Please select the portal you wish to access.",
+                "login.tq4b.title": "TQ4B Research", "login.form.username": "Username / Email", "login.form.password": "Password", "login.tq4b.button": "Go to TQ4B", "login.tq4b.desc": "Access the TQ4B research portal and resources.",
+                "login.mfe.title": "MFE Intranet", "login.form.fam_username": "Family Username", "login.form.fam_password": "Family Password", "login.mfe.button": "Enter Intranet", "login.mfe.desc": "Secure access for Mdeni Family Enterprise members.",
+                "login.fv.title": "FamilyValue Tool", "login.form.fv_username": "FamilyValue Email", "login.form.fv_password": "FamilyValue Password", "login.fv.button": "Access FamilyValue", "login.fv.desc": "Login to manage and track family contributions."
+                // Add other salatiso.com specific keys here
+            } },
+            xh: { translation: {
+                "salatiso.brand": "uSalatiso Lonwabo Mdeni",
+                "salatiso.nav.home": "Ekhaya", "salatiso.nav.journey": "Uhambo Lwam", "salatiso.nav.ventures": "Amashishini",
+                "salatiso.nav.books": "Iincwadi Zam", "salatiso.nav.familyValue": "iFamilyValue", "salatiso.nav.connect": "Qhagamshelana", "salatiso.nav.login": "Ngena",
+                "login.mainTitle": "Ufikelelo Lwesiza", "login.mainSubtitle": "Nceda khetha isiza ofuna ukufikelela kuso.",
+                "login.tq4b.title": "uPhando lweTQ4B", "login.form.username": "Igama lomsebenzisi / iEmail", "login.form.password": "Iphasiwedi", "login.tq4b.button": "Yiya kwiTQ4B", "login.tq4b.desc": "Fikelela kwisiza sophando lweTQ4B nezixhobo.",
+                "login.mfe.title": "iIntranet yeMFE", "login.form.fam_username": "Igama losapho lomsebenzisi", "login.form.fam_password": "Iphasiwedi yosapho", "login.mfe.button": "Ngena kwiIntranet", "login.mfe.desc": "Ufikelelo olukhuselekileyo lwamalungu eMdeni Family Enterprise.",
+                "login.fv.title": "Isixhobo seFamilyValue", "login.form.fv_username": "iEmail yeFamilyValue", "login.form.fv_password": "Iphasiwedi yeFamilyValue", "login.fv.button": "Ngena kwiFamilyValue", "login.fv.desc": "Ngena ukuze ulawule kwaye ulandelele amagalelo osapho."
+                // ... other Xhosa translations
+            } },
+            // Add other languages: zu, af, st, tn, nso, ts, ss, ve, nr, sw, zh, ja, sn, fr, pt
+            // Example:
+            ja: { translation: {
+                "salatiso.nav.home": "ホーム", "salatiso.nav.login": "ログイン",
+                "login.mainTitle": "ポータルアクセス", /* ... more Japanese */
+            }}
+        }
+    }, (err, t) => {
+        if (err) return console.error('Error initializing i18next:', err);
+        updateSalatisoContent(); // Initial translation
+        document.getElementById('globalLanguageSwitcher').addEventListener('change', (event) => {
+            i18nextInstance.changeLanguage(event.target.value).then(updateSalatisoContent);
+        });
+    });
+
+    function updateSalatisoContent() {
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+            const key = el.dataset.translateKey;
+            let originalText = el.dataset.originalText;
+
+            if (!originalText && el.childNodes.length > 0 && (el.childNodes[0].nodeType === Node.TEXT_NODE || el.tagName === 'INPUT' && el.type === 'text' && el.placeholder)) {
+                 if (el.tagName === 'INPUT' && el.type === 'text' && el.placeholder) {
+                    el.dataset.originalText = el.placeholder;
+                 } else {
+                    el.dataset.originalText = el.textContent.trim();
+                 }
+                 originalText = el.dataset.originalText;
+            }
+
+
+            if (key) {
+                 const translatedText = i18nextInstance.t(key);
+                 if (translatedText !== key) { // Key was found in translations
+                    if (el.tagName === 'INPUT' && el.type === 'text' && el.getAttribute('placeholder')) {
+                         el.placeholder = translatedText;
+                    } else {
+                        // Preserve icons by only changing the first text node if an icon exists
+                        let iconFound = false;
+                        el.childNodes.forEach(child => {
+                            if (child.nodeType === Node.ELEMENT_NODE && child.tagName === 'I' && child.classList.contains('fa-solid')) {
+                                iconFound = true;
+                            }
+                        });
+                        if(iconFound){
+                            el.childNodes.forEach(child => {
+                                if(child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""){
+                                    child.textContent = " " + translatedText; // Add space before text if icon present
+                                }
+                            });
+                        } else {
+                             el.textContent = translatedText;
+                        }
+                    }
+                 } else if (originalText) { // Key not found, revert to original if stored
+                     if (el.tagName === 'INPUT' && el.type === 'text' && el.getAttribute('placeholder')) {
+                         el.placeholder = originalText;
+                    } else {
+                        // Similar icon preservation for reverting
+                        let iconFound = false;
+                        el.childNodes.forEach(child => {
+                            if (child.nodeType === Node.ELEMENT_NODE && child.tagName === 'I' && child.classList.contains('fa-solid')) {
+                                iconFound = true;
+                            }
+                        });
+                        if(iconFound){
+                             el.childNodes.forEach(child => {
+                                if(child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""){
+                                    child.textContent = " " + originalText;
+                                }
+                            });
+                        } else {
+                           el.textContent = originalText;
+                        }
+                    }
+                 }
+            }
+        });
+        // Also translate FamilyValue tool if its section is active and it uses the same i18next instance
+        if (document.getElementById('familyValueTool').classList.contains('active')) {
+            // Assuming FamilyValue uses data-fv-translate-key
+            document.querySelectorAll('#familyValueTool [data-fv-translate-key]').forEach(el => {
+                 const key = el.dataset.fvTranslateKey;
+                 // ... similar translation logic for FamilyValue elements ...
+            });
+        }
+    }
+
+    // --- Search Functionality ---
+    const siteSearchInput = document.getElementById('siteSearchInput');
+    if (siteSearchInput) {
+        siteSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.trim();
+                if (query) {
+                    // For now, defaults to Google site search
+                    window.open(`https://www.google.com/search?q=site:salatiso.com+${encodeURIComponent(query)}`, '_blank');
+                    this.value = ''; 
+                }
+            }
+        });
+    }
+    
+    // --- FamilyValue Tool Integration ---
+    const familyValuePlaceholder = document.getElementById('familyValueContentPlaceholder');
+    if (familyValuePlaceholder) {
+        // In a real app, you might fetch this HTML. For now, it's hardcoded.
+        // Make sure the FamilyValue HTML provided by the user is placed here.
+        // This is a simplified injection.
+        const familyValueHTMLContent = `
+            <div id="fvMainContainer" class="fv-main-container">
+                <section class="fv-main-section fv-hero-gradient text-white">
+                    <div class="container mx-auto px-4 text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6" data-fv-translate-key="hero.title">Recognize the Value in Every Family Role</h1>
+                        <p class="text-lg mb-8" data-fv-translate-key="hero.subtitle">FamilyValue helps you track, visualize, and celebrate each family member's contribution...</p>
+                        <button class="fv-btn bg-white text-primary font-medium" onclick="fv_navigateToSection(3)" data-fv-translate-key="hero.cta.demo"><i class="fas fa-play-circle mr-2"></i>See Demo</button>
+                    </div>
+                </section>
+                <section class="fv-main-section bg-gray-50" data-fv-translate-key="vision.title"> Our Vision Section Content... </section>
+                <section class="fv-main-section bg-white" data-fv-translate-key="features.title"> Core Features Section Content... </section>
+                <section class="fv-main-section bg-gray-100" data-fv-translate-key="demo.title"> Interactive Demo Section Content... </section>
+                <section class="fv-main-section fv-hero-gradient text-white" data-fv-translate-key="join.title"> Join Us Section Content... </section>
+            </div>
+            // Add FamilyValue modals here as well, prefixing their IDs e.g., id="fv_visionModal1"
+        `;
+        familyValuePlaceholder.innerHTML = familyValueHTMLContent;
+        initFamilyValueScript(); // Call its specific JS initializer
+    }
+
+
+    // Default to hero section
+    let initialSection = 'hero-content';
+    if (window.location.hash) {
+        const hashSection = window.location.hash.substring(1);
+        if (document.getElementById(hashSection)) {
+            initialSection = hashSection;
+        }
+    }
+    showSection(initialSection, true); 
+    // Fill in any missing sections that were previously removed
+    const heroContentSection = document.getElementById('hero-content');
+    if (heroContentSection && heroContentSection.innerHTML.trim() === "") {
+        heroContentSection.innerHTML = `<img src="salatiso/assets/photos/Salatiso_Profile_Pic.jpg" alt="Salatiso Lonwabo Mdeni" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-gray-600 shadow-xl object-cover">
+        <h1 class="text-3xl md:text-5xl font-bold mb-1 text-white" data-translate-key="salatiso.hero.name">Salatiso Lonwabo Mdeni</h1>
+        <p class="text-xl md:text-2xl font-semibold text-blue-400 mb-2" data-translate-key="salatiso.hero.role_father">Father</p>
+        <p class="text-sm md:text-base font-light hero-roles" data-translate-key="salatiso.hero.roles_desc">OHS & Risk Expert | Author | Social Entrepreneur | Fathers, Boys and Family Rights Advocate</p>
+        <p class="mt-6 text-md max-w-xl mx-auto profile-quote" data-translate-key="salatiso.hero.quote">
+            "I am a father to my son; all else is a means to this end."
+        </p>
+        <p class="mt-4 text-sm text-gray-400" data-translate-key="salatiso.hero.cta_nav">Navigate through to learn more about my journey, ventures, and how we can connect.</p>`;
+    }
+    // ... (Add similar checks and content for other salatiso.com sections: about, ventures, books, connect)
+    // Ensure their data-translate-key attributes are set for the new global translation.
+
+});
+
+// --- FamilyValue Tool Specific Script (needs to be callable after injection) ---
+// Ensure FamilyValue functions are uniquely named or scoped to avoid conflicts
+// For example, prefix them: fv_navigateToSection, fv_openModal, etc.
+function initFamilyValueScript() {
+    const fvMainContainer = document.getElementById('fvMainContainer'); // Make sure this ID is inside the injected HTML
+    if (!fvMainContainer) {
+        console.log("FamilyValue main container not found after injection. Skipping FV script init.");
+        return;
+    }
+    const fvNavLinks = document.querySelectorAll('#familyValueTool .nav-link'); // Use a class specific to FV nav if it exists
+    const fvSections = document.querySelectorAll('#familyValueTool .fv-main-section');
+    
+    let fvCurrentSection = 0;
+
+    window.fv_navigateToSection = function(sectionIndex) {
+        if (sectionIndex >= 0 && sectionIndex < fvSections.length) {
+            fvMainContainer.style.transform = `translateX(-${sectionIndex * 100 / fvSections.length}%)`;
+            fvCurrentSection = sectionIndex;
+            // Update active link style for FamilyValue's internal nav
+            fvNavLinks.forEach(link => link.classList.remove('text-primary', 'font-semibold')); // Use FV's primary color
+            fvNavLinks.forEach(link => {
+                if (parseInt(link.dataset.section) === sectionIndex) {
+                    link.classList.add('text-primary', 'font-semibold');
+                }
+            });
+        }
+    }
+
+    fvNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionIndex = parseInt(e.target.closest('.nav-link').dataset.section);
+            fv_navigateToSection(sectionIndex);
+        });
+    });
+    
+    // Swipe gesture for FamilyValue container
+    if (fvMainContainer) {
+        let fvTouchstartX = 0;
+        let fvTouchendX = 0;
+        fvMainContainer.addEventListener('touchstart', function(event) { fvTouchstartX = event.changedTouches[0].screenX; }, false);
+        fvMainContainer.addEventListener('touchend', function(event) { fvTouchendX = event.changedTouches[0].screenX; fvHandleSwipe(); }, false);
+
+        function fvHandleSwipe() {
+            if (fvTouchendX < fvTouchstartX - 50) { if(fvCurrentSection < fvSections.length - 1) fv_navigateToSection(fvCurrentSection + 1); }
+            if (fvTouchendX > fvTouchstartX + 50) { if(fvCurrentSection > 0) fv_navigateToSection(fvCurrentSection - 1); }
+        }
+    }
+    if (fvSections.length > 0) fv_navigateToSection(0);
+
+    // FamilyValue Modal Logic (ensure modal IDs are prefixed like fv_loginModal)
+    window.fv_openModal = function(modalId) { 
+        const modalElement = document.getElementById('fv_' + modalId); // Use prefixed ID
+        if(modalElement) modalElement.style.display = 'flex'; 
+    }
+    window.fv_closeModal = function(modalId) { 
+        const modalElement = document.getElementById('fv_' + modalId);
+        if(modalElement) modalElement.style.display = 'none'; 
+    }
+    
+    window.fv_nextStep = function(nextStepId, currentStepId) {
+        document.getElementById('fv_' + currentStepId).classList.remove('active');
+        document.getElementById('fv_' + nextStepId).classList.add('active');
+    }
+    window.fv_prevStep = function(prevStepId, currentStepId) {
+        document.getElementById('fv_' + currentStepId).classList.remove('active');
+        document.getElementById('fv_' + prevStepId).classList.add('active');
+    }
+    // ... (rest of FamilyValue's specific JS, ensuring selectors are scoped to #familyValueTool or use prefixed IDs/classes)
+    console.log("FamilyValue specific script initialized.");
+}
+
+    </script>
+
+</body>
+</html>
     </script>
 
 
